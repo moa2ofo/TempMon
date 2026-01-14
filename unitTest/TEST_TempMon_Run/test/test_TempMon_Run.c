@@ -3,8 +3,6 @@
 #include "mock_TempMon_priv.h"
 #include <string.h>
 
-
-
 void setUp(void)
 {
     /* Reset state to NORMAL before each test */

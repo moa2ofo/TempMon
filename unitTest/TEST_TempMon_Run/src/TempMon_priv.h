@@ -80,7 +80,7 @@
  * @return
  * true if the UNDER entry condition is met, false otherwise.
  */
-static bool IsUnderEnter_b(int32_t temp_mC);
+bool IsUnderEnter_b(int32_t temp_mC);
 
 /**
  * @brief Check the exit condition for UNDER state (hysteresis release).
@@ -120,7 +120,7 @@ static bool IsUnderEnter_b(int32_t temp_mC);
  * @return
  * true if the UNDER exit condition is met, false otherwise.
  */
-static bool IsUnderExit_b(int32_t temp_mC);
+bool IsUnderExit_b(int32_t temp_mC);
 
 /**
  * @brief Check the entry condition for OVER state.
@@ -159,7 +159,7 @@ static bool IsUnderExit_b(int32_t temp_mC);
  * @return
  * true if the OVER entry condition is met, false otherwise.
  */
-static bool IsOverEnter_b(int32_t temp_mC);
+bool IsOverEnter_b(int32_t temp_mC);
 
 /**
  * @brief Check the exit condition for OVER state (hysteresis release).
@@ -199,6 +199,6 @@ static bool IsOverEnter_b(int32_t temp_mC);
  * @return
  * true if the OVER exit condition is met, false otherwise.
  */
-static bool IsOverExit_b(int32_t temp_mC);
+bool IsOverExit_b(int32_t temp_mC);
 
 #endif /* TEMPMON_PRIV_H */
