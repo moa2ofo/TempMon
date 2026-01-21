@@ -51,12 +51,7 @@
  * - #TEMPMON_STS_UNDER: under-temperature condition is active
  * - #TEMPMON_STS_OVER:  over-temperature condition is active
  */
-typedef enum
-{
-    TEMPMON_STS_NORMAL = 0,
-    TEMPMON_STS_UNDER,
-    TEMPMON_STS_OVER
-} TempMon_sts_e;
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
 
 /* ===== Public configuration (extern) =====
  * Units: milli-degC (m°C)

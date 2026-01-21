@@ -39,8 +39,6 @@
 
 /* ===== Private (file-static) state ===== */
 
-
-
 /* ===== Private (cfile-static) functions ===== */
 
 /**
