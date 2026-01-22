@@ -25,9 +25,10 @@
  *   - Enter/Exit **OVER**
  *
  * @par Design notes
- * - All entities declared here are intended to be **file-static** (internal linkage).
- * - The state machine is maintained in `TempMon.c`; this header only centralizes
- *   private declarations to keep the `.c` file readable.
+ * - All entities declared here are intended to be **file-static** (internal
+ * linkage).
+ * - The state machine is maintained in `TempMon.c`; this header only
+ * centralizes private declarations to keep the `.c` file readable.
  *
  * @par Safety and correctness
  * - The helper functions assume that configuration variables
@@ -55,10 +56,13 @@
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                 | Data unit |
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range                 | Data unit |
  * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                 | X  |     | int32_t                |   X   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
+ * | temp_mC                 | X  |     | int32_t                |   X   | 1 |
+ * 0      |     1     | implementation-defined     | [m°C]    | |
+ * g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -94,11 +98,15 @@ bool IsUnderEnter_b(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                 | Data unit |
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range                 | Data unit |
  * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                 | X  |     | int32_t                |   X   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_Hyst_mC_s32           | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | typically >= 0             | [m°C]    |
+ * | temp_mC                 | X  |     | int32_t                |   X   | 1 |
+ * 0      |     1     | implementation-defined     | [m°C]    | |
+ * g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    | |
+ * g_Hyst_mC_s32           | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | typically >= 0             | [m°C]    |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -134,10 +142,13 @@ bool IsUnderExit_b(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface               | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                 | Data unit |
+ * | Interface               | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range                 | Data unit |
  * |------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                | X  |     | int32_t                |   X   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_OverThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
+ * | temp_mC                | X  |     | int32_t                |   X   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    | |
+ * g_OverThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -173,11 +184,15 @@ bool IsOverEnter_b(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface               | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                 | Data unit |
+ * | Interface               | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range                 | Data unit |
  * |------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                | X  |     | int32_t                |   X   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_OverThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | implementation-defined     | [m°C]    |
- * | g_Hyst_mC_s32          | X  |     | int32_t (extern)       |   -   |      1      |      0      |     1     | typically >= 0             | [m°C]    |
+ * | temp_mC                | X  |     | int32_t                |   X   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    | |
+ * g_OverThreshold_mC_s32 | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | implementation-defined     | [m°C]    | |
+ * g_Hyst_mC_s32          | X  |     | int32_t (extern)       |   -   |      1
+ * |      0      |     1     | typically >= 0             | [m°C]    |
  *
  * @par Activity diagram (PlantUML)
  *
