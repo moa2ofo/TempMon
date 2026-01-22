@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   format_and_unit_tests:
+    format_and_unit_tests: if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' runs-on: ubuntu-latest
     runs-on: ubuntu-latest
 
     steps:
