@@ -129,53 +129,29 @@ new/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/build
 .PHONY : new/fast
 
-cfg/Crc8_cfg.o: cfg/Crc8_cfg.c.o
-.PHONY : cfg/Crc8_cfg.o
+pltf/TempMon.o: pltf/TempMon.c.o
+.PHONY : pltf/TempMon.o
 
 # target to build an object file
-cfg/Crc8_cfg.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/Crc8_cfg.c.o
-.PHONY : cfg/Crc8_cfg.c.o
+pltf/TempMon.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/TempMon.c.o
+.PHONY : pltf/TempMon.c.o
 
-cfg/Crc8_cfg.i: cfg/Crc8_cfg.c.i
-.PHONY : cfg/Crc8_cfg.i
-
-# target to preprocess a source file
-cfg/Crc8_cfg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/Crc8_cfg.c.i
-.PHONY : cfg/Crc8_cfg.c.i
-
-cfg/Crc8_cfg.s: cfg/Crc8_cfg.c.s
-.PHONY : cfg/Crc8_cfg.s
-
-# target to generate assembly for a file
-cfg/Crc8_cfg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/Crc8_cfg.c.s
-.PHONY : cfg/Crc8_cfg.c.s
-
-pltf/Crc8.o: pltf/Crc8.c.o
-.PHONY : pltf/Crc8.o
-
-# target to build an object file
-pltf/Crc8.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/Crc8.c.o
-.PHONY : pltf/Crc8.c.o
-
-pltf/Crc8.i: pltf/Crc8.c.i
-.PHONY : pltf/Crc8.i
+pltf/TempMon.i: pltf/TempMon.c.i
+.PHONY : pltf/TempMon.i
 
 # target to preprocess a source file
-pltf/Crc8.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/Crc8.c.i
-.PHONY : pltf/Crc8.c.i
+pltf/TempMon.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/TempMon.c.i
+.PHONY : pltf/TempMon.c.i
 
-pltf/Crc8.s: pltf/Crc8.c.s
-.PHONY : pltf/Crc8.s
+pltf/TempMon.s: pltf/TempMon.c.s
+.PHONY : pltf/TempMon.s
 
 # target to generate assembly for a file
-pltf/Crc8.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/Crc8.c.s
-.PHONY : pltf/Crc8.c.s
+pltf/TempMon.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/pltf/TempMon.c.s
+.PHONY : pltf/TempMon.c.s
 
 # Help Target
 help:
@@ -186,12 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... new"
-	@echo "... cfg/Crc8_cfg.o"
-	@echo "... cfg/Crc8_cfg.i"
-	@echo "... cfg/Crc8_cfg.s"
-	@echo "... pltf/Crc8.o"
-	@echo "... pltf/Crc8.i"
-	@echo "... pltf/Crc8.s"
+	@echo "... pltf/TempMon.o"
+	@echo "... pltf/TempMon.i"
+	@echo "... pltf/TempMon.s"
 .PHONY : help
 
 

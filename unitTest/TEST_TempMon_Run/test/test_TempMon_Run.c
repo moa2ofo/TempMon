@@ -1,271 +1,345 @@
 #include "TempMon_Run.h"
 #include "mock_TempMon_priv.h"
+#include "TempMon.h"
 #include "unity.h"
 #include <string.h>
+
+/* Extern variables for accessing global state and thresholds */
+extern int32_t g_UnderThreshold_mC_s32;
+extern int32_t g_OverThreshold_mC_s32;
+extern int32_t g_Hyst_mC_s32;
+extern TempMon_sts_e Sts_e;
 
 void setUp(void) {
   /* Reset state to NORMAL before each test */
   Sts_e = TEMPMON_STS_NORMAL;
+  /* Reset thresholds to default values */
+  g_UnderThreshold_mC_s32 = 0;
+  g_OverThreshold_mC_s32 = 85000;
+  g_Hyst_mC_s32 = 2000;
 }
 
 void tearDown(void) {}
 
-/* ====== Tests for NORMAL state transitions ====== */
+/* ===== Test cases for NORMAL state transitions ===== */
 
 /**
- * @brief Test: Initial state is NORMAL
+ * @brief Test: In NORMAL state, temperature above over-threshold transitions to OVER.
  */
-void test_InitialStateIsNormal(void) {
+void test_TempMon_Run_NORMAL_to_OVER_TransitionAboveThreshold(void) {
   TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
-
-/**
- * @brief Test: NORMAL state remains NORMAL when neither threshold is crossed
- */
-void test_NormalStateRemainsNormalWhenNoThresholdCrossed(void) {
-  /* Mock: Neither under nor over conditions are met */
-  IsUnderEnter_b_ExpectAndReturn(0, false);
-  IsOverEnter_b_ExpectAndReturn(0, false);
-
-  TempMon_Run(0);
-
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
-
-/**
- * @brief Test: NORMAL → UNDER transition when temperature drops below threshold
- */
-void test_NormalToUnderTransition(void) {
-  /* Mock: Under threshold condition is met */
-  IsUnderEnter_b_ExpectAndReturn(-5000, true);
-
-  TempMon_Run(-5000);
-
-  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
-}
-
-/**
- * @brief Test: NORMAL → OVER transition when temperature rises above threshold
- */
-void test_NormalToOverTransition(void) {
-  /* Mock: Over threshold condition is met */
-  IsUnderEnter_b_ExpectAndReturn(50000, false);
-  IsOverEnter_b_ExpectAndReturn(50000, true);
-
-  TempMon_Run(50000);
-
+  
+  /* Call with temp > over-threshold */
+  TempMon_Run(90000); /* 90.000°C > 85.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
 }
 
 /**
- * @brief Test: NORMAL prioritizes UNDER check before OVER check
- * (If both are true, UNDER should be entered)
+ * @brief Test: In NORMAL state, temperature below under-threshold transitions to UNDER.
  */
-void test_NormalPrioritizesUnderOverOver(void) {
-  /* Mock: Both conditions are met, UNDER should have priority */
-  IsUnderEnter_b_ExpectAndReturn(25000, true);
-
-  TempMon_Run(25000);
-
+void test_TempMon_Run_NORMAL_to_UNDER_TransitionBelowThreshold(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp < under-threshold */
+  TempMon_Run(-5000); /* -5.000°C < 0.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
 }
 
-/* ====== Tests for UNDER state transitions ====== */
+/**
+ * @brief Test: In NORMAL state, temperature within thresholds stays NORMAL.
+ */
+void test_TempMon_Run_NORMAL_StaysNormalWithinThresholds(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp within normal range */
+  TempMon_Run(25000); /* 25.000°C is between 0°C and 85°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
 
 /**
- * @brief Test: UNDER state remains UNDER when exit condition is not met
+ * @brief Test: In NORMAL state, temperature at over-threshold boundary stays NORMAL.
  */
-void test_UnderStateRemainsUnderWhenNoExit(void) {
-  /* Setup: Enter UNDER state first */
+void test_TempMon_Run_NORMAL_AtOverThresholdBoundaryStaysNormal(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp = over-threshold (should NOT transition yet) */
+  TempMon_Run(85000); /* 85.000°C = 85.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
+
+/**
+ * @brief Test: In NORMAL state, temperature just above over-threshold transitions to OVER.
+ */
+void test_TempMon_Run_NORMAL_JustAboveOverThresholdTransitionsToOVER(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp just above over-threshold */
+  TempMon_Run(85001); /* 85.001°C > 85.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+}
+
+/**
+ * @brief Test: In NORMAL state, temperature at under-threshold boundary stays NORMAL.
+ */
+void test_TempMon_Run_NORMAL_AtUnderThresholdBoundaryStaysNormal(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp = under-threshold (should NOT transition yet) */
+  TempMon_Run(0); /* 0.000°C = 0.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
+
+/**
+ * @brief Test: In NORMAL state, temperature just below under-threshold transitions to UNDER.
+ */
+void test_TempMon_Run_NORMAL_JustBelowUnderThresholdTransitionsToUNDER(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Call with temp just below under-threshold */
+  TempMon_Run(-1); /* -0.001°C < 0.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+}
+
+/* ===== Test cases for UNDER state transitions ===== */
+
+/**
+ * @brief Test: In UNDER state, temperature below under-threshold stays UNDER.
+ */
+void test_TempMon_Run_UNDER_StaysUnderBelowThreshold(void) {
   Sts_e = TEMPMON_STS_UNDER;
-
-  /* Mock: Exit condition is not met */
-  IsUnderExit_b_ExpectAndReturn(-3000, false);
-
-  TempMon_Run(-3000);
-
+  
+  /* Call with temp below under-threshold */
+  TempMon_Run(-10000); /* -10.000°C < 0.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
 }
 
 /**
- * @brief Test: UNDER → NORMAL transition with hysteresis release
+ * @brief Test: In UNDER state, temperature above hysteresis threshold transitions to NORMAL.
  */
-void test_UnderToNormalTransitionWithHysteresis(void) {
-  /* Setup: Enter UNDER state first */
+void test_TempMon_Run_UNDER_to_NORMAL_TransitionAboveHysteresisThreshold(void) {
   Sts_e = TEMPMON_STS_UNDER;
-
-  /* Mock: Exit condition is met (hysteresis threshold exceeded) */
-  IsUnderExit_b_ExpectAndReturn(2000, true);
-
-  TempMon_Run(2000);
-
+  
+  /* Call with temp > (under-threshold + hysteresis) */
+  /* (0 + 2000) = 2000 */
+  TempMon_Run(2001); /* 2.001°C > 2.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
 }
 
-/* ====== Tests for OVER state transitions ====== */
+/**
+ * @brief Test: In UNDER state, temperature at hysteresis boundary stays UNDER.
+ */
+void test_TempMon_Run_UNDER_AtHysteresisThresholdStaysUnder(void) {
+  Sts_e = TEMPMON_STS_UNDER;
+  
+  /* Call with temp = (under-threshold + hysteresis) */
+  /* (0 + 2000) = 2000 */
+  TempMon_Run(2000); /* 2.000°C = 2.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+}
 
 /**
- * @brief Test: OVER state remains OVER when exit condition is not met
+ * @brief Test: In UNDER state, temperature between under and hysteresis stays UNDER.
  */
-void test_OverStateRemainsOverWhenNoExit(void) {
-  /* Setup: Enter OVER state first */
+void test_TempMon_Run_UNDER_StaysUnderBetweenUnderAndHysteresis(void) {
+  Sts_e = TEMPMON_STS_UNDER;
+  
+  /* Call with temp between under-threshold and (under-threshold + hysteresis) */
+  TempMon_Run(1000); /* 1.000°C is between 0°C and 2.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+}
+
+/* ===== Test cases for OVER state transitions ===== */
+
+/**
+ * @brief Test: In OVER state, temperature above over-threshold stays OVER.
+ */
+void test_TempMon_Run_OVER_StaysOverAboveThreshold(void) {
   Sts_e = TEMPMON_STS_OVER;
-
-  /* Mock: Exit condition is not met */
-  IsOverExit_b_ExpectAndReturn(45000, false);
-
-  TempMon_Run(45000);
-
+  
+  /* Call with temp above over-threshold */
+  TempMon_Run(95000); /* 95.000°C > 85.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
 }
 
 /**
- * @brief Test: OVER → NORMAL transition with hysteresis release
+ * @brief Test: In OVER state, temperature below hysteresis threshold transitions to NORMAL.
  */
-void test_OverToNormalTransitionWithHysteresis(void) {
-  /* Setup: Enter OVER state first */
+void test_TempMon_Run_OVER_to_NORMAL_TransitionBelowHysteresisThreshold(void) {
   Sts_e = TEMPMON_STS_OVER;
-
-  /* Mock: Exit condition is met (hysteresis threshold undercut) */
-  IsOverExit_b_ExpectAndReturn(30000, true);
-
-  TempMon_Run(30000);
-
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
-
-/* ====== Tests for state machine cycle ====== */
-
-/**
- * @brief Test: Complete cycle NORMAL → UNDER → NORMAL
- */
-void test_CompleteCycleNormalUnderNormal(void) {
-  /* Step 1: NORMAL → UNDER */
-  IsUnderEnter_b_ExpectAndReturn(-6000, true);
-  TempMon_Run(-6000);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
-
-  /* Step 2: Stay UNDER */
-  IsUnderExit_b_ExpectAndReturn(-4000, false);
-  TempMon_Run(-4000);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
-
-  /* Step 3: UNDER → NORMAL */
-  IsUnderExit_b_ExpectAndReturn(1000, true);
-  TempMon_Run(1000);
+  
+  /* Call with temp < (over-threshold - hysteresis) */
+  /* (85000 - 2000) = 83000 */
+  TempMon_Run(82999); /* 82.999°C < 83.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
 }
 
 /**
- * @brief Test: Complete cycle NORMAL → OVER → NORMAL
+ * @brief Test: In OVER state, temperature at hysteresis boundary stays OVER.
  */
-void test_CompleteCycleNormalOverNormal(void) {
-  /* Step 1: NORMAL → OVER */
-  IsUnderEnter_b_ExpectAndReturn(55000, false);
-  IsOverEnter_b_ExpectAndReturn(55000, true);
-  TempMon_Run(55000);
+void test_TempMon_Run_OVER_AtHysteresisThresholdStaysOver(void) {
+  Sts_e = TEMPMON_STS_OVER;
+  
+  /* Call with temp = (over-threshold - hysteresis) */
+  /* (85000 - 2000) = 83000 */
+  TempMon_Run(83000); /* 83.000°C = 83.000°C */
+  
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
-
-  /* Step 2: Stay OVER */
-  IsOverExit_b_ExpectAndReturn(52000, false);
-  TempMon_Run(52000);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
-
-  /* Step 3: OVER → NORMAL */
-  IsOverExit_b_ExpectAndReturn(40000, true);
-  TempMon_Run(40000);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
 }
 
 /**
- * @brief Test: Multiple transitions in sequence
- * NORMAL → UNDER → NORMAL → OVER → NORMAL
+ * @brief Test: In OVER state, temperature between over and hysteresis stays OVER.
  */
-void test_MultipleTransitionsSequence(void) {
-  /* NORMAL → UNDER */
-  IsUnderEnter_b_ExpectAndReturn(-10000, true);
-  TempMon_Run(-10000);
+void test_TempMon_Run_OVER_StaysOverBetweenOverAndHysteresis(void) {
+  Sts_e = TEMPMON_STS_OVER;
+  
+  /* Call with temp between (over-threshold - hysteresis) and over-threshold */
+  TempMon_Run(84000); /* 84.000°C is between 83.000°C and 85.000°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+}
+
+/* ===== Test cases for hysteresis behavior (no oscillation) ===== */
+
+/**
+ * @brief Test: Hysteresis prevents oscillation near UNDER threshold.
+ */
+void test_TempMon_Run_HysteresisPreventOscillationAtUnderThreshold(void) {
+  Sts_e = TEMPMON_STS_UNDER;
+  
+  /* Temperature just below under-threshold should NOT exit UNDER state */
+  TempMon_Run(500); /* 0.5°C is below hysteresis threshold of 2.0°C */
   TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+  
+  /* Even closer to under-threshold */
+  TempMon_Run(1500); /* 1.5°C is still below hysteresis threshold of 2.0°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+}
 
-  /* UNDER → NORMAL */
-  IsUnderExit_b_ExpectAndReturn(5000, true);
-  TempMon_Run(5000);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-
-  /* NORMAL → OVER */
-  IsUnderEnter_b_ExpectAndReturn(60000, false);
-  IsOverEnter_b_ExpectAndReturn(60000, true);
-  TempMon_Run(60000);
+/**
+ * @brief Test: Hysteresis prevents oscillation near OVER threshold.
+ */
+void test_TempMon_Run_HysteresisPreventOscillationAtOverThreshold(void) {
+  Sts_e = TEMPMON_STS_OVER;
+  
+  /* Temperature just above over-threshold should NOT exit OVER state */
+  TempMon_Run(84500); /* 84.5°C is above hysteresis threshold of 83.0°C */
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  
+  /* Even closer to over-threshold */
+  TempMon_Run(84999); /* 84.999°C is still above hysteresis threshold of 83.0°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+}
 
-  /* OVER → NORMAL */
-  IsOverExit_b_ExpectAndReturn(35000, true);
-  TempMon_Run(35000);
+/* ===== Test cases for edge cases and boundary conditions ===== */
+
+/**
+ * @brief Test: Sequential state machine transitions NORMAL -> OVER -> NORMAL.
+ */
+void test_TempMon_Run_SequentialTransitions_NORMAL_OVER_NORMAL(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Transition to OVER */
+  TempMon_Run(86000); /* 86.000°C > 85.000°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  
+  /* Stay in OVER */
+  TempMon_Run(84000); /* 84.000°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  
+  /* Transition back to NORMAL */
+  TempMon_Run(82999); /* 82.999°C < 83.000°C */
   TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
 }
 
-/* ====== Tests for edge cases ====== */
+/**
+ * @brief Test: Sequential state machine transitions NORMAL -> UNDER -> NORMAL.
+ */
+void test_TempMon_Run_SequentialTransitions_NORMAL_UNDER_NORMAL(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Transition to UNDER */
+  TempMon_Run(-1000); /* -1.000°C < 0.000°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+  
+  /* Stay in UNDER */
+  TempMon_Run(1000); /* 1.000°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+  
+  /* Transition back to NORMAL */
+  TempMon_Run(2001); /* 2.001°C > 2.000°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
 
 /**
- * @brief Test: Multiple consecutive calls with same state
+ * @brief Test: Multiple cycles between NORMAL and OVER states.
  */
-void test_ConsecutiveCallsSameState(void) {
+void test_TempMon_Run_MultipleCyclesNormalOver(void) {
+  /* Cycle 1 */
+  TempMon_Run(90000);
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  TempMon_Run(82999);
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Cycle 2 */
+  TempMon_Run(86000);
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  TempMon_Run(82999);
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
+
+/**
+ * @brief Test: Custom threshold and hysteresis values.
+ */
+void test_TempMon_Run_CustomThresholdAndHysteresis(void) {
+  /* Change configuration */
+  g_UnderThreshold_mC_s32 = 10000;    /* 10°C */
+  g_OverThreshold_mC_s32 = 30000;     /* 30°C */
+  g_Hyst_mC_s32 = 5000;               /* 5°C */
+  
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Transition to OVER */
+  TempMon_Run(35000); /* 35°C > 30°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  
+  /* At hysteresis boundary should stay OVER */
+  TempMon_Run(25000); /* 25°C = 30°C - 5°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
+  
+  /* Below hysteresis should return to NORMAL */
+  TempMon_Run(24999); /* 24.999°C < 25°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+}
+
+/**
+ * @brief Test: Extreme temperature values.
+ */
+void test_TempMon_Run_ExtremeTemperatureValues(void) {
+  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
+  
+  /* Very low temperature */
+  TempMon_Run(-100000); /* -100°C */
+  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
+  
+  /* Return to NORMAL */
   Sts_e = TEMPMON_STS_NORMAL;
-
-  /* Call 1 */
-  IsUnderEnter_b_ExpectAndReturn(0, false);
-  IsOverEnter_b_ExpectAndReturn(0, false);
-  TempMon_Run(0);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-
-  /* Call 2 */
-  IsUnderEnter_b_ExpectAndReturn(0, false);
-  IsOverEnter_b_ExpectAndReturn(0, false);
-  TempMon_Run(0);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-
-  /* Call 3 */
-  IsUnderEnter_b_ExpectAndReturn(0, false);
-  IsOverEnter_b_ExpectAndReturn(0, false);
-  TempMon_Run(0);
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
-
-/**
- * @brief Test: Extreme low temperature value
- */
-void test_ExtremeLowTemperature(void) {
-  /* Mock: Extreme low temperature triggers UNDER */
-  IsUnderEnter_b_ExpectAndReturn(-100000, true);
-
-  TempMon_Run(-100000);
-
-  TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, Sts_e);
-}
-
-/**
- * @brief Test: Extreme high temperature value
- */
-void test_ExtremeHighTemperature(void) {
-  /* Mock: Extreme high temperature triggers OVER */
-  IsUnderEnter_b_ExpectAndReturn(100000, false);
-  IsOverEnter_b_ExpectAndReturn(100000, true);
-
-  TempMon_Run(100000);
-
+  
+  /* Very high temperature */
+  TempMon_Run(150000); /* 150°C */
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
 }
 
-/**
- * @brief Test: Zero temperature in NORMAL state
- */
-void test_ZeroTemperatureInNormalState(void) {
-  Sts_e = TEMPMON_STS_NORMAL;
 
-  IsUnderEnter_b_ExpectAndReturn(0, false);
-  IsOverEnter_b_ExpectAndReturn(0, false);
-
-  TempMon_Run(0);
-
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}

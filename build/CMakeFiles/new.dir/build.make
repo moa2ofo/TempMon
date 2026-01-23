@@ -69,47 +69,31 @@ include CMakeFiles/new.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/new.dir/flags.make
 
-CMakeFiles/new.dir/cfg/Crc8_cfg.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/cfg/Crc8_cfg.c.o: /workspace/cfg/Crc8_cfg.c
-CMakeFiles/new.dir/cfg/Crc8_cfg.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/cfg/Crc8_cfg.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/cfg/Crc8_cfg.c.o -MF CMakeFiles/new.dir/cfg/Crc8_cfg.c.o.d -o CMakeFiles/new.dir/cfg/Crc8_cfg.c.o -c /workspace/cfg/Crc8_cfg.c
+CMakeFiles/new.dir/pltf/TempMon.c.o: CMakeFiles/new.dir/flags.make
+CMakeFiles/new.dir/pltf/TempMon.c.o: /workspace/pltf/TempMon.c
+CMakeFiles/new.dir/pltf/TempMon.c.o: CMakeFiles/new.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/pltf/TempMon.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/pltf/TempMon.c.o -MF CMakeFiles/new.dir/pltf/TempMon.c.o.d -o CMakeFiles/new.dir/pltf/TempMon.c.o -c /workspace/pltf/TempMon.c
 
-CMakeFiles/new.dir/cfg/Crc8_cfg.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/cfg/Crc8_cfg.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/cfg/Crc8_cfg.c > CMakeFiles/new.dir/cfg/Crc8_cfg.c.i
+CMakeFiles/new.dir/pltf/TempMon.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/pltf/TempMon.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/pltf/TempMon.c > CMakeFiles/new.dir/pltf/TempMon.c.i
 
-CMakeFiles/new.dir/cfg/Crc8_cfg.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/cfg/Crc8_cfg.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/cfg/Crc8_cfg.c -o CMakeFiles/new.dir/cfg/Crc8_cfg.c.s
-
-CMakeFiles/new.dir/pltf/Crc8.c.o: CMakeFiles/new.dir/flags.make
-CMakeFiles/new.dir/pltf/Crc8.c.o: /workspace/pltf/Crc8.c
-CMakeFiles/new.dir/pltf/Crc8.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/new.dir/pltf/Crc8.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/pltf/Crc8.c.o -MF CMakeFiles/new.dir/pltf/Crc8.c.o.d -o CMakeFiles/new.dir/pltf/Crc8.c.o -c /workspace/pltf/Crc8.c
-
-CMakeFiles/new.dir/pltf/Crc8.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/pltf/Crc8.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/pltf/Crc8.c > CMakeFiles/new.dir/pltf/Crc8.c.i
-
-CMakeFiles/new.dir/pltf/Crc8.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/pltf/Crc8.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/pltf/Crc8.c -o CMakeFiles/new.dir/pltf/Crc8.c.s
+CMakeFiles/new.dir/pltf/TempMon.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/pltf/TempMon.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/pltf/TempMon.c -o CMakeFiles/new.dir/pltf/TempMon.c.s
 
 # Object files for target new
 new_OBJECTS = \
-"CMakeFiles/new.dir/cfg/Crc8_cfg.c.o" \
-"CMakeFiles/new.dir/pltf/Crc8.c.o"
+"CMakeFiles/new.dir/pltf/TempMon.c.o"
 
 # External object files for target new
 new_EXTERNAL_OBJECTS =
 
-libnew.a: CMakeFiles/new.dir/cfg/Crc8_cfg.c.o
-libnew.a: CMakeFiles/new.dir/pltf/Crc8.c.o
+libnew.a: CMakeFiles/new.dir/pltf/TempMon.c.o
 libnew.a: CMakeFiles/new.dir/build.make
 libnew.a: CMakeFiles/new.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libnew.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libnew.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/new.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/new.dir/link.txt --verbose=$(VERBOSE)
 

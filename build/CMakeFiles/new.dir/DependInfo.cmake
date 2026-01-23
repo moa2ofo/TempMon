@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/workspace/cfg/Crc8_cfg.c" "CMakeFiles/new.dir/cfg/Crc8_cfg.c.o" "gcc" "CMakeFiles/new.dir/cfg/Crc8_cfg.c.o.d"
-  "/workspace/pltf/Crc8.c" "CMakeFiles/new.dir/pltf/Crc8.c.o" "gcc" "CMakeFiles/new.dir/pltf/Crc8.c.o.d"
+  "/workspace/pltf/TempMon.c" "CMakeFiles/new.dir/pltf/TempMon.c.o" "gcc" "CMakeFiles/new.dir/pltf/TempMon.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

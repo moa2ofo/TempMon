@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/new.dir/cfg/Crc8_cfg.c.o"
-  "CMakeFiles/new.dir/cfg/Crc8_cfg.c.o.d"
-  "CMakeFiles/new.dir/pltf/Crc8.c.o"
-  "CMakeFiles/new.dir/pltf/Crc8.c.o.d"
+  "CMakeFiles/new.dir/pltf/TempMon.c.o"
+  "CMakeFiles/new.dir/pltf/TempMon.c.o.d"
   "libnew.a"
   "libnew.pdb"
 )

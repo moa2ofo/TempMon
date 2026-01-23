@@ -8,30 +8,7 @@ int32_t g_UnderThreshold_mC_s32 = 0;    /* e.g. 0.000°C */
 int32_t g_OverThreshold_mC_s32 = 85000; /* e.g. 85.000°C */
 int32_t g_Hyst_mC_s32 = 2000;           /* e.g. 2.000°C */
 
-/* ===== Private helpers =====
- * Hysteresis behavior:
- * - Enter UNDER when temp < UnderThreshold
- * - Exit  UNDER when temp > UnderThreshold + Hyst
- *
- * - Enter OVER  when temp > OverThreshold
- * - Exit  OVER  when temp < OverThreshold - Hyst
- */
 
-static bool IsUnderEnter_b(int32_t temp_mC) {
-  return (temp_mC < g_UnderThreshold_mC_s32);
-}
-
-static bool IsUnderExit_b(int32_t temp_mC) {
-  return (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32));
-}
-
-static bool IsOverEnter_b(int32_t temp_mC) {
-  return (temp_mC > g_OverThreshold_mC_s32);
-}
-
-static bool IsOverExit_b(int32_t temp_mC) {
-  return (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32));
-}
 
 void TempMon_Init(int32_t temp_mC) {
   /* Determine initial state using same rules of the state machine */
@@ -39,13 +16,12 @@ void TempMon_Init(int32_t temp_mC) {
   TempMon_Run(temp_mC);
 }
 
-void TempMon_Run(int32_t temp_mC) {
-  switch (Sts_e) {
+void TempMon_Run(int32_t temp_mC) {switch (Sts_e) {
   case TEMPMON_STS_NORMAL:
   default: {
-    if (IsUnderEnter_b(temp_mC) == true) {
+    if ((temp_mC < g_UnderThreshold_mC_s32) == true) {
       Sts_e = TEMPMON_STS_UNDER;
-    } else if (IsOverEnter_b(temp_mC) == true) {
+    } else if ((temp_mC > g_OverThreshold_mC_s32) == true) {
       Sts_e = TEMPMON_STS_OVER;
     } else {
       /* stay NORMAL */
@@ -54,7 +30,7 @@ void TempMon_Run(int32_t temp_mC) {
   }
 
   case TEMPMON_STS_UNDER: {
-    if (IsUnderExit_b(temp_mC) == true) {
+    if ((temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) == true) {
       Sts_e = TEMPMON_STS_NORMAL;
     } else {
       /* stay UNDER */
@@ -63,7 +39,7 @@ void TempMon_Run(int32_t temp_mC) {
   }
 
   case TEMPMON_STS_OVER: {
-    if (IsOverExit_b(temp_mC) == true) {
+    if ((temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) == true) {
       Sts_e = TEMPMON_STS_NORMAL;
     } else {
       /* stay OVER */
