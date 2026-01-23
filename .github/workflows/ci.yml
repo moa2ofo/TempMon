@@ -64,7 +64,7 @@ jobs:
       - name: Verify Docker is available
         id: docker_info
         continue-on-error: true
-        run: docker info
+        run: sudo docker info
 
       # -----------------------------
       # swCmpBuildCheck (always runs)
@@ -73,35 +73,8 @@ jobs:
         id: sw_cmp_build_check
         continue-on-error: true
         run: |
-          python3 unitTestLauncher/swCmpBuildCheck.py
-      # -----------------------------
-      # Move swCmpBuildCheck outputs one level up
-      # -----------------------------
-      - name: Move swCmpBuildCheck outputs to repo root
-        if: always()
-        run: |
-          set -euxo pipefail
+          sudo -E python3 unitTestLauncher/swCmpBuildCheck.py
 
-          # Ensure we can manipulate docker-generated (root-owned) files
-          sudo chown -R "$USER:$USER" unitTestLauncher || true
-          sudo chown -R "$USER:$USER" build || true
-
-          # Move: unitTestLauncher/build -> build
-          if [ -d "unitTestLauncher/build" ]; then
-            sudo rm -rf build
-            sudo mv unitTestLauncher/build build
-            sudo chown -R "$USER:$USER" build || true
-          else
-            echo "No folder unitTestLauncher/build found; skipping."
-          fi
-
-          # Move+rename: unitTestLauncher/cppcheck_misra_results.html -> cppcheck_misra_results.htm
-          if [ -f "unitTestLauncher/cppcheck_misra_results.html" ]; then
-            sudo mv -f unitTestLauncher/cppcheck_misra_results.html cppcheck_misra_results.htm
-            sudo chown "$USER:$USER" cppcheck_misra_results.htm || true
-          else
-            echo "No file unitTestLauncher/cppcheck_misra_results.html found; skipping."
-          fi
       # -----------------------------
       # Unit tests (always runs)
       # -----------------------------
