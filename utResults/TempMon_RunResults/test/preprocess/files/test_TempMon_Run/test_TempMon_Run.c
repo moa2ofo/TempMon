@@ -1,318 +1,343 @@
 // CEEDLING NOTICE: This generated file only to be consumed for test runner creation
 
+#include "utExecutionAndResults/utUnderTest/src/TempMon.h"
 #include "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
 #include "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
 #include "mock_TempMon_priv.h"
 
+extern int32_t g_UnderThreshold_mC_s32;
+extern int32_t g_OverThreshold_mC_s32;
+extern int32_t g_Hyst_mC_s32;
+extern TempMon_sts_e Sts_e;
+
 void setUp(void)
 {
   Sts_e = TEMPMON_STS_NORMAL;
+
+  g_UnderThreshold_mC_s32 = 0;
+  g_OverThreshold_mC_s32 = 85000;
+  g_Hyst_mC_s32 = 2000;
 }
 
 void tearDown(void)
 {}
 
-void test_InitialStateIsNormal(void)
+void test_TempMon_Run_NORMAL_to_OVER_TransitionAboveThreshold(void)
 {
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(19), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(31), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(90000);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_INT);
 }
 
-void test_NormalStateRemainsNormalWhenNoThresholdCrossed(void)
+void test_TempMon_Run_NORMAL_to_UNDER_TransitionBelowThreshold(void)
 {
-  IsUnderEnter_b_CMockExpectAndReturn(27, 0,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(28, 0,
- 0
- );
-
-  TempMon_Run(0);
-
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(32), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_NormalToUnderTransition(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(40, -5000,
- 1
- );
+ ), (UNITY_UINT)(44), UNITY_DISPLAY_STYLE_INT);
 
   TempMon_Run(-5000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(44), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(49), UNITY_DISPLAY_STYLE_INT);
 }
 
-void test_NormalToOverTransition(void)
+void test_TempMon_Run_NORMAL_StaysNormalWithinThresholds(void)
 {
-  IsUnderEnter_b_CMockExpectAndReturn(52, 50000,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(53, 50000,
- 1
- );
-
-  TempMon_Run(50000);
-
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(57), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_NormalPrioritizesUnderOverOver(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(66, 25000,
- 1
- );
+ ), (UNITY_UINT)(56), UNITY_DISPLAY_STYLE_INT);
 
   TempMon_Run(25000);
 
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(70), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_INT);
 }
 
-void test_UnderStateRemainsUnderWhenNoExit(void)
+void test_TempMon_Run_NORMAL_AtOverThresholdBoundaryStaysNormal(void)
 {
-  Sts_e = TEMPMON_STS_UNDER;
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(69), UNITY_DISPLAY_STYLE_INT);
 
-  IsUnderExit_b_CMockExpectAndReturn(83, -3000,
- 0
- );
+  TempMon_Run(85000);
 
-  TempMon_Run(-3000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(74), UNITY_DISPLAY_STYLE_INT);
+}
 
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+void test_TempMon_Run_NORMAL_JustAboveOverThresholdTransitionsToOVER(void)
+{
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(82), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(85001);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
  ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_INT);
 }
 
-void test_UnderToNormalTransitionWithHysteresis(void)
+void test_TempMon_Run_NORMAL_AtUnderThresholdBoundaryStaysNormal(void)
+{
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(95), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(0);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(100), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_NORMAL_JustBelowUnderThresholdTransitionsToUNDER(void)
+{
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(108), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(-1);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_UNDER_StaysUnderBelowThreshold(void)
 {
   Sts_e = TEMPMON_STS_UNDER;
 
-  IsUnderExit_b_CMockExpectAndReturn(98, 2000,
- 1
- );
+  TempMon_Run(-10000);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(127), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_UNDER_to_NORMAL_TransitionAboveHysteresisThreshold(void)
+{
+  Sts_e = TEMPMON_STS_UNDER;
+
+  TempMon_Run(2001);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(141), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_UNDER_AtHysteresisThresholdStaysUnder(void)
+{
+  Sts_e = TEMPMON_STS_UNDER;
 
   TempMon_Run(2000);
 
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(102), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_OverStateRemainsOverWhenNoExit(void)
-{
-  Sts_e = TEMPMON_STS_OVER;
-
-  IsOverExit_b_CMockExpectAndReturn(115, 45000,
- 0
- );
-
-  TempMon_Run(45000);
-
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_OverToNormalTransitionWithHysteresis(void)
-{
-  Sts_e = TEMPMON_STS_OVER;
-
-  IsOverExit_b_CMockExpectAndReturn(130, 30000,
- 1
- );
-
-  TempMon_Run(30000);
-
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_CompleteCycleNormalUnderNormal(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(144, -6000,
- 1
- );
-  TempMon_Run(-6000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(146), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(154), UNITY_DISPLAY_STYLE_INT);
+}
 
-  IsUnderExit_b_CMockExpectAndReturn(149, -4000,
- 0
- );
-  TempMon_Run(-4000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(151), UNITY_DISPLAY_STYLE_INT);
+void test_TempMon_Run_UNDER_StaysUnderBetweenUnderAndHysteresis(void)
+{
+  Sts_e = TEMPMON_STS_UNDER;
 
-  IsUnderExit_b_CMockExpectAndReturn(154, 1000,
- 1
- );
   TempMon_Run(1000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(156), UNITY_DISPLAY_STYLE_INT);
-}
 
-void test_CompleteCycleNormalOverNormal(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(164, 55000,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(165, 55000,
- 1
- );
-  TempMon_Run(55000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(167), UNITY_DISPLAY_STYLE_INT);
-
-  IsOverExit_b_CMockExpectAndReturn(170, 52000,
- 0
- );
-  TempMon_Run(52000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(172), UNITY_DISPLAY_STYLE_INT);
-
-  IsOverExit_b_CMockExpectAndReturn(175, 40000,
- 1
- );
-  TempMon_Run(40000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(177), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_MultipleTransitionsSequence(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(186, -10000,
- 1
- );
-  TempMon_Run(-10000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(188), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(168), UNITY_DISPLAY_STYLE_INT);
+}
 
-  IsUnderExit_b_CMockExpectAndReturn(191, 5000,
- 1
- );
-  TempMon_Run(5000);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(193), UNITY_DISPLAY_STYLE_INT);
+void test_TempMon_Run_OVER_StaysOverAboveThreshold(void)
+{
+  Sts_e = TEMPMON_STS_OVER;
 
-  IsUnderEnter_b_CMockExpectAndReturn(196, 60000,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(197, 60000,
- 1
- );
-  TempMon_Run(60000);
+  TempMon_Run(95000);
+
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(199), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(182), UNITY_DISPLAY_STYLE_INT);
+}
 
-  IsOverExit_b_CMockExpectAndReturn(202, 35000,
- 1
- );
+void test_TempMon_Run_OVER_to_NORMAL_TransitionBelowHysteresisThreshold(void)
+{
+  Sts_e = TEMPMON_STS_OVER;
+
+  TempMon_Run(82999);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(196), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_OVER_AtHysteresisThresholdStaysOver(void)
+{
+  Sts_e = TEMPMON_STS_OVER;
+
+  TempMon_Run(83000);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(209), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_OVER_StaysOverBetweenOverAndHysteresis(void)
+{
+  Sts_e = TEMPMON_STS_OVER;
+
+  TempMon_Run(84000);
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(222), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_HysteresisPreventOscillationAtUnderThreshold(void)
+{
+  Sts_e = TEMPMON_STS_UNDER;
+
+  TempMon_Run(500);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(235), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(1500);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(239), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_HysteresisPreventOscillationAtOverThreshold(void)
+{
+  Sts_e = TEMPMON_STS_OVER;
+
+  TempMon_Run(84500);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(250), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(
+      84999);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(255), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_SequentialTransitions_NORMAL_OVER_NORMAL(void)
+{
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(264), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(86000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(268), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(84000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(272), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(82999);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(276), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_SequentialTransitions_NORMAL_UNDER_NORMAL(void)
+{
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(283), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(-1000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(287), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(1000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(291), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(2001);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(295), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_MultipleCyclesNormalOver(void)
+{
+  TempMon_Run(90000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(304), UNITY_DISPLAY_STYLE_INT);
+  TempMon_Run(82999);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(306), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(86000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(310), UNITY_DISPLAY_STYLE_INT);
+  TempMon_Run(82999);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(312), UNITY_DISPLAY_STYLE_INT);
+}
+
+void test_TempMon_Run_CustomThresholdAndHysteresis(void)
+{
+  g_UnderThreshold_mC_s32 = 10000;
+  g_OverThreshold_mC_s32 = 30000;
+  g_Hyst_mC_s32 = 5000;
+
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(324), UNITY_DISPLAY_STYLE_INT);
+
   TempMon_Run(35000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(328), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(25000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
+ ((void *)0)
+ ), (UNITY_UINT)(332), UNITY_DISPLAY_STYLE_INT);
+
+  TempMon_Run(24999);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(204), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(336), UNITY_DISPLAY_STYLE_INT);
 }
 
-void test_ConsecutiveCallsSameState(void)
+void test_TempMon_Run_ExtremeTemperatureValues(void)
 {
-  Sts_e = TEMPMON_STS_NORMAL;
-
-  IsUnderEnter_b_CMockExpectAndReturn(216, 0,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(217, 0,
- 0
- );
-  TempMon_Run(0);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(219), UNITY_DISPLAY_STYLE_INT);
-
-  IsUnderEnter_b_CMockExpectAndReturn(222, 0,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(223, 0,
- 0
- );
-  TempMon_Run(0);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(225), UNITY_DISPLAY_STYLE_INT);
-
-  IsUnderEnter_b_CMockExpectAndReturn(228, 0,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(229, 0,
- 0
- );
-  TempMon_Run(0);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(231), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_ExtremeLowTemperature(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(239, -100000,
- 1
- );
+ ), (UNITY_UINT)(343), UNITY_DISPLAY_STYLE_INT);
 
   TempMon_Run(-100000);
-
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(243), UNITY_DISPLAY_STYLE_INT);
-}
+ ), (UNITY_UINT)(347), UNITY_DISPLAY_STYLE_INT);
 
-void test_ExtremeHighTemperature(void)
-{
-  IsUnderEnter_b_CMockExpectAndReturn(251, 100000,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(252, 100000,
- 1
- );
-
-  TempMon_Run(100000);
-
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
- ((void *)0)
- ), (UNITY_UINT)(256), UNITY_DISPLAY_STYLE_INT);
-}
-
-void test_ZeroTemperatureInNormalState(void)
-{
   Sts_e = TEMPMON_STS_NORMAL;
 
-  IsUnderEnter_b_CMockExpectAndReturn(265, 0,
- 0
- );
-  IsOverEnter_b_CMockExpectAndReturn(266, 0,
- 0
- );
-
-  TempMon_Run(0);
-
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+  TempMon_Run(150000);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(270), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(354), UNITY_DISPLAY_STYLE_INT);
 }
