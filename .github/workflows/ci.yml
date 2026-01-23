@@ -78,21 +78,27 @@ jobs:
       # Move swCmpBuildCheck outputs one level up
       # -----------------------------
       - name: Move swCmpBuildCheck outputs to repo root
-        id: move_swcmp_outputs
         if: always()
-        continue-on-error: true
         run: |
+          set -euxo pipefail
+
+          # Ensure we can manipulate docker-generated (root-owned) files
+          sudo chown -R "$USER:$USER" unitTestLauncher || true
+          sudo chown -R "$USER:$USER" build || true
+
           # Move: unitTestLauncher/build -> build
           if [ -d "unitTestLauncher/build" ]; then
-            rm -rf build
-            mv unitTestLauncher/build build
+            sudo rm -rf build
+            sudo mv unitTestLauncher/build build
+            sudo chown -R "$USER:$USER" build || true
           else
             echo "No folder unitTestLauncher/build found; skipping."
           fi
 
           # Move+rename: unitTestLauncher/cppcheck_misra_results.html -> cppcheck_misra_results.htm
           if [ -f "unitTestLauncher/cppcheck_misra_results.html" ]; then
-            mv -f unitTestLauncher/cppcheck_misra_results.html cppcheck_misra_results.htm
+            sudo mv -f unitTestLauncher/cppcheck_misra_results.html cppcheck_misra_results.htm
+            sudo chown "$USER:$USER" cppcheck_misra_results.htm || true
           else
             echo "No file unitTestLauncher/cppcheck_misra_results.html found; skipping."
           fi
