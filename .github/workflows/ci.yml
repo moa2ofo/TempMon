@@ -74,7 +74,28 @@ jobs:
         continue-on-error: true
         run: |
           python3 unitTestLauncher/swCmpBuildCheck.py
+      # -----------------------------
+      # Move swCmpBuildCheck outputs one level up
+      # -----------------------------
+      - name: Move swCmpBuildCheck outputs to repo root
+        id: move_swcmp_outputs
+        if: always()
+        continue-on-error: true
+        run: |
+          # Move: unitTestLauncher/build -> build
+          if [ -d "unitTestLauncher/build" ]; then
+            rm -rf build
+            mv unitTestLauncher/build build
+          else
+            echo "No folder unitTestLauncher/build found; skipping."
+          fi
 
+          # Move+rename: unitTestLauncher/cppcheck_misra_results.html -> cppcheck_misra_results.htm
+          if [ -f "unitTestLauncher/cppcheck_misra_results.html" ]; then
+            mv -f unitTestLauncher/cppcheck_misra_results.html cppcheck_misra_results.htm
+          else
+            echo "No file unitTestLauncher/cppcheck_misra_results.html found; skipping."
+          fi
       # -----------------------------
       # Unit tests (always runs)
       # -----------------------------
@@ -99,7 +120,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y rsync
 
+          mkdir -p utResults
 
+          if [ -d "unitTestLauncher/utExecutionAndResults/utResults" ]; then
+            rsync -a --delete unitTestLauncher/utExecutionAndResults/utResults/ utResults/
+          else
+            echo "No launcher utResults directory found; skipping rsync."
+          fi
 
       # -----------------------------
       # Single commit at the end (success OR failure)
