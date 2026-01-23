@@ -21,8 +21,7 @@ static bool IsUnderEnter_b(int32_t temp_mC) {
   return (temp_mC < g_UnderThreshold_mC_s32);
 }
 
-static bool IsUnderExit_b(int32_t temp_mC) {
-  return (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32));
+static bool IsUnderExit_b(int32_t temp_mC) {return (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32));
 }
 
 static bool IsOverEnter_b(int32_t temp_mC) {
