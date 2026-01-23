@@ -246,31 +246,39 @@ typedef __intmax_t intmax_t;
 typedef __uintmax_t uintmax_t;
 # 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
 # 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
-# 78 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 
-# 78 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 9 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+typedef enum {
+  TEMPMON_STS_NORMAL = 0,
+  TEMPMON_STS_UNDER,
+  TEMPMON_STS_OVER
+} TempMon_sts_e;
+
+extern TempMon_sts_e Sts_e;
+# 86 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 extern int32_t g_UnderThreshold_mC_s32;
-# 92 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 100 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 extern int32_t g_OverThreshold_mC_s32;
-# 107 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 115 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 extern int32_t g_Hyst_mC_s32;
-# 158 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 166 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 void TempMon_Init(int32_t temp_mC);
-# 235 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 243 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 void TempMon_Run(int32_t temp_mC);
-# 270 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 278 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 TempMon_sts_e TempMon_GetSts(void);
-# 308 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 316 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 
-# 308 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+# 316 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
 _Bool 
-# 308 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 316 "utExecutionAndResults/utUnderTest/src/TempMon.h"
     TempMon_IsUnderAlv_b(void);
-# 346 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 354 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 
-# 346 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+# 354 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
 _Bool 
-# 346 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+# 354 "utExecutionAndResults/utUnderTest/src/TempMon.h"
     TempMon_IsOverAlv_b(void);
 # 2 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 1
@@ -280,14 +288,6 @@ _Bool
 
 
 
-
-typedef enum {
-  TEMPMON_STS_NORMAL = 0,
-  TEMPMON_STS_UNDER,
-  TEMPMON_STS_OVER
-} TempMon_sts_e;
-
-extern TempMon_sts_e Sts_e;
 
 void TempMon_Run(int32_t temp_mC);
 # 3 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2

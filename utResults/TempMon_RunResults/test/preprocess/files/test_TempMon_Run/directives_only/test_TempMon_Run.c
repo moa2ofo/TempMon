@@ -2932,6 +2932,14 @@ typedef __uintmax_t		uintmax_t;
 #define _GCC_WRAP_STDINT_H 
 # 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
 
+typedef enum {
+  TEMPMON_STS_NORMAL = 0,
+  TEMPMON_STS_UNDER,
+  TEMPMON_STS_OVER
+} TempMon_sts_e;
+
+extern TempMon_sts_e Sts_e;
+
 /**
  * @file TempMon.h
  * @brief Temperature monitoring module (TEMPMON_STS_UNDER/TEMPMON_STS_OVER
@@ -3279,14 +3287,6 @@ bool TempMon_IsOverAlv_b(void);
 #define BUILDTBL_H 
 
 
-
-typedef enum {
-  TEMPMON_STS_NORMAL = 0,
-  TEMPMON_STS_UNDER,
-  TEMPMON_STS_OVER
-} TempMon_sts_e;
-
-extern TempMon_sts_e Sts_e;
 
 void TempMon_Run(int32_t temp_mC);
 
