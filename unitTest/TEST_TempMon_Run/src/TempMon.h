@@ -6,6 +6,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+typedef enum {
+  TEMPMON_STS_NORMAL = 0,
+  TEMPMON_STS_UNDER,
+  TEMPMON_STS_OVER
+} TempMon_sts_e;
+
+extern TempMon_sts_e Sts_e;
+
 /**
  * @file TempMon.h
  * @brief Temperature monitoring module (TEMPMON_STS_UNDER/TEMPMON_STS_OVER
