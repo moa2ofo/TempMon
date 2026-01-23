@@ -10,7 +10,8 @@ TempMon_sts_e Sts_e = TEMPMON_STS_NORMAL;
 /* FUNCTION TO TEST */
 
 
-void TempMon_Run(int32_t temp_mC) {switch (Sts_e) {
+void TempMon_Run(int32_t temp_mC) {
+  switch (Sts_e) {
   case TEMPMON_STS_NORMAL:
   default: {
     if ((temp_mC < g_UnderThreshold_mC_s32) == true) {

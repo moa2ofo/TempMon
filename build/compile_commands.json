@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/workspace/build",
-  "command": "/usr/bin/cc  -I/workspace/pltf -I/workspace/cfg -O3 -DNDEBUG -Wall -Wextra -Wpedantic -o CMakeFiles/new.dir/pltf/TempMon.c.o -c /workspace/pltf/TempMon.c",
-  "file": "/workspace/pltf/TempMon.c",
-  "output": "CMakeFiles/new.dir/pltf/TempMon.c.o"
-}
-]

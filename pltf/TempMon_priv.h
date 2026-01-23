@@ -6,6 +6,4 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-
-
 #endif /* TEMPMON_PRIV_H */
