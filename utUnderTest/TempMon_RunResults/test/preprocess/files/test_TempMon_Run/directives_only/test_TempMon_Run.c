@@ -10797,6 +10797,9 @@ void mock_TempMon_priv_Verify(void);
 void IsUnderEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsUnderEnter_b_StopIgnore() IsUnderEnter_b_CMockStopIgnore()
 void IsUnderEnter_b_CMockStopIgnore(void);
+#define IsUnderEnter_b_ExpectAnyArgs() TEST_FAIL_MESSAGE("IsUnderEnter_b requires _ExpectAnyArgsAndReturn");
+#define IsUnderEnter_b_ExpectAnyArgsAndReturn(cmock_retval) IsUnderEnter_b_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void IsUnderEnter_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsUnderEnter_b_Expect(temp_mC) TEST_FAIL_MESSAGE("IsUnderEnter_b requires _ExpectAndReturn");
 #define IsUnderEnter_b_ExpectAndReturn(temp_mC,cmock_retval) IsUnderEnter_b_CMockExpectAndReturn(__LINE__, temp_mC, cmock_retval)
 void IsUnderEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -10804,11 +10807,16 @@ typedef _Bool (* CMOCK_IsUnderEnter_b_CALLBACK)(int32_t temp_mC, int cmock_num_c
 void IsUnderEnter_b_AddCallback(CMOCK_IsUnderEnter_b_CALLBACK Callback);
 void IsUnderEnter_b_Stub(CMOCK_IsUnderEnter_b_CALLBACK Callback);
 #define IsUnderEnter_b_StubWithCallback IsUnderEnter_b_Stub
+#define IsUnderEnter_b_IgnoreArg_temp_mC() IsUnderEnter_b_CMockIgnoreArg_temp_mC(__LINE__)
+void IsUnderEnter_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line);
 #define IsUnderExit_b_Ignore() TEST_FAIL_MESSAGE("IsUnderExit_b requires _IgnoreAndReturn");
 #define IsUnderExit_b_IgnoreAndReturn(cmock_retval) IsUnderExit_b_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void IsUnderExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsUnderExit_b_StopIgnore() IsUnderExit_b_CMockStopIgnore()
 void IsUnderExit_b_CMockStopIgnore(void);
+#define IsUnderExit_b_ExpectAnyArgs() TEST_FAIL_MESSAGE("IsUnderExit_b requires _ExpectAnyArgsAndReturn");
+#define IsUnderExit_b_ExpectAnyArgsAndReturn(cmock_retval) IsUnderExit_b_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void IsUnderExit_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsUnderExit_b_Expect(temp_mC) TEST_FAIL_MESSAGE("IsUnderExit_b requires _ExpectAndReturn");
 #define IsUnderExit_b_ExpectAndReturn(temp_mC,cmock_retval) IsUnderExit_b_CMockExpectAndReturn(__LINE__, temp_mC, cmock_retval)
 void IsUnderExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -10816,11 +10824,16 @@ typedef _Bool (* CMOCK_IsUnderExit_b_CALLBACK)(int32_t temp_mC, int cmock_num_ca
 void IsUnderExit_b_AddCallback(CMOCK_IsUnderExit_b_CALLBACK Callback);
 void IsUnderExit_b_Stub(CMOCK_IsUnderExit_b_CALLBACK Callback);
 #define IsUnderExit_b_StubWithCallback IsUnderExit_b_Stub
+#define IsUnderExit_b_IgnoreArg_temp_mC() IsUnderExit_b_CMockIgnoreArg_temp_mC(__LINE__)
+void IsUnderExit_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line);
 #define IsOverEnter_b_Ignore() TEST_FAIL_MESSAGE("IsOverEnter_b requires _IgnoreAndReturn");
 #define IsOverEnter_b_IgnoreAndReturn(cmock_retval) IsOverEnter_b_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void IsOverEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsOverEnter_b_StopIgnore() IsOverEnter_b_CMockStopIgnore()
 void IsOverEnter_b_CMockStopIgnore(void);
+#define IsOverEnter_b_ExpectAnyArgs() TEST_FAIL_MESSAGE("IsOverEnter_b requires _ExpectAnyArgsAndReturn");
+#define IsOverEnter_b_ExpectAnyArgsAndReturn(cmock_retval) IsOverEnter_b_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void IsOverEnter_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsOverEnter_b_Expect(temp_mC) TEST_FAIL_MESSAGE("IsOverEnter_b requires _ExpectAndReturn");
 #define IsOverEnter_b_ExpectAndReturn(temp_mC,cmock_retval) IsOverEnter_b_CMockExpectAndReturn(__LINE__, temp_mC, cmock_retval)
 void IsOverEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -10828,11 +10841,16 @@ typedef _Bool (* CMOCK_IsOverEnter_b_CALLBACK)(int32_t temp_mC, int cmock_num_ca
 void IsOverEnter_b_AddCallback(CMOCK_IsOverEnter_b_CALLBACK Callback);
 void IsOverEnter_b_Stub(CMOCK_IsOverEnter_b_CALLBACK Callback);
 #define IsOverEnter_b_StubWithCallback IsOverEnter_b_Stub
+#define IsOverEnter_b_IgnoreArg_temp_mC() IsOverEnter_b_CMockIgnoreArg_temp_mC(__LINE__)
+void IsOverEnter_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line);
 #define IsOverExit_b_Ignore() TEST_FAIL_MESSAGE("IsOverExit_b requires _IgnoreAndReturn");
 #define IsOverExit_b_IgnoreAndReturn(cmock_retval) IsOverExit_b_CMockIgnoreAndReturn(__LINE__, cmock_retval)
 void IsOverExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsOverExit_b_StopIgnore() IsOverExit_b_CMockStopIgnore()
 void IsOverExit_b_CMockStopIgnore(void);
+#define IsOverExit_b_ExpectAnyArgs() TEST_FAIL_MESSAGE("IsOverExit_b requires _ExpectAnyArgsAndReturn");
+#define IsOverExit_b_ExpectAnyArgsAndReturn(cmock_retval) IsOverExit_b_CMockExpectAnyArgsAndReturn(__LINE__, cmock_retval)
+void IsOverExit_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return);
 #define IsOverExit_b_Expect(temp_mC) TEST_FAIL_MESSAGE("IsOverExit_b requires _ExpectAndReturn");
 #define IsOverExit_b_ExpectAndReturn(temp_mC,cmock_retval) IsOverExit_b_CMockExpectAndReturn(__LINE__, temp_mC, cmock_retval)
 void IsOverExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -10840,6 +10858,8 @@ typedef _Bool (* CMOCK_IsOverExit_b_CALLBACK)(int32_t temp_mC, int cmock_num_cal
 void IsOverExit_b_AddCallback(CMOCK_IsOverExit_b_CALLBACK Callback);
 void IsOverExit_b_Stub(CMOCK_IsOverExit_b_CALLBACK Callback);
 #define IsOverExit_b_StubWithCallback IsOverExit_b_Stub
+#define IsOverExit_b_IgnoreArg_temp_mC() IsOverExit_b_CMockIgnoreArg_temp_mC(__LINE__)
+void IsOverExit_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line);
 
 
 
