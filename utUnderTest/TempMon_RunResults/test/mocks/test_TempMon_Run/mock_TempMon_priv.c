@@ -14,36 +14,44 @@ static const char* CMockString_temp_mC = "temp_mC";
 typedef struct _CMOCK_IsUnderEnter_b_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   _Bool ReturnVal;
   int CallOrder;
   int32_t Expected_temp_mC;
+  char IgnoreArg_temp_mC;
 
 } CMOCK_IsUnderEnter_b_CALL_INSTANCE;
 
 typedef struct _CMOCK_IsUnderExit_b_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   _Bool ReturnVal;
   int CallOrder;
   int32_t Expected_temp_mC;
+  char IgnoreArg_temp_mC;
 
 } CMOCK_IsUnderExit_b_CALL_INSTANCE;
 
 typedef struct _CMOCK_IsOverEnter_b_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   _Bool ReturnVal;
   int CallOrder;
   int32_t Expected_temp_mC;
+  char IgnoreArg_temp_mC;
 
 } CMOCK_IsOverEnter_b_CALL_INSTANCE;
 
 typedef struct _CMOCK_IsOverExit_b_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
+  char ExpectAnyArgsBool;
   _Bool ReturnVal;
   int CallOrder;
   int32_t Expected_temp_mC;
+  char IgnoreArg_temp_mC;
 
 } CMOCK_IsOverExit_b_CALL_INSTANCE;
 
@@ -178,9 +186,13 @@ _Bool IsUnderEnter_b(int32_t temp_mC)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
   if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_temp_mC)
   {
     UNITY_SET_DETAILS(CMockString_IsUnderEnter_b,CMockString_temp_mC);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_temp_mC, temp_mC, cmock_line, CMockStringMismatch);
+  }
   }
   if (Mock.IsUnderEnter_b_CallbackFunctionPointer != NULL)
   {
@@ -194,6 +206,7 @@ void CMockExpectParameters_IsUnderEnter_b(CMOCK_IsUnderEnter_b_CALL_INSTANCE* cm
 void CMockExpectParameters_IsUnderEnter_b(CMOCK_IsUnderEnter_b_CALL_INSTANCE* cmock_call_instance, int32_t temp_mC)
 {
   cmock_call_instance->Expected_temp_mC = temp_mC;
+  cmock_call_instance->IgnoreArg_temp_mC = 0;
 }
 
 void IsUnderEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
@@ -205,6 +218,7 @@ void IsUnderEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock
   Mock.IsUnderEnter_b_CallInstance = CMock_Guts_MemChain(Mock.IsUnderEnter_b_CallInstance, cmock_guts_index);
   Mock.IsUnderEnter_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.IsUnderEnter_b_IgnoreBool = (char)1;
 }
@@ -214,6 +228,21 @@ void IsUnderEnter_b_CMockStopIgnore(void)
   if(Mock.IsUnderEnter_b_IgnoreBool)
     Mock.IsUnderEnter_b_CallInstance = CMock_Guts_MemNext(Mock.IsUnderEnter_b_CallInstance);
   Mock.IsUnderEnter_b_IgnoreBool = (char)0;
+}
+
+void IsUnderEnter_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_IsUnderEnter_b_CALL_INSTANCE));
+  CMOCK_IsUnderEnter_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsUnderEnter_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.IsUnderEnter_b_CallInstance = CMock_Guts_MemChain(Mock.IsUnderEnter_b_CallInstance, cmock_guts_index);
+  Mock.IsUnderEnter_b_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
 }
 
 void IsUnderEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return)
@@ -226,6 +255,7 @@ void IsUnderEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t tem
   Mock.IsUnderEnter_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
   cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_IsUnderEnter_b(cmock_call_instance, temp_mC);
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(_Bool[sizeof(cmock_to_return) == sizeof(_Bool) ? 1 : -1])); /* add _Bool to :treat_as_array if this causes an error */
@@ -243,6 +273,13 @@ void IsUnderEnter_b_Stub(CMOCK_IsUnderEnter_b_CALLBACK Callback)
   Mock.IsUnderEnter_b_IgnoreBool = (char)0;
   Mock.IsUnderEnter_b_CallbackBool = (char)0;
   Mock.IsUnderEnter_b_CallbackFunctionPointer = Callback;
+}
+
+void IsUnderEnter_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_IsUnderEnter_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsUnderEnter_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.IsUnderEnter_b_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_temp_mC = 1;
 }
 
 _Bool IsUnderExit_b(int32_t temp_mC)
@@ -274,9 +311,13 @@ _Bool IsUnderExit_b(int32_t temp_mC)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
   if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_temp_mC)
   {
     UNITY_SET_DETAILS(CMockString_IsUnderExit_b,CMockString_temp_mC);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_temp_mC, temp_mC, cmock_line, CMockStringMismatch);
+  }
   }
   if (Mock.IsUnderExit_b_CallbackFunctionPointer != NULL)
   {
@@ -290,6 +331,7 @@ void CMockExpectParameters_IsUnderExit_b(CMOCK_IsUnderExit_b_CALL_INSTANCE* cmoc
 void CMockExpectParameters_IsUnderExit_b(CMOCK_IsUnderExit_b_CALL_INSTANCE* cmock_call_instance, int32_t temp_mC)
 {
   cmock_call_instance->Expected_temp_mC = temp_mC;
+  cmock_call_instance->IgnoreArg_temp_mC = 0;
 }
 
 void IsUnderExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
@@ -301,6 +343,7 @@ void IsUnderExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_
   Mock.IsUnderExit_b_CallInstance = CMock_Guts_MemChain(Mock.IsUnderExit_b_CallInstance, cmock_guts_index);
   Mock.IsUnderExit_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.IsUnderExit_b_IgnoreBool = (char)1;
 }
@@ -310,6 +353,21 @@ void IsUnderExit_b_CMockStopIgnore(void)
   if(Mock.IsUnderExit_b_IgnoreBool)
     Mock.IsUnderExit_b_CallInstance = CMock_Guts_MemNext(Mock.IsUnderExit_b_CallInstance);
   Mock.IsUnderExit_b_IgnoreBool = (char)0;
+}
+
+void IsUnderExit_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_IsUnderExit_b_CALL_INSTANCE));
+  CMOCK_IsUnderExit_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsUnderExit_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.IsUnderExit_b_CallInstance = CMock_Guts_MemChain(Mock.IsUnderExit_b_CallInstance, cmock_guts_index);
+  Mock.IsUnderExit_b_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
 }
 
 void IsUnderExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return)
@@ -322,6 +380,7 @@ void IsUnderExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp
   Mock.IsUnderExit_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
   cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_IsUnderExit_b(cmock_call_instance, temp_mC);
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(_Bool[sizeof(cmock_to_return) == sizeof(_Bool) ? 1 : -1])); /* add _Bool to :treat_as_array if this causes an error */
@@ -339,6 +398,13 @@ void IsUnderExit_b_Stub(CMOCK_IsUnderExit_b_CALLBACK Callback)
   Mock.IsUnderExit_b_IgnoreBool = (char)0;
   Mock.IsUnderExit_b_CallbackBool = (char)0;
   Mock.IsUnderExit_b_CallbackFunctionPointer = Callback;
+}
+
+void IsUnderExit_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_IsUnderExit_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsUnderExit_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.IsUnderExit_b_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_temp_mC = 1;
 }
 
 _Bool IsOverEnter_b(int32_t temp_mC)
@@ -370,9 +436,13 @@ _Bool IsOverEnter_b(int32_t temp_mC)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
   if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_temp_mC)
   {
     UNITY_SET_DETAILS(CMockString_IsOverEnter_b,CMockString_temp_mC);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_temp_mC, temp_mC, cmock_line, CMockStringMismatch);
+  }
   }
   if (Mock.IsOverEnter_b_CallbackFunctionPointer != NULL)
   {
@@ -386,6 +456,7 @@ void CMockExpectParameters_IsOverEnter_b(CMOCK_IsOverEnter_b_CALL_INSTANCE* cmoc
 void CMockExpectParameters_IsOverEnter_b(CMOCK_IsOverEnter_b_CALL_INSTANCE* cmock_call_instance, int32_t temp_mC)
 {
   cmock_call_instance->Expected_temp_mC = temp_mC;
+  cmock_call_instance->IgnoreArg_temp_mC = 0;
 }
 
 void IsOverEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
@@ -397,6 +468,7 @@ void IsOverEnter_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_
   Mock.IsOverEnter_b_CallInstance = CMock_Guts_MemChain(Mock.IsOverEnter_b_CallInstance, cmock_guts_index);
   Mock.IsOverEnter_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.IsOverEnter_b_IgnoreBool = (char)1;
 }
@@ -406,6 +478,21 @@ void IsOverEnter_b_CMockStopIgnore(void)
   if(Mock.IsOverEnter_b_IgnoreBool)
     Mock.IsOverEnter_b_CallInstance = CMock_Guts_MemNext(Mock.IsOverEnter_b_CallInstance);
   Mock.IsOverEnter_b_IgnoreBool = (char)0;
+}
+
+void IsOverEnter_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_IsOverEnter_b_CALL_INSTANCE));
+  CMOCK_IsOverEnter_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsOverEnter_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.IsOverEnter_b_CallInstance = CMock_Guts_MemChain(Mock.IsOverEnter_b_CallInstance, cmock_guts_index);
+  Mock.IsOverEnter_b_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
 }
 
 void IsOverEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return)
@@ -418,6 +505,7 @@ void IsOverEnter_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp
   Mock.IsOverEnter_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
   cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_IsOverEnter_b(cmock_call_instance, temp_mC);
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(_Bool[sizeof(cmock_to_return) == sizeof(_Bool) ? 1 : -1])); /* add _Bool to :treat_as_array if this causes an error */
@@ -435,6 +523,13 @@ void IsOverEnter_b_Stub(CMOCK_IsOverEnter_b_CALLBACK Callback)
   Mock.IsOverEnter_b_IgnoreBool = (char)0;
   Mock.IsOverEnter_b_CallbackBool = (char)0;
   Mock.IsOverEnter_b_CallbackFunctionPointer = Callback;
+}
+
+void IsOverEnter_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_IsOverEnter_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsOverEnter_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.IsOverEnter_b_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_temp_mC = 1;
 }
 
 _Bool IsOverExit_b(int32_t temp_mC)
@@ -466,9 +561,13 @@ _Bool IsOverExit_b(int32_t temp_mC)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledEarly);
   if (cmock_call_instance->CallOrder < GlobalVerifyOrder)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
+  if (!cmock_call_instance->ExpectAnyArgsBool)
+  {
+  if (!cmock_call_instance->IgnoreArg_temp_mC)
   {
     UNITY_SET_DETAILS(CMockString_IsOverExit_b,CMockString_temp_mC);
     UNITY_TEST_ASSERT_EQUAL_INT(cmock_call_instance->Expected_temp_mC, temp_mC, cmock_line, CMockStringMismatch);
+  }
   }
   if (Mock.IsOverExit_b_CallbackFunctionPointer != NULL)
   {
@@ -482,6 +581,7 @@ void CMockExpectParameters_IsOverExit_b(CMOCK_IsOverExit_b_CALL_INSTANCE* cmock_
 void CMockExpectParameters_IsOverExit_b(CMOCK_IsOverExit_b_CALL_INSTANCE* cmock_call_instance, int32_t temp_mC)
 {
   cmock_call_instance->Expected_temp_mC = temp_mC;
+  cmock_call_instance->IgnoreArg_temp_mC = 0;
 }
 
 void IsOverExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
@@ -493,6 +593,7 @@ void IsOverExit_b_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_t
   Mock.IsOverExit_b_CallInstance = CMock_Guts_MemChain(Mock.IsOverExit_b_CallInstance, cmock_guts_index);
   Mock.IsOverExit_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   cmock_call_instance->ReturnVal = cmock_to_return;
   Mock.IsOverExit_b_IgnoreBool = (char)1;
 }
@@ -502,6 +603,21 @@ void IsOverExit_b_CMockStopIgnore(void)
   if(Mock.IsOverExit_b_IgnoreBool)
     Mock.IsOverExit_b_CallInstance = CMock_Guts_MemNext(Mock.IsOverExit_b_CallInstance);
   Mock.IsOverExit_b_IgnoreBool = (char)0;
+}
+
+void IsOverExit_b_CMockExpectAnyArgsAndReturn(UNITY_LINE_TYPE cmock_line, _Bool cmock_to_return)
+{
+  CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_IsOverExit_b_CALL_INSTANCE));
+  CMOCK_IsOverExit_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsOverExit_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
+  memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
+  Mock.IsOverExit_b_CallInstance = CMock_Guts_MemChain(Mock.IsOverExit_b_CallInstance, cmock_guts_index);
+  Mock.IsOverExit_b_IgnoreBool = (char)0;
+  cmock_call_instance->LineNumber = cmock_line;
+  cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
+  cmock_call_instance->ReturnVal = cmock_to_return;
+  cmock_call_instance->ExpectAnyArgsBool = (char)1;
 }
 
 void IsOverExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_mC, _Bool cmock_to_return)
@@ -514,6 +630,7 @@ void IsOverExit_b_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, int32_t temp_
   Mock.IsOverExit_b_IgnoreBool = (char)0;
   cmock_call_instance->LineNumber = cmock_line;
   cmock_call_instance->CallOrder = ++GlobalExpectCount;
+  cmock_call_instance->ExpectAnyArgsBool = (char)0;
   CMockExpectParameters_IsOverExit_b(cmock_call_instance, temp_mC);
   memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
          sizeof(_Bool[sizeof(cmock_to_return) == sizeof(_Bool) ? 1 : -1])); /* add _Bool to :treat_as_array if this causes an error */
@@ -531,5 +648,12 @@ void IsOverExit_b_Stub(CMOCK_IsOverExit_b_CALLBACK Callback)
   Mock.IsOverExit_b_IgnoreBool = (char)0;
   Mock.IsOverExit_b_CallbackBool = (char)0;
   Mock.IsOverExit_b_CallbackFunctionPointer = Callback;
+}
+
+void IsOverExit_b_CMockIgnoreArg_temp_mC(UNITY_LINE_TYPE cmock_line)
+{
+  CMOCK_IsOverExit_b_CALL_INSTANCE* cmock_call_instance = (CMOCK_IsOverExit_b_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.IsOverExit_b_CallInstance));
+  UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
+  cmock_call_instance->IgnoreArg_temp_mC = 1;
 }
 

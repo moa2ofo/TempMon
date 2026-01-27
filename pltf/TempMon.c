@@ -39,42 +39,35 @@ void TempMon_Init(int32_t temp_mC) {
   TempMon_Run(temp_mC);
 }
 
-void TempMon_Run(int32_t temp_mC)
-{
-    switch (TempMon_sts_e)
-    {
-        case NORMAL:
-            if (temp_mC < g_UnderThreshold_mC_s32)
-            {
-                TempMon_sts_e = UNDER;
-            }
-            else if (temp_mC > g_OverThreshold_mC_s32)
-            {
-                TempMon_sts_e = OVER;
-            }
-            /* else remain NORMAL */
-            break;
-
-        case UNDER:
-            if (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32))
-            {
-                TempMon_sts_e = NORMAL;
-            }
-            /* else remain UNDER */
-            break;
-
-        case OVER:
-            if (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32))
-            {
-                TempMon_sts_e = NORMAL;
-            }
-            /* else remain OVER */
-            break;
-
-        default:
-            /* No action for undefined states */
-            break;
+void TempMon_Run(int32_t temp_mC) {
+  switch (TempMon_sts_e) {
+  case NORMAL:
+    if (temp_mC < g_UnderThreshold_mC_s32) {
+      TempMon_sts_e = UNDER;
+    } else if (temp_mC > g_OverThreshold_mC_s32) {
+      TempMon_sts_e = OVER;
     }
+    /* else remain NORMAL */
+    break;
+
+  case UNDER:
+    if (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
+      TempMon_sts_e = NORMAL;
+    }
+    /* else remain UNDER */
+    break;
+
+  case OVER:
+    if (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) {
+      TempMon_sts_e = NORMAL;
+    }
+    /* else remain OVER */
+    break;
+
+  default:
+    /* No action for undefined states */
+    break;
+  }
 }
 TempMon_sts_e TempMon_GetSts(void) { return Sts_e; }
 

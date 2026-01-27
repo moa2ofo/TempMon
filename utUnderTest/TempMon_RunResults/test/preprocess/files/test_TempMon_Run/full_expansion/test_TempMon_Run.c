@@ -2242,16 +2242,24 @@ void IsUnderEnter_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_r
 void IsUnderEnter_b_CMockStopIgnore(void);
 
 
+void IsUnderEnter_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+
 void IsUnderEnter_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
 typedef _Bool (* CMOCK_IsUnderEnter_b_CALLBACK)(int32_t temp_mC, int cmock_num_calls);
 void IsUnderEnter_b_AddCallback(CMOCK_IsUnderEnter_b_CALLBACK Callback);
 void IsUnderEnter_b_Stub(CMOCK_IsUnderEnter_b_CALLBACK Callback);
 
 
+void IsUnderEnter_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
 
 void IsUnderExit_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
 
 void IsUnderExit_b_CMockStopIgnore(void);
+
+
+void IsUnderExit_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
 
 
 void IsUnderExit_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -2260,10 +2268,15 @@ void IsUnderExit_b_AddCallback(CMOCK_IsUnderExit_b_CALLBACK Callback);
 void IsUnderExit_b_Stub(CMOCK_IsUnderExit_b_CALLBACK Callback);
 
 
+void IsUnderExit_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
 
 void IsOverEnter_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
 
 void IsOverEnter_b_CMockStopIgnore(void);
+
+
+void IsOverEnter_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
 
 
 void IsOverEnter_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
@@ -2272,17 +2285,31 @@ void IsOverEnter_b_AddCallback(CMOCK_IsOverEnter_b_CALLBACK Callback);
 void IsOverEnter_b_Stub(CMOCK_IsOverEnter_b_CALLBACK Callback);
 
 
+void IsOverEnter_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
 
 void IsOverExit_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
 
 void IsOverExit_b_CMockStopIgnore(void);
 
 
+void IsOverExit_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+
 void IsOverExit_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
 typedef _Bool (* CMOCK_IsOverExit_b_CALLBACK)(int32_t temp_mC, int cmock_num_calls);
 void IsOverExit_b_AddCallback(CMOCK_IsOverExit_b_CALLBACK Callback);
 void IsOverExit_b_Stub(CMOCK_IsOverExit_b_CALLBACK Callback);
-# 86 "utExecutionAndResults/utUnderTest/build/test/mocks/test_TempMon_Run/mock_TempMon_priv.h"
+
+
+void IsOverExit_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
+
+
+
+
+
+
 #pragma GCC diagnostic pop
 # 3 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 

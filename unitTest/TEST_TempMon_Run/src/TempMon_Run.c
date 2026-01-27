@@ -7,35 +7,32 @@ TempMon_sts_e Sts_e = TEMPMON_STS_NORMAL;
 
 
 void TempMon_Run(int32_t temp_mC) {
-  switch (Sts_e) {
-  case TEMPMON_STS_NORMAL:
-  default: {
-    if (IsUnderEnter_b(temp_mC) == true) {
-      Sts_e = TEMPMON_STS_UNDER;
-    } else if (IsOverEnter_b(temp_mC) == true) {
-      Sts_e = TEMPMON_STS_OVER;
-    } else {
-      /* stay NORMAL */
+  switch (TempMon_sts_e) {
+  case NORMAL:
+    if (temp_mC < g_UnderThreshold_mC_s32) {
+      TempMon_sts_e = UNDER;
+    } else if (temp_mC > g_OverThreshold_mC_s32) {
+      TempMon_sts_e = OVER;
     }
+    /* else remain NORMAL */
     break;
-  }
 
-  case TEMPMON_STS_UNDER: {
-    if (IsUnderExit_b(temp_mC) == true) {
-      Sts_e = TEMPMON_STS_NORMAL;
-    } else {
-      /* stay UNDER */
+  case UNDER:
+    if (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
+      TempMon_sts_e = NORMAL;
     }
+    /* else remain UNDER */
     break;
-  }
 
-  case TEMPMON_STS_OVER: {
-    if (IsOverExit_b(temp_mC) == true) {
-      Sts_e = TEMPMON_STS_NORMAL;
-    } else {
-      /* stay OVER */
+  case OVER:
+    if (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) {
+      TempMon_sts_e = NORMAL;
     }
+    /* else remain OVER */
     break;
-  }
+
+  default:
+    /* No action for undefined states */
+    break;
   }
 }
