@@ -57,11 +57,10 @@
  * - #TEMPMON_STS_UNDER: TEMPMON_STS_UNDER-temperature condition is active
  * - #TEMPMON_STS_OVER:  TEMPMON_STS_OVER-temperature condition is active
  */
-typedef enum
-{
-    TEMPMON_STS_NORMAL = 0,
-    TEMPMON_STS_UNDER,
-    TEMPMON_STS_OVER
+typedef enum {
+  TEMPMON_STS_NORMAL = 0,
+  TEMPMON_STS_UNDER,
+  TEMPMON_STS_OVER
 } TempMon_sts_e;
 
 /* ===== Public configuration (extern) =====
@@ -134,12 +133,17 @@ extern int32_t g_Hyst_mC_s32;
  *
  * @par Interface summary
  *
- * | Interface               | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range             | Data unit |
+ * | Interface               | In | Out | Data type / Signature    | Param |
+ * Data factor | Data offset | Data size | Data range             | Data unit |
  * |-------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------|----------|
- * | temp_mC                 | X  |     | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
- * | g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
- * | g_OverThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
- * | g_Hyst_mC_s32           | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0         | [mdegC]  |
+ * | temp_mC                 | X  |     | int32_t                  |   X   | 1 |
+ * 0 |         1 | implementation-defined | [mdegC]  | | g_UnderThreshold_mC_s32
+ * | X  |     | int32_t (extern)         |   -   |           1 |           0 |
+ * 1 | implementation-defined | [mdegC]  | | g_OverThreshold_mC_s32  | X  | |
+ * int32_t (extern)         |   -   |           1 |           0 |         1 |
+ * implementation-defined | [mdegC]  | | g_Hyst_mC_s32           | X  |     |
+ * int32_t (extern)         |   -   |           1 |           0 |         1 |
+ * typically >= 0         | [mdegC]  |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -181,13 +185,19 @@ void TempMon_Init(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface                 | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range                                          | Data unit |
+ * | Interface                 | In | Out | Data type / Signature    | Param |
+ * Data factor | Data offset | Data size | Data range | Data unit |
  * |--------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------------------------------------|----------|
- * | temp_mC                  | X  |     | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0                                       | [mdegC]  |
- * | Sts_e                    | X  |  X  | TempMon_sts_e (static)   |   -   |           - |           - |         - | [TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / _STS_OVER] | [-]      |
+ * | temp_mC                  | X  |     | int32_t                  |   X   | 1
+ * |           0 |         1 | implementation-defined | [mdegC]  | |
+ * g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   | 1 |
+ * 0 |         1 | implementation-defined                               |
+ * [mdegC]  | | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |
+ * -   |           1 |           0 |         1 | implementation-defined |
+ * [mdegC]  | | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |
+ * -   |           1 |           0 |         1 | typically >= 0 | [mdegC]  | |
+ * Sts_e                    | X  |  X  | TempMon_sts_e (static)   |   -   | - |
+ * - |         - | [TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / _STS_OVER] | [-] |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -240,9 +250,11 @@ void TempMon_Run(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                                   | Data unit |
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range | Data unit |
  * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------------------------|----------|
- * | Sts_e | X  |  X  | TempMon_sts_e          |   -   |           - |           - |         - | TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / OVER | [-]      |
+ * | Sts_e | X  |  X  | TempMon_sts_e          |   -   |           - | - | - |
+ * TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / OVER | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -272,9 +284,11 @@ TempMon_sts_e TempMon_GetSts(void);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range      | Data unit |
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range      | Data unit |
  * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|-----------------|----------|
- * | Sts_e                   | X  |  X  | bool                   |   -   |           - |           - |         - | {false, true}   | [-]      |
+ * | Sts_e                   | X  |  X  | bool                   |   -   | - |
+ * - |         - | {false, true}   | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -308,9 +322,11 @@ bool TempMon_IsUnderAlv_b(void);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range    | Data unit |
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range    | Data unit |
  * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|---------------|----------|
- * | Sts_e                   | X  |  X  | bool                   |   -   |           - |           - |         - | {false, true} | [-]      |
+ * | Sts_e                   | X  |  X  | bool                   |   -   | - |
+ * - |         - | {false, true} | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -330,4 +346,3 @@ bool TempMon_IsUnderAlv_b(void);
 bool TempMon_IsOverAlv_b(void);
 
 #endif /* TEMPMON_H */
-
