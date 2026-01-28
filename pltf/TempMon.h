@@ -1,3 +1,4 @@
+```c
 /* TempMon.h */
 
 #ifndef TEMPMON_H
@@ -8,24 +9,27 @@
 
 /**
  * @file TempMon.h
- * @brief Temperature monitoring module (under/over detection with hysteresis).
+ * @brief Temperature monitoring module (TEMPMON_STS_UNDER/TEMPMON_STS_OVER
+ * detection with hysteresis).
  *
  * @details
  * **Goal of the module**
  *
  * Provide a small state machine to classify an input temperature into:
- * - **NORMAL**
- * - **UNDER** (below configured under-threshold)
- * - **OVER**  (above configured over-threshold)
+ * - **TEMPMON_STS_NORMAL**
+ * - **TEMPMON_STS_UNDER** (below configured TEMPMON_STS_UNDER-threshold)
+ * - **TEMPMON_STS_OVER**  (above configured TEMPMON_STS_OVER-threshold)
  *
  * The module applies **hysteresis** to avoid rapid toggling near thresholds:
- * - Enter **UNDER** when `temp_mC < g_UnderThreshold_mC_s32`
- * - Exit  **UNDER** when `temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)`
- * - Enter **OVER**  when `temp_mC > g_OverThreshold_mC_s32`
- * - Exit  **OVER**  when `temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)`
+ * - Enter **TEMPMON_STS_UNDER** when `temp_mC < g_UnderThreshold_mC_s32`
+ * - Exit  **TEMPMON_STS_UNDER** when `temp_mC > (g_UnderThreshold_mC_s32 +
+ *   g_Hyst_mC_s32)`
+ * - Enter **TEMPMON_STS_OVER**  when `temp_mC > g_OverThreshold_mC_s32`
+ * - Exit  **TEMPMON_STS_OVER**  when `temp_mC < (g_OverThreshold_mC_s32 -
+ *   g_Hyst_mC_s32)`
  *
  * @par Units
- * All temperatures are expressed in **milli-degC (m°C)**:
+ * All temperatures are expressed in **milli-degC (mdegC)**:
  * - Example: `85000` = `85.000 °C`
  *
  * @par Typical usage
@@ -36,9 +40,9 @@
  *
  * @par Notes and limitations
  * - The module does not validate configuration ranges; ensure coherent values
- *   (e.g., positive hysteresis, under < over).
+ *   (e.g., positive hysteresis, TEMPMON_STS_UNDER < TEMPMON_STS_OVER).
  * - The module does not implement timing filters (activation/deactivation
- * delays).
+ *   delays).
  */
 
 /* ===== Public types ===== */
@@ -49,52 +53,59 @@
  * @details
  * The temperature monitor state machine can be in one of the following states:
  * - #TEMPMON_STS_NORMAL: temperature is within thresholds (considering
- * hysteresis exits)
- * - #TEMPMON_STS_UNDER: under-temperature condition is active
- * - #TEMPMON_STS_OVER:  over-temperature condition is active
+ *   hysteresis exits)
+ * - #TEMPMON_STS_UNDER: TEMPMON_STS_UNDER-temperature condition is active
+ * - #TEMPMON_STS_OVER:  TEMPMON_STS_OVER-temperature condition is active
  */
-typedef enum {
-  TEMPMON_STS_NORMAL = 0,
-  TEMPMON_STS_UNDER,
-  TEMPMON_STS_OVER
+typedef enum
+{
+    TEMPMON_STS_NORMAL = 0,
+    TEMPMON_STS_UNDER,
+    TEMPMON_STS_OVER
 } TempMon_sts_e;
 
 /* ===== Public configuration (extern) =====
- * Units: milli-degC (m°C)
+ * Units: milli-degrees Celsius (mdegC)
+ * Note: suffix `_mC` means milli-degC (0.001 °C)
  * Example: 85000 = 85.000 °C
  */
 
 /**
- * @brief Under-temperature threshold in m°C.
+ * @brief TEMPMON_STS_UNDER-temperature threshold in mdegC.
  *
  * @details
- * If the module is in NORMAL state, it enters UNDER when:
+ * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_UNDER
+ * when:
  * - `temp_mC < g_UnderThreshold_mC_s32`
  *
- * If the module is in UNDER state, it returns to NORMAL when:
+ * If the module is in TEMPMON_STS_UNDER state, it returns to TEMPMON_STS_NORMAL
+ * when:
  * - `temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)`
  */
 extern int32_t g_UnderThreshold_mC_s32;
 
 /**
- * @brief Over-temperature threshold in m°C.
+ * @brief TEMPMON_STS_OVER-temperature threshold in mdegC.
  *
  * @details
- * If the module is in NORMAL state, it enters OVER when:
+ * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_OVER
+ * when:
  * - `temp_mC > g_OverThreshold_mC_s32`
  *
- * If the module is in OVER state, it returns to NORMAL when:
+ * If the module is in TEMPMON_STS_OVER state, it returns to TEMPMON_STS_NORMAL
+ * when:
  * - `temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)`
  */
 extern int32_t g_OverThreshold_mC_s32;
 
 /**
- * @brief Hysteresis in m°C applied to both UNDER and OVER transitions.
+ * @brief Hysteresis in m°C applied to both TEMPMON_STS_UNDER and
+ * TEMPMON_STS_OVER transitions.
  *
  * @details
  * Hysteresis is used to avoid state chatter around thresholds:
- * - UNDER exit uses `UnderThreshold + Hyst`
- * - OVER  exit uses `OverThreshold - Hyst`
+ * - TEMPMON_STS_UNDER exit uses `UnderThreshold + Hyst`
+ * - TEMPMON_STS_OVER  exit uses `OverThreshold - Hyst`
  *
  * @note
  * Use a non-negative value. A negative hysteresis inverts the intended
@@ -116,25 +127,19 @@ extern int32_t g_Hyst_mC_s32;
  * The processing logic:
  * - Sets the internal state to #TEMPMON_STS_NORMAL.
  * - Executes the same decision logic used by TempMon_Run() once using @p
- * temp_mC.
+ *   temp_mC.
  *
  * This guarantees that the initial state respects the configured thresholds
  * and hysteresis rules (no special “startup” behavior is applied).
  *
  * @par Interface summary
  *
- * | Interface                  | In | Out | Data type / Signature | Param |
- * Data factor | Data offset | Data size | Data range                 | Data
- * unit |
- * |---------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                   | X  |     | int32_t                |   X   | 1
- * |      0      |     1     | implementation-defined     | [m°C]    | |
- * g_UnderThreshold_mC_s32   | X  |     | int32_t (extern)       |   -   | 1 |
- * 0      |     1     | implementation-defined     | [m°C]    | |
- * g_OverThreshold_mC_s32    | X  |     | int32_t (extern)       |   -   | 1 |
- * 0      |     1     | implementation-defined     | [m°C]    | | g_Hyst_mC_s32
- * | X  |     | int32_t (extern)       |   -   |      1      |      0      | 1
- * | typically >= 0             | [m°C]    |
+ * | Interface               | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range             | Data unit |
+ * |-------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------|----------|
+ * | temp_mC                 | X  |     | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
+ * | g_UnderThreshold_mC_s32 | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
+ * | g_OverThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined | [mdegC]  |
+ * | g_Hyst_mC_s32           | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0         | [mdegC]  |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -146,7 +151,7 @@ extern int32_t g_Hyst_mC_s32;
  * @enduml
  *
  * @param temp_mC
- * Current temperature in milli-degC (m°C) used to set the initial state.
+ * Current temperature in milli-degC (mdegC) used to set the initial state.
  *
  * @return void
  */
@@ -161,67 +166,61 @@ void TempMon_Init(int32_t temp_mC);
  * Update the internal state machine based on the latest temperature sample.
  *
  * The processing logic:
- * - If current state is NORMAL:
- *   - Enter UNDER if `temp_mC < g_UnderThreshold_mC_s32`.
- *   - Else enter OVER if `temp_mC > g_OverThreshold_mC_s32`.
- *   - Else remain NORMAL.
- * - If current state is UNDER:
- *   - Return to NORMAL if `temp_mC > (g_UnderThreshold_mC_s32 +
- * g_Hyst_mC_s32)`.
- *   - Else remain UNDER.
- * - If current state is OVER:
- *   - Return to NORMAL if `temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)`.
- *   - Else remain OVER.
+ * - If current state is TEMPMON_STS_NORMAL:
+ *   - Enter TEMPMON_STS_UNDER if `temp_mC < g_UnderThreshold_mC_s32`.
+ *   - Else enter TEMPMON_STS_OVER if `temp_mC > g_OverThreshold_mC_s32`.
+ *   - Else remain TEMPMON_STS_NORMAL.
+ * - If current state is TEMPMON_STS_UNDER:
+ *   - Return to TEMPMON_STS_NORMAL if `temp_mC > (g_UnderThreshold_mC_s32 +
+ *     g_Hyst_mC_s32)`.
+ *   - Else remain TEMPMON_STS_UNDER.
+ * - If current state is TEMPMON_STS_OVER:
+ *   - Return to TEMPMON_STS_NORMAL if `temp_mC < (g_OverThreshold_mC_s32 -
+ *     g_Hyst_mC_s32)`.
+ *   - Else remain TEMPMON_STS_OVER.
  *
  * @par Interface summary
  *
- * | Interface                  | In | Out | Data type / Signature | Param |
- * Data factor | Data offset | Data size | Data range                 | Data
- * unit |
- * |---------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------|----------|
- * | temp_mC                   | X  |     | int32_t                |   X   | 1
- * |      0      |     1     | implementation-defined     | [m°C]    | |
- * g_UnderThreshold_mC_s32   | X  |     | int32_t (extern)       |   -   | 1 |
- * 0      |     1     | implementation-defined     | [m°C]    | |
- * g_OverThreshold_mC_s32    | X  |     | int32_t (extern)       |   -   | 1 |
- * 0      |     1     | implementation-defined     | [m°C]    | | g_Hyst_mC_s32
- * | X  |     | int32_t (extern)       |   -   |      1      |      0      | 1
- * | typically >= 0             | [m°C]    | | TempMon internal status   | X  |
- * X  | TempMon_sts_e (static) |   -   |      -      |      -      |     -     |
- * NORMAL/UNDER/OVER          | [-]      |
+ * | Interface                 | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range                                         | Data unit |
+ * |--------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|----------------------------------------------------|----------|
+ * | temp_mC                  | X  |     | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined                             | [mdegC]  |
+ * | g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                             | [mdegC]  |
+ * | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                             | [mdegC]  |
+ * | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0                                     | [mdegC]  |
+ * | TempMon internal status  | X  |  X  | TempMon_sts_e (static)   |   -   |           - |           - |         - | TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / _STS_OVER | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
  * @startuml
  * start
- * if (Sts_e == NORMAL) then (yes)
- *   if (temp_mC < UnderThr) then (yes)
- *     :Sts_e = UNDER;
+ * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
+ *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_UNDER;
  *   else (no)
- *     if (temp_mC > OverThr) then (yes)
- *       :Sts_e = OVER;
+ *     if (temp_mC > g_OverThreshold_mC_s32) then (yes)
+ *       :Sts_e = TEMPMON_STS_OVER;
  *     else (no)
- *       :stay NORMAL;
+ *       :stay TEMPMON_STS_NORMAL;
  *     endif
  *   endif
- * elseif (Sts_e == UNDER) then (yes)
- *   if (temp_mC > UnderThr + Hyst) then (yes)
- *     :Sts_e = NORMAL;
+ * elseif (Sts_e == TEMPMON_STS_UNDER) then (yes)
+ *   if (temp_mC >  g_UnderThreshold_mC_s32 + g_Hyst_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_NORMAL;
  *   else (no)
- *     :stay UNDER;
+ *     :stay TEMPMON_STS_UNDER;
  *   endif
- * else (OVER)
- *   if (temp_mC < OverThr - Hyst) then (yes)
- *     :Sts_e = NORMAL;
+ * else (TEMPMON_STS_OVER)
+ *   if (temp_mC < g_OverThreshold_mC_s32 - g_Hyst_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_NORMAL;
  *   else (no)
- *     :stay OVER;
+ *     :stay TEMPMON_STS_OVER;
  *   endif
  * endif
  * stop
  * @enduml
  *
  * @param temp_mC
- * Current temperature in milli-degC (m°C).
+ * Current temperature in milli-degC (mdegC).
  *
  * @return void
  */
@@ -241,12 +240,9 @@ void TempMon_Run(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range                     | Data unit
- * |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|--------------------------------|----------|
- * | TempMon internal status | X  |  X  | TempMon_sts_e          |   -   | - |
- * -      |     -     | NORMAL / UNDER / OVER          | [-]      |
+ * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range                                   | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------------------------|----------|
+ * | TempMon internal status | X  |  X  | TempMon_sts_e          |   -   |           - |           - |         - | TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / OVER | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -262,13 +258,13 @@ void TempMon_Run(int32_t temp_mC);
 TempMon_sts_e TempMon_GetSts(void);
 
 /**
- * @brief Convenience check: returns true if status is UNDER.
+ * @brief Convenience check: returns true if status is TEMPMON_STS_UNDER.
  *
  * @details
  * **Goal of the function**
  *
- * Provide a boolean helper to quickly check whether the under-temperature
- * condition is currently active.
+ * Provide a boolean helper to quickly check whether the
+ * TEMPMON_STS_UNDER-temperature condition is currently active.
  *
  * The processing logic:
  * - Compares internal state to #TEMPMON_STS_UNDER.
@@ -276,17 +272,15 @@ TempMon_sts_e TempMon_GetSts(void);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range | Data unit |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|------------|----------|
- * | TempMon internal status | X  |  X  | bool                   |   -   | - |
- * -      |     -     | {false,true} | [-]   |
+ * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range      | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|-----------------|----------|
+ * | TempMon internal status | X  |  X  | bool                   |   -   |           - |           - |         - | {false, true}   | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
  * @startuml
  * start
- * if (Sts_e == UNDER) then (yes)
+ * if (Sts_e == TEMPMON_STS_UNDER) then (yes)
  *   :return true;
  * else (no)
  *   :return false;
@@ -295,18 +289,18 @@ TempMon_sts_e TempMon_GetSts(void);
  * @enduml
  *
  * @return
- * true if under-temperature is active, false otherwise.
+ * true if TEMPMON_STS_UNDER-temperature is active, false otherwise.
  */
 bool TempMon_IsUnderAlv_b(void);
 
 /**
- * @brief Convenience check: returns true if status is OVER.
+ * @brief Convenience check: returns true if status is TEMPMON_STS_OVER.
  *
  * @details
  * **Goal of the function**
  *
- * Provide a boolean helper to quickly check whether the over-temperature
- * condition is currently active.
+ * Provide a boolean helper to quickly check whether the
+ * TEMPMON_STS_OVER-temperature condition is currently active.
  *
  * The processing logic:
  * - Compares internal state to #TEMPMON_STS_OVER.
@@ -314,17 +308,15 @@ bool TempMon_IsUnderAlv_b(void);
  *
  * @par Interface summary
  *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range | Data unit |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|------------|----------|
- * | TempMon internal status | X  |  X  | bool                   |   -   | - |
- * -      |     -     | {false,true} | [-]   |
+ * | Interface                | In | Out | Data type / Signature | Param | Data factor | Data offset | Data size | Data range    | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|---------------|----------|
+ * | TempMon internal status | X  |  X  | bool                   |   -   |           - |           - |         - | {false, true} | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
  * @startuml
  * start
- * if (Sts_e == OVER) then (yes)
+ * if (Sts_e == TEMPMON_STS_OVER) then (yes)
  *   :return true;
  * else (no)
  *   :return false;
@@ -333,8 +325,9 @@ bool TempMon_IsUnderAlv_b(void);
  * @enduml
  *
  * @return
- * true if over-temperature is active, false otherwise.
+ * true if TEMPMON_STS_OVER-temperature is active, false otherwise.
  */
 bool TempMon_IsOverAlv_b(void);
 
 #endif /* TEMPMON_H */
+```
