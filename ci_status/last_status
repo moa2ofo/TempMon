@@ -1,8 +1,8 @@
 CI FAILED
-Run: https://github.com/moa2ofo/TempMon/actions/runs/21406143790
+Run: https://github.com/moa2ofo/TempMon/actions/runs/21429460097
 clang-format: success
 docker info: success
 swCmpBuildCheck: failure
 unit tests: success
 rsync utResults: success
-Timestamp (UTC): 2026-01-27T16:53:53Z
+Timestamp (UTC): 2026-01-28T07:40:37Z
