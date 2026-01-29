@@ -1,7 +1,11 @@
 #include "TempMon_Run.h"
+#include "TempMon.h"
 #include "TempMon_priv.h"
 
 TempMon_sts_e Sts_e = TEMPMON_STS_NORMAL;
+int32_t g_UnderThreshold_mC_s32 = 0;
+int32_t g_OverThreshold_mC_s32 = 0;
+int32_t g_Hyst_mC_s32 = 0;
 
 /* FUNCTION TO TEST */
 

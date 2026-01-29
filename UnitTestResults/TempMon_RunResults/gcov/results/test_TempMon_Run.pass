@@ -1,0 +1,91 @@
+---
+:source:
+  :file: utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c
+  :dirname: utExecutionAndResults/utUnderTest/test
+  :basename: test_TempMon_Run.c
+:successes:
+- :test: test_NORMAL_state_remains_NORMAL_when_temp_in_range
+  :line: 46
+  :message: ''
+  :unity_test_time: 0
+- :test: test_NORMAL_to_UNDER_transition
+  :line: 62
+  :message: ''
+  :unity_test_time: 0
+- :test: test_NORMAL_to_OVER_transition
+  :line: 78
+  :message: ''
+  :unity_test_time: 0
+- :test: test_NORMAL_state_at_under_threshold_boundary
+  :line: 94
+  :message: ''
+  :unity_test_time: 0
+- :test: test_NORMAL_state_at_over_threshold_boundary
+  :line: 110
+  :message: ''
+  :unity_test_time: 0
+- :test: test_UNDER_state_remains_UNDER_when_temp_below_hysteresis
+  :line: 128
+  :message: ''
+  :unity_test_time: 0
+- :test: test_UNDER_to_NORMAL_transition_with_hysteresis
+  :line: 144
+  :message: ''
+  :unity_test_time: 0
+- :test: test_UNDER_state_at_hysteresis_boundary
+  :line: 160
+  :message: ''
+  :unity_test_time: 0
+- :test: test_UNDER_state_just_above_hysteresis_boundary
+  :line: 177
+  :message: ''
+  :unity_test_time: 0
+- :test: test_OVER_state_remains_OVER_when_temp_above_hysteresis
+  :line: 195
+  :message: ''
+  :unity_test_time: 0
+- :test: test_OVER_to_NORMAL_transition_with_hysteresis
+  :line: 211
+  :message: ''
+  :unity_test_time: 0
+- :test: test_OVER_state_at_hysteresis_boundary
+  :line: 227
+  :message: ''
+  :unity_test_time: 0
+- :test: test_OVER_state_just_below_hysteresis_boundary
+  :line: 244
+  :message: ''
+  :unity_test_time: 0
+- :test: test_cycle_NORMAL_to_UNDER_back_to_NORMAL
+  :line: 262
+  :message: ''
+  :unity_test_time: 0
+- :test: test_cycle_NORMAL_to_OVER_back_to_NORMAL
+  :line: 281
+  :message: ''
+  :unity_test_time: 0
+- :test: test_zero_hysteresis_UNDER_to_NORMAL
+  :line: 300
+  :message: ''
+  :unity_test_time: 0
+- :test: test_zero_hysteresis_OVER_to_NORMAL
+  :line: 316
+  :message: ''
+  :unity_test_time: 0
+- :test: test_large_hysteresis_UNDER_to_NORMAL
+  :line: 332
+  :message: ''
+  :unity_test_time: 0
+- :test: test_negative_temperatures
+  :line: 350
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 19
+  :passed: 19
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.025038983003469184
