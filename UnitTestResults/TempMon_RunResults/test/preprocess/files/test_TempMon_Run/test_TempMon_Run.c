@@ -1,42 +1,37 @@
 // CEEDLING NOTICE: This generated file only to be consumed for test runner creation
 
-#include "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
 #include "utExecutionAndResults/utUnderTest/src/TempMon.h"
+#include "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
 #include "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
 #include "mock_TempMon_priv.h"
 
-void resetVar(TempMon_sts_e l_Sts_e,
-  int32_t l_UnderThreshold_mC_s32,
-  int32_t l_OverThreshold_mC_s32,
-  int32_t l_Hyst_mC_s32){
+void resetVar(TempMon_sts_e l_Sts_e, int32_t l_UnderThreshold_mC_s32, int32_t l_OverThreshold_mC_s32, int32_t l_Hyst_mC_s32)
+{
   l_Sts_e = TEMPMON_STS_NORMAL;
   l_UnderThreshold_mC_s32 = 0;
   l_OverThreshold_mC_s32 = 0;
   l_Hyst_mC_s32 = 0;
 }
 
-void assertVar(TempMon_sts_e expected_sts,
-               int32_t expected_under,
-               int32_t expected_over,
-               int32_t expected_hyst)
+void assertVar(TempMon_sts_e expected_sts, int32_t expected_under, int32_t expected_over, int32_t expected_hyst)
 {
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_sts)), (UNITY_INT)(UNITY_INT32)((Sts_e)), (
  ((void *)0)
- ), (UNITY_UINT)(26), UNITY_DISPLAY_STYLE_INT32);
+ ), (UNITY_UINT)(18), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_under)), (UNITY_INT)(UNITY_INT32)((g_UnderThreshold_mC_s32)), (
  ((void *)0)
- ), (UNITY_UINT)(27), UNITY_DISPLAY_STYLE_INT32);
+ ), (UNITY_UINT)(19), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_over)), (UNITY_INT)(UNITY_INT32)((g_OverThreshold_mC_s32)), (
  ((void *)0)
- ), (UNITY_UINT)(28), UNITY_DISPLAY_STYLE_INT32);
+ ), (UNITY_UINT)(20), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_hyst)), (UNITY_INT)(UNITY_INT32)((g_Hyst_mC_s32)), (
  ((void *)0)
- ), (UNITY_UINT)(29), UNITY_DISPLAY_STYLE_INT32);
+ ), (UNITY_UINT)(21), UNITY_DISPLAY_STYLE_INT32);
 }
 
 void setUp(void)
 {
-  resetVar(0,0,0,0);
+  resetVar(0, 0, 0, 0);
 }
 
 void tearDown(void)

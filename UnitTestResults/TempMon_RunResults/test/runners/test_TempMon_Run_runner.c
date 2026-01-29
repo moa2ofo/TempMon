@@ -3,8 +3,8 @@
 /*=======Automagically Detected Files To Include=====*/
 #include "unity.h"
 #include "cmock.h"
-#include "TempMon_Run.h"
 #include "TempMon.h"
+#include "TempMon_Run.h"
 #include "unity.h"
 #include "mock_TempMon_priv.h"
 
@@ -101,25 +101,25 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_TempMon_Run.c");
-  run_test(test_NORMAL_state_remains_NORMAL_when_temp_in_range, "test_NORMAL_state_remains_NORMAL_when_temp_in_range", 46);
-  run_test(test_NORMAL_to_UNDER_transition, "test_NORMAL_to_UNDER_transition", 62);
-  run_test(test_NORMAL_to_OVER_transition, "test_NORMAL_to_OVER_transition", 78);
-  run_test(test_NORMAL_state_at_under_threshold_boundary, "test_NORMAL_state_at_under_threshold_boundary", 94);
-  run_test(test_NORMAL_state_at_over_threshold_boundary, "test_NORMAL_state_at_over_threshold_boundary", 110);
-  run_test(test_UNDER_state_remains_UNDER_when_temp_below_hysteresis, "test_UNDER_state_remains_UNDER_when_temp_below_hysteresis", 128);
-  run_test(test_UNDER_to_NORMAL_transition_with_hysteresis, "test_UNDER_to_NORMAL_transition_with_hysteresis", 144);
-  run_test(test_UNDER_state_at_hysteresis_boundary, "test_UNDER_state_at_hysteresis_boundary", 160);
-  run_test(test_UNDER_state_just_above_hysteresis_boundary, "test_UNDER_state_just_above_hysteresis_boundary", 177);
-  run_test(test_OVER_state_remains_OVER_when_temp_above_hysteresis, "test_OVER_state_remains_OVER_when_temp_above_hysteresis", 195);
-  run_test(test_OVER_to_NORMAL_transition_with_hysteresis, "test_OVER_to_NORMAL_transition_with_hysteresis", 211);
-  run_test(test_OVER_state_at_hysteresis_boundary, "test_OVER_state_at_hysteresis_boundary", 227);
-  run_test(test_OVER_state_just_below_hysteresis_boundary, "test_OVER_state_just_below_hysteresis_boundary", 244);
-  run_test(test_cycle_NORMAL_to_UNDER_back_to_NORMAL, "test_cycle_NORMAL_to_UNDER_back_to_NORMAL", 262);
-  run_test(test_cycle_NORMAL_to_OVER_back_to_NORMAL, "test_cycle_NORMAL_to_OVER_back_to_NORMAL", 281);
-  run_test(test_zero_hysteresis_UNDER_to_NORMAL, "test_zero_hysteresis_UNDER_to_NORMAL", 300);
-  run_test(test_zero_hysteresis_OVER_to_NORMAL, "test_zero_hysteresis_OVER_to_NORMAL", 316);
-  run_test(test_large_hysteresis_UNDER_to_NORMAL, "test_large_hysteresis_UNDER_to_NORMAL", 332);
-  run_test(test_negative_temperatures, "test_negative_temperatures", 350);
+  run_test(test_NORMAL_state_remains_NORMAL_when_temp_in_range, "test_NORMAL_state_remains_NORMAL_when_temp_in_range", 36);
+  run_test(test_NORMAL_to_UNDER_transition, "test_NORMAL_to_UNDER_transition", 52);
+  run_test(test_NORMAL_to_OVER_transition, "test_NORMAL_to_OVER_transition", 68);
+  run_test(test_NORMAL_state_at_under_threshold_boundary, "test_NORMAL_state_at_under_threshold_boundary", 84);
+  run_test(test_NORMAL_state_at_over_threshold_boundary, "test_NORMAL_state_at_over_threshold_boundary", 100);
+  run_test(test_UNDER_state_remains_UNDER_when_temp_below_hysteresis, "test_UNDER_state_remains_UNDER_when_temp_below_hysteresis", 118);
+  run_test(test_UNDER_to_NORMAL_transition_with_hysteresis, "test_UNDER_to_NORMAL_transition_with_hysteresis", 134);
+  run_test(test_UNDER_state_at_hysteresis_boundary, "test_UNDER_state_at_hysteresis_boundary", 150);
+  run_test(test_UNDER_state_just_above_hysteresis_boundary, "test_UNDER_state_just_above_hysteresis_boundary", 167);
+  run_test(test_OVER_state_remains_OVER_when_temp_above_hysteresis, "test_OVER_state_remains_OVER_when_temp_above_hysteresis", 185);
+  run_test(test_OVER_to_NORMAL_transition_with_hysteresis, "test_OVER_to_NORMAL_transition_with_hysteresis", 201);
+  run_test(test_OVER_state_at_hysteresis_boundary, "test_OVER_state_at_hysteresis_boundary", 217);
+  run_test(test_OVER_state_just_below_hysteresis_boundary, "test_OVER_state_just_below_hysteresis_boundary", 234);
+  run_test(test_cycle_NORMAL_to_UNDER_back_to_NORMAL, "test_cycle_NORMAL_to_UNDER_back_to_NORMAL", 252);
+  run_test(test_cycle_NORMAL_to_OVER_back_to_NORMAL, "test_cycle_NORMAL_to_OVER_back_to_NORMAL", 271);
+  run_test(test_zero_hysteresis_UNDER_to_NORMAL, "test_zero_hysteresis_UNDER_to_NORMAL", 290);
+  run_test(test_zero_hysteresis_OVER_to_NORMAL, "test_zero_hysteresis_OVER_to_NORMAL", 306);
+  run_test(test_large_hysteresis_UNDER_to_NORMAL, "test_large_hysteresis_UNDER_to_NORMAL", 322);
+  run_test(test_negative_temperatures, "test_negative_temperatures", 340);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();

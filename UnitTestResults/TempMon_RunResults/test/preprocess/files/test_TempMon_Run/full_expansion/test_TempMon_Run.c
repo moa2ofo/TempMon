@@ -4,12 +4,15 @@
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
 # 1 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
-# 1 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 1
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
 
 
 
 
 
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
+# 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 1 3 4
 # 9 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 3 4
 # 1 "/usr/include/stdint.h" 1 3 4
@@ -243,16 +246,48 @@ typedef unsigned long int uintptr_t;
 typedef __intmax_t intmax_t;
 typedef __uintmax_t uintmax_t;
 # 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
-# 7 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 2
+# 9 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
+# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 
+# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
 
+extern int32_t g_UnderThreshold_mC_s32;
 
+extern int32_t g_OverThreshold_mC_s32;
 
+extern int32_t g_Hyst_mC_s32;
 
-
-# 12 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
+extern TempMon_sts_e Sts_e;
+# 117 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+void TempMon_Init(int32_t temp_mC);
+# 192 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 void TempMon_Run(int32_t temp_mC);
+# 225 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+TempMon_sts_e TempMon_GetSts(void);
+# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+_Bool 
+# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+    TempMon_IsUnderAlv_b(void);
+# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+_Bool 
+# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+    TempMon_IsOverAlv_b(void);
 # 2 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 1
+
+
+
+
+
+
+
+void TempMon_Run(int32_t temp_mC);
+# 3 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_TempMon_Run/mock_TempMon_priv.h" 1
 
 
@@ -2175,13 +2210,6 @@ void resetTest(void);
 void verifyTest(void);
 # 6 "utExecutionAndResults/utUnderTest/build/test/mocks/test_TempMon_Run/mock_TempMon_priv.h" 2
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 1
-
-
-
-
-
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
-# 7 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 2
 # 85 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
 
 # 85 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
@@ -2307,36 +2335,6 @@ void IsOverExit_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
 
 
 #pragma GCC diagnostic pop
-# 3 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
-# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
-# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
-
-extern int32_t g_UnderThreshold_mC_s32;
-
-extern int32_t g_OverThreshold_mC_s32;
-
-extern int32_t g_Hyst_mC_s32;
-
-extern TempMon_sts_e Sts_e;
-# 117 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-void TempMon_Init(int32_t temp_mC);
-# 192 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-void TempMon_Run(int32_t temp_mC);
-# 225 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-TempMon_sts_e TempMon_GetSts(void);
-# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-
-# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
-_Bool 
-# 263 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-    TempMon_IsUnderAlv_b(void);
-# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-
-# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
-_Bool 
-# 301 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-    TempMon_IsOverAlv_b(void);
 # 4 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 
 # 1 "/usr/include/string.h" 1 3 4
@@ -2628,13 +2626,8 @@ extern char *stpncpy (char *__restrict __dest,
 # 6 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 
 
-
-
-# 9 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
-void resetVar(TempMon_sts_e l_Sts_e,
-  int32_t l_UnderThreshold_mC_s32,
-  int32_t l_OverThreshold_mC_s32,
-  int32_t l_Hyst_mC_s32){
+# 7 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+void resetVar(TempMon_sts_e l_Sts_e, int32_t l_UnderThreshold_mC_s32, int32_t l_OverThreshold_mC_s32, int32_t l_Hyst_mC_s32) {
   l_Sts_e = TEMPMON_STS_NORMAL;
   l_UnderThreshold_mC_s32 = 0;
   l_OverThreshold_mC_s32 = 0;
@@ -2644,37 +2637,32 @@ void resetVar(TempMon_sts_e l_Sts_e,
 
 
 
-void assertVar(TempMon_sts_e expected_sts,
-               int32_t expected_under,
-               int32_t expected_over,
-               int32_t expected_hyst) {
+void assertVar(TempMon_sts_e expected_sts, int32_t expected_under, int32_t expected_over, int32_t expected_hyst) {
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_sts)), (UNITY_INT)(UNITY_INT32)((Sts_e)), (
-# 26 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 18 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 26 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(26), UNITY_DISPLAY_STYLE_INT32);
+# 18 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(18), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_under)), (UNITY_INT)(UNITY_INT32)((g_UnderThreshold_mC_s32)), (
-# 27 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 19 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 27 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(27), UNITY_DISPLAY_STYLE_INT32);
+# 19 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(19), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_over)), (UNITY_INT)(UNITY_INT32)((g_OverThreshold_mC_s32)), (
-# 28 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 20 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 28 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(28), UNITY_DISPLAY_STYLE_INT32);
+# 20 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(20), UNITY_DISPLAY_STYLE_INT32);
   UnityAssertEqualNumber((UNITY_INT)(UNITY_INT32)((expected_hyst)), (UNITY_INT)(UNITY_INT32)((g_Hyst_mC_s32)), (
-# 29 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 21 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 29 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(29), UNITY_DISPLAY_STYLE_INT32);
+# 21 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(21), UNITY_DISPLAY_STYLE_INT32);
 }
-
-
 
 void setUp(void) {
 
-  resetVar(0,0,0,0);
+  resetVar(0, 0, 0, 0);
 }
 
 void tearDown(void) {}
