@@ -15,9 +15,7 @@ void tearDown(void) {}
 /**
  * @brief Test: Initial state is NORMAL
  */
-void test_InitialStateIsNormal(void) {
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
+void test_InitialStateIsNormal(void) { TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e); }
 
 /**
  * @brief Test: NORMAL state remains NORMAL when neither threshold is crossed

@@ -98,21 +98,21 @@ int main(void)
 {
   UnityBegin("test_TempMon_Run.c");
   run_test(test_InitialStateIsNormal, "test_InitialStateIsNormal", 18);
-  run_test(test_NormalStateRemainsNormalWhenNoThresholdCrossed, "test_NormalStateRemainsNormalWhenNoThresholdCrossed", 25);
-  run_test(test_NormalToUnderTransition, "test_NormalToUnderTransition", 38);
-  run_test(test_NormalToOverTransition, "test_NormalToOverTransition", 50);
-  run_test(test_NormalPrioritizesUnderOverOver, "test_NormalPrioritizesUnderOverOver", 64);
-  run_test(test_UnderStateRemainsUnderWhenNoExit, "test_UnderStateRemainsUnderWhenNoExit", 78);
-  run_test(test_UnderToNormalTransitionWithHysteresis, "test_UnderToNormalTransitionWithHysteresis", 93);
-  run_test(test_OverStateRemainsOverWhenNoExit, "test_OverStateRemainsOverWhenNoExit", 110);
-  run_test(test_OverToNormalTransitionWithHysteresis, "test_OverToNormalTransitionWithHysteresis", 125);
-  run_test(test_CompleteCycleNormalUnderNormal, "test_CompleteCycleNormalUnderNormal", 142);
-  run_test(test_CompleteCycleNormalOverNormal, "test_CompleteCycleNormalOverNormal", 162);
-  run_test(test_MultipleTransitionsSequence, "test_MultipleTransitionsSequence", 184);
-  run_test(test_ConsecutiveCallsSameState, "test_ConsecutiveCallsSameState", 212);
-  run_test(test_ExtremeLowTemperature, "test_ExtremeLowTemperature", 237);
-  run_test(test_ExtremeHighTemperature, "test_ExtremeHighTemperature", 249);
-  run_test(test_ZeroTemperatureInNormalState, "test_ZeroTemperatureInNormalState", 262);
+  run_test(test_NormalStateRemainsNormalWhenNoThresholdCrossed, "test_NormalStateRemainsNormalWhenNoThresholdCrossed", 23);
+  run_test(test_NormalToUnderTransition, "test_NormalToUnderTransition", 36);
+  run_test(test_NormalToOverTransition, "test_NormalToOverTransition", 48);
+  run_test(test_NormalPrioritizesUnderOverOver, "test_NormalPrioritizesUnderOverOver", 62);
+  run_test(test_UnderStateRemainsUnderWhenNoExit, "test_UnderStateRemainsUnderWhenNoExit", 76);
+  run_test(test_UnderToNormalTransitionWithHysteresis, "test_UnderToNormalTransitionWithHysteresis", 91);
+  run_test(test_OverStateRemainsOverWhenNoExit, "test_OverStateRemainsOverWhenNoExit", 108);
+  run_test(test_OverToNormalTransitionWithHysteresis, "test_OverToNormalTransitionWithHysteresis", 123);
+  run_test(test_CompleteCycleNormalUnderNormal, "test_CompleteCycleNormalUnderNormal", 140);
+  run_test(test_CompleteCycleNormalOverNormal, "test_CompleteCycleNormalOverNormal", 160);
+  run_test(test_MultipleTransitionsSequence, "test_MultipleTransitionsSequence", 182);
+  run_test(test_ConsecutiveCallsSameState, "test_ConsecutiveCallsSameState", 210);
+  run_test(test_ExtremeLowTemperature, "test_ExtremeLowTemperature", 235);
+  run_test(test_ExtremeHighTemperature, "test_ExtremeHighTemperature", 247);
+  run_test(test_ZeroTemperatureInNormalState, "test_ZeroTemperatureInNormalState", 260);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();

@@ -247,11 +247,7 @@ typedef __uintmax_t uintmax_t;
 
 
 # 8 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
-typedef enum {
-  TEMPMON_STS_NORMAL = 0,
-  TEMPMON_STS_UNDER,
-  TEMPMON_STS_OVER
-} TempMon_sts_e;
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
 
 extern TempMon_sts_e Sts_e;
 
@@ -2615,37 +2611,35 @@ void tearDown(void) {}
 
 
 
-void test_InitialStateIsNormal(void) {
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 19 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- ((void *)0)
-# 19 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(19), UNITY_DISPLAY_STYLE_INT);
-}
+void test_InitialStateIsNormal(void) { UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
+# 18 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+                                      ((void *)0)
+# 18 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+                                      ), (UNITY_UINT)(18), UNITY_DISPLAY_STYLE_INT); }
 
 
 
 
 void test_NormalStateRemainsNormalWhenNoThresholdCrossed(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(27, 0, 
-# 27 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(25, 0, 
+# 25 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 27 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 25 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(28, 0, 
-# 28 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(26, 0, 
+# 26 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 28 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 26 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(0);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 32 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 30 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 32 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(32), UNITY_DISPLAY_STYLE_INT);
+# 30 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(30), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2653,19 +2647,19 @@ void test_NormalStateRemainsNormalWhenNoThresholdCrossed(void) {
 
 void test_NormalToUnderTransition(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(40, -5000, 
-# 40 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(38, -5000, 
+# 38 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 40 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 38 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(-5000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 44 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 42 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 44 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(44), UNITY_DISPLAY_STYLE_INT);
+# 42 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(42), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2673,24 +2667,24 @@ void test_NormalToUnderTransition(void) {
 
 void test_NormalToOverTransition(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(52, 50000, 
-# 52 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(50, 50000, 
+# 50 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 52 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 50 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(53, 50000, 
-# 53 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(51, 50000, 
+# 51 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 53 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 51 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(50000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 57 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 55 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 57 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(57), UNITY_DISPLAY_STYLE_INT);
+# 55 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(55), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2699,19 +2693,19 @@ void test_NormalToOverTransition(void) {
 
 void test_NormalPrioritizesUnderOverOver(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(66, 25000, 
-# 66 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(64, 25000, 
+# 64 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 66 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 64 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(25000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 70 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 68 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 70 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(70), UNITY_DISPLAY_STYLE_INT);
+# 68 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(68), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2724,19 +2718,19 @@ void test_UnderStateRemainsUnderWhenNoExit(void) {
   Sts_e = TEMPMON_STS_UNDER;
 
 
-  IsUnderExit_b_CMockExpectAndReturn(83, -3000, 
-# 83 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderExit_b_CMockExpectAndReturn(81, -3000, 
+# 81 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 83 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 81 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(-3000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 87 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 85 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 87 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_INT);
+# 85 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(85), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2747,19 +2741,19 @@ void test_UnderToNormalTransitionWithHysteresis(void) {
   Sts_e = TEMPMON_STS_UNDER;
 
 
-  IsUnderExit_b_CMockExpectAndReturn(98, 2000, 
-# 98 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderExit_b_CMockExpectAndReturn(96, 2000, 
+# 96 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 98 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 96 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(2000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 102 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 100 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 102 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(102), UNITY_DISPLAY_STYLE_INT);
+# 100 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(100), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2772,19 +2766,19 @@ void test_OverStateRemainsOverWhenNoExit(void) {
   Sts_e = TEMPMON_STS_OVER;
 
 
-  IsOverExit_b_CMockExpectAndReturn(115, 45000, 
-# 115 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverExit_b_CMockExpectAndReturn(113, 45000, 
+# 113 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 115 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 113 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(45000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 119 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 117 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 119 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_INT);
+# 117 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2795,19 +2789,19 @@ void test_OverToNormalTransitionWithHysteresis(void) {
   Sts_e = TEMPMON_STS_OVER;
 
 
-  IsOverExit_b_CMockExpectAndReturn(130, 30000, 
-# 130 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverExit_b_CMockExpectAndReturn(128, 30000, 
+# 128 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 130 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 128 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(30000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 134 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 132 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 134 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_INT);
+# 132 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(132), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2817,43 +2811,43 @@ void test_OverToNormalTransitionWithHysteresis(void) {
 
 void test_CompleteCycleNormalUnderNormal(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(144, -6000, 
-# 144 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(142, -6000, 
+# 142 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 144 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 142 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(-6000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 146 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 144 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 146 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(146), UNITY_DISPLAY_STYLE_INT);
+# 144 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(144), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsUnderExit_b_CMockExpectAndReturn(149, -4000, 
-# 149 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderExit_b_CMockExpectAndReturn(147, -4000, 
+# 147 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 149 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 147 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(-4000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 151 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 149 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 151 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(151), UNITY_DISPLAY_STYLE_INT);
+# 149 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(149), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsUnderExit_b_CMockExpectAndReturn(154, 1000, 
-# 154 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderExit_b_CMockExpectAndReturn(152, 1000, 
+# 152 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 154 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 152 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(1000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 156 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 154 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 156 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(156), UNITY_DISPLAY_STYLE_INT);
+# 154 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(154), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2861,48 +2855,48 @@ void test_CompleteCycleNormalUnderNormal(void) {
 
 void test_CompleteCycleNormalOverNormal(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(164, 55000, 
-# 164 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(162, 55000, 
+# 162 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 164 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 162 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(165, 55000, 
-# 165 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(163, 55000, 
+# 163 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 165 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 163 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(55000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 167 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 165 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 167 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(167), UNITY_DISPLAY_STYLE_INT);
+# 165 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(165), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsOverExit_b_CMockExpectAndReturn(170, 52000, 
-# 170 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverExit_b_CMockExpectAndReturn(168, 52000, 
+# 168 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 170 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 168 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(52000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 172 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 170 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 172 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(172), UNITY_DISPLAY_STYLE_INT);
+# 170 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(170), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsOverExit_b_CMockExpectAndReturn(175, 40000, 
-# 175 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverExit_b_CMockExpectAndReturn(173, 40000, 
+# 173 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 175 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 173 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(40000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 177 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 175 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 177 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(177), UNITY_DISPLAY_STYLE_INT);
+# 175 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(175), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2911,61 +2905,61 @@ void test_CompleteCycleNormalOverNormal(void) {
 
 void test_MultipleTransitionsSequence(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(186, -10000, 
-# 186 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(184, -10000, 
+# 184 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 186 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 184 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(-10000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 188 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 186 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 188 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(188), UNITY_DISPLAY_STYLE_INT);
+# 186 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(186), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsUnderExit_b_CMockExpectAndReturn(191, 5000, 
-# 191 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderExit_b_CMockExpectAndReturn(189, 5000, 
+# 189 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 191 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 189 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(5000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 193 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 191 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 193 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(193), UNITY_DISPLAY_STYLE_INT);
+# 191 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(191), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsUnderEnter_b_CMockExpectAndReturn(196, 60000, 
-# 196 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(194, 60000, 
+# 194 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 196 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 194 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(197, 60000, 
-# 197 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(195, 60000, 
+# 195 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 197 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 195 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(60000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 199 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 197 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 199 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(199), UNITY_DISPLAY_STYLE_INT);
+# 197 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(197), UNITY_DISPLAY_STYLE_INT);
 
 
-  IsOverExit_b_CMockExpectAndReturn(202, 35000, 
-# 202 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverExit_b_CMockExpectAndReturn(200, 35000, 
+# 200 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 202 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 200 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(35000);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 204 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 202 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 204 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(204), UNITY_DISPLAY_STYLE_INT);
+# 202 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(202), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -2977,58 +2971,58 @@ void test_ConsecutiveCallsSameState(void) {
   Sts_e = TEMPMON_STS_NORMAL;
 
 
-  IsUnderEnter_b_CMockExpectAndReturn(216, 0, 
-# 216 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(214, 0, 
+# 214 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 216 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 214 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(217, 0, 
+  IsOverEnter_b_CMockExpectAndReturn(215, 0, 
+# 215 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+ 0
+# 215 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ );
+  TempMon_Run(0);
+  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
 # 217 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- 0
+ ((void *)0)
 # 217 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(217), UNITY_DISPLAY_STYLE_INT);
+
+
+  IsUnderEnter_b_CMockExpectAndReturn(220, 0, 
+# 220 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+ 0
+# 220 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ );
+  IsOverEnter_b_CMockExpectAndReturn(221, 0, 
+# 221 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+ 0
+# 221 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(0);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 219 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- ((void *)0)
-# 219 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(219), UNITY_DISPLAY_STYLE_INT);
-
-
-  IsUnderEnter_b_CMockExpectAndReturn(222, 0, 
-# 222 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- 0
-# 222 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- );
-  IsOverEnter_b_CMockExpectAndReturn(223, 0, 
 # 223 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- 0
+ ((void *)0)
 # 223 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(223), UNITY_DISPLAY_STYLE_INT);
+
+
+  IsUnderEnter_b_CMockExpectAndReturn(226, 0, 
+# 226 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+ 0
+# 226 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ );
+  IsOverEnter_b_CMockExpectAndReturn(227, 0, 
+# 227 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+ 0
+# 227 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
   TempMon_Run(0);
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 225 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- ((void *)0)
-# 225 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(225), UNITY_DISPLAY_STYLE_INT);
-
-
-  IsUnderEnter_b_CMockExpectAndReturn(228, 0, 
-# 228 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- 0
-# 228 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- );
-  IsOverEnter_b_CMockExpectAndReturn(229, 0, 
 # 229 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
- 0
-# 229 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- );
-  TempMon_Run(0);
-  UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 231 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 231 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(231), UNITY_DISPLAY_STYLE_INT);
+# 229 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(229), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -3036,19 +3030,19 @@ void test_ConsecutiveCallsSameState(void) {
 
 void test_ExtremeLowTemperature(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(239, -100000, 
-# 239 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(237, -100000, 
+# 237 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 239 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 237 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(-100000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_UNDER)), (UNITY_INT)((Sts_e)), (
-# 243 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 241 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 243 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(243), UNITY_DISPLAY_STYLE_INT);
+# 241 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(241), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -3056,24 +3050,24 @@ void test_ExtremeLowTemperature(void) {
 
 void test_ExtremeHighTemperature(void) {
 
-  IsUnderEnter_b_CMockExpectAndReturn(251, 100000, 
-# 251 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(249, 100000, 
+# 249 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 251 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 249 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(252, 100000, 
-# 252 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(250, 100000, 
+# 250 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  1
-# 252 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 250 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(100000);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_OVER)), (UNITY_INT)((Sts_e)), (
-# 256 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 254 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 256 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(256), UNITY_DISPLAY_STYLE_INT);
+# 254 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(254), UNITY_DISPLAY_STYLE_INT);
 }
 
 
@@ -3082,22 +3076,22 @@ void test_ExtremeHighTemperature(void) {
 void test_ZeroTemperatureInNormalState(void) {
   Sts_e = TEMPMON_STS_NORMAL;
 
-  IsUnderEnter_b_CMockExpectAndReturn(265, 0, 
-# 265 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsUnderEnter_b_CMockExpectAndReturn(263, 0, 
+# 263 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 265 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 263 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
-  IsOverEnter_b_CMockExpectAndReturn(266, 0, 
-# 266 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+  IsOverEnter_b_CMockExpectAndReturn(264, 0, 
+# 264 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  0
-# 266 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+# 264 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
  );
 
   TempMon_Run(0);
 
   UnityAssertEqualNumber((UNITY_INT)((TEMPMON_STS_NORMAL)), (UNITY_INT)((Sts_e)), (
-# 270 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
+# 268 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 3 4
  ((void *)0)
-# 270 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
- ), (UNITY_UINT)(270), UNITY_DISPLAY_STYLE_INT);
+# 268 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c"
+ ), (UNITY_UINT)(268), UNITY_DISPLAY_STYLE_INT);
 }

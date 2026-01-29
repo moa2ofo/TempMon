@@ -11,14 +11,14 @@ void TempMon_Run(const int32_t temp_mC) {
 
   /* Update state machine based on current state and temperature */
 
-  switch (Sts_e) {
+  switch(Sts_e) {
   case TEMPMON_STS_NORMAL:
     /* If temperature below under threshold, enter UNDER state */
-    if (temp_mC < g_UnderThreshold_mC_s32) {
+    if(temp_mC < g_UnderThreshold_mC_s32) {
       Sts_e = TEMPMON_STS_UNDER;
     }
     /* Else if temperature above over threshold, enter OVER state */
-    else if (temp_mC > g_OverThreshold_mC_s32) {
+    else if(temp_mC > g_OverThreshold_mC_s32) {
       Sts_e = TEMPMON_STS_OVER;
     }
     /* Else remain in NORMAL state */
@@ -29,7 +29,7 @@ void TempMon_Run(const int32_t temp_mC) {
 
   case TEMPMON_STS_UNDER:
     /* If temperature above under threshold plus hysteresis, return to NORMAL */
-    if (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
+    if(temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
       Sts_e = TEMPMON_STS_NORMAL;
     }
     /* Else remain in UNDER state */
@@ -40,7 +40,7 @@ void TempMon_Run(const int32_t temp_mC) {
 
   case TEMPMON_STS_OVER:
     /* If temperature below over threshold minus hysteresis, return to NORMAL */
-    if (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) {
+    if(temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) {
       Sts_e = TEMPMON_STS_NORMAL;
     }
     /* Else remain in OVER state */

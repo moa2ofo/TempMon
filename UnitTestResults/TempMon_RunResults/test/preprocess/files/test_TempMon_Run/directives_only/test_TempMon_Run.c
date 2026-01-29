@@ -2879,11 +2879,7 @@ typedef __uintmax_t		uintmax_t;
 #define _GCC_WRAP_STDINT_H 
 # 7 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 2
 
-typedef enum {
-  TEMPMON_STS_NORMAL = 0,
-  TEMPMON_STS_UNDER,
-  TEMPMON_STS_OVER
-} TempMon_sts_e;
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
 
 extern TempMon_sts_e Sts_e;
 
@@ -11453,9 +11449,7 @@ void tearDown(void) {}
 /**
  * @brief Test: Initial state is NORMAL
  */
-void test_InitialStateIsNormal(void) {
-  TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e);
-}
+void test_InitialStateIsNormal(void) { TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, Sts_e); }
 
 /**
  * @brief Test: NORMAL state remains NORMAL when neither threshold is crossed
