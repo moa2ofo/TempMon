@@ -279,13 +279,7 @@ _Bool
     TempMon_IsOverAlv_b(void);
 # 2 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 1
-
-
-
-
-
-
-
+# 37 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h"
 void TempMon_Run(int32_t temp_mC);
 # 3 "utExecutionAndResults/utUnderTest/test/test_TempMon_Run.c" 2
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_TempMon_Run/mock_TempMon_priv.h" 1
