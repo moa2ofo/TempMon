@@ -31,33 +31,36 @@ void TempMon_Init(int32_t temp_mC) {
   TempMon_Run(temp_mC);
 }
 
-void TempMon_Run(int32_t temp_mC) {
-  switch(Sts_e) {
-  case TEMPMON_STS_NORMAL:
-    if(temp_mC < g_UnderThreshold_mC_s32) {
-      Sts_e = TEMPMON_STS_UNDER;
-    } else if(temp_mC > g_OverThreshold_mC_s32) {
-      Sts_e = TEMPMON_STS_OVER;
+void TempMon_Run(int32_t temp_mC)
+{
+    if (Sts_e == TEMPMON_STS_NORMAL)
+    {
+        if (temp_mC < g_UnderThreshold_mC_s32)
+        {
+            Sts_e = TEMPMON_STS_UNDER;
+        }
+        else if (temp_mC > g_OverThreshold_mC_s32)
+        {
+            Sts_e = TEMPMON_STS_OVER;
+        }
+        /* else remain TEMPMON_STS_NORMAL */
     }
-    break;
-
-  case TEMPMON_STS_UNDER:
-    if(temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
-      Sts_e = TEMPMON_STS_NORMAL;
+    else if (Sts_e == TEMPMON_STS_UNDER)
+    {
+        if (temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32))
+        {
+            Sts_e = TEMPMON_STS_NORMAL;
+        }
+        /* else remain TEMPMON_STS_UNDER */
     }
-    break;
-
-  case TEMPMON_STS_OVER:
-    if(temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) {
-      Sts_e = TEMPMON_STS_NORMAL;
+    else /* Sts_e == TEMPMON_STS_OVER */
+    {
+        if (temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32))
+        {
+            Sts_e = TEMPMON_STS_NORMAL;
+        }
+        /* else remain TEMPMON_STS_OVER */
     }
-    break;
-
-  default:
-    /* Undefined state: no action taken to maintain safety and stability */
-    break;
-  }
-  return;
 }
 TempMon_sts_e TempMon_GetSts(void) { return Sts_e; }
 
