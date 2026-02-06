@@ -15,25 +15,18 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_NORMAL_state_remains_NORMAL_when_temp_in_range(void);
-extern void test_NORMAL_to_UNDER_transition(void);
-extern void test_NORMAL_to_OVER_transition(void);
-extern void test_NORMAL_state_at_under_threshold_boundary(void);
-extern void test_NORMAL_state_at_over_threshold_boundary(void);
-extern void test_UNDER_state_remains_UNDER_when_temp_below_hysteresis(void);
-extern void test_UNDER_to_NORMAL_transition_with_hysteresis(void);
-extern void test_UNDER_state_at_hysteresis_boundary(void);
-extern void test_UNDER_state_just_above_hysteresis_boundary(void);
-extern void test_OVER_state_remains_OVER_when_temp_above_hysteresis(void);
-extern void test_OVER_to_NORMAL_transition_with_hysteresis(void);
-extern void test_OVER_state_at_hysteresis_boundary(void);
-extern void test_OVER_state_just_below_hysteresis_boundary(void);
-extern void test_cycle_NORMAL_to_UNDER_back_to_NORMAL(void);
-extern void test_cycle_NORMAL_to_OVER_back_to_NORMAL(void);
-extern void test_zero_hysteresis_UNDER_to_NORMAL(void);
-extern void test_zero_hysteresis_OVER_to_NORMAL(void);
-extern void test_large_hysteresis_UNDER_to_NORMAL(void);
-extern void test_negative_temperatures(void);
+extern void test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_just_below_UnderThreshold(void);
+extern void test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_UnderThreshold(void);
+extern void test_TempMon_Run_stays_in_NORMAL_when_temp_just_above_UnderThreshold_below_OverThreshold(void);
+extern void test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_just_above_OverThreshold(void);
+extern void test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_OverThreshold(void);
+extern void test_TempMon_Run_stays_in_NORMAL_when_temp_just_below_OverThreshold_above_UnderThreshold(void);
+extern void test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_just_above_UnderThreshold_plus_Hyst(void);
+extern void test_TempMon_Run_stays_in_UNDER_when_temp_exactly_at_UnderThreshold_plus_Hyst(void);
+extern void test_TempMon_Run_stays_in_UNDER_when_temp_just_below_UnderThreshold_plus_Hyst(void);
+extern void test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_just_below_OverThreshold_minus_Hyst(void);
+extern void test_TempMon_Run_stays_in_OVER_when_temp_exactly_at_OverThreshold_minus_Hyst(void);
+extern void test_TempMon_Run_stays_in_OVER_when_temp_just_above_OverThreshold_minus_Hyst(void);
 
 
 /*=======Mock Management=====*/
@@ -52,6 +45,9 @@ static void CMock_Destroy(void)
 {
   mock_TempMon_priv_Destroy();
 }
+
+/*=======Teardown (stub)=====*/
+void tearDown(void) {}
 
 /*=======Test Reset Options=====*/
 void resetTest(void);
@@ -101,25 +97,18 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_TempMon_Run.c");
-  run_test(test_NORMAL_state_remains_NORMAL_when_temp_in_range, "test_NORMAL_state_remains_NORMAL_when_temp_in_range", 36);
-  run_test(test_NORMAL_to_UNDER_transition, "test_NORMAL_to_UNDER_transition", 52);
-  run_test(test_NORMAL_to_OVER_transition, "test_NORMAL_to_OVER_transition", 68);
-  run_test(test_NORMAL_state_at_under_threshold_boundary, "test_NORMAL_state_at_under_threshold_boundary", 84);
-  run_test(test_NORMAL_state_at_over_threshold_boundary, "test_NORMAL_state_at_over_threshold_boundary", 100);
-  run_test(test_UNDER_state_remains_UNDER_when_temp_below_hysteresis, "test_UNDER_state_remains_UNDER_when_temp_below_hysteresis", 118);
-  run_test(test_UNDER_to_NORMAL_transition_with_hysteresis, "test_UNDER_to_NORMAL_transition_with_hysteresis", 134);
-  run_test(test_UNDER_state_at_hysteresis_boundary, "test_UNDER_state_at_hysteresis_boundary", 150);
-  run_test(test_UNDER_state_just_above_hysteresis_boundary, "test_UNDER_state_just_above_hysteresis_boundary", 167);
-  run_test(test_OVER_state_remains_OVER_when_temp_above_hysteresis, "test_OVER_state_remains_OVER_when_temp_above_hysteresis", 185);
-  run_test(test_OVER_to_NORMAL_transition_with_hysteresis, "test_OVER_to_NORMAL_transition_with_hysteresis", 201);
-  run_test(test_OVER_state_at_hysteresis_boundary, "test_OVER_state_at_hysteresis_boundary", 217);
-  run_test(test_OVER_state_just_below_hysteresis_boundary, "test_OVER_state_just_below_hysteresis_boundary", 234);
-  run_test(test_cycle_NORMAL_to_UNDER_back_to_NORMAL, "test_cycle_NORMAL_to_UNDER_back_to_NORMAL", 252);
-  run_test(test_cycle_NORMAL_to_OVER_back_to_NORMAL, "test_cycle_NORMAL_to_OVER_back_to_NORMAL", 271);
-  run_test(test_zero_hysteresis_UNDER_to_NORMAL, "test_zero_hysteresis_UNDER_to_NORMAL", 290);
-  run_test(test_zero_hysteresis_OVER_to_NORMAL, "test_zero_hysteresis_OVER_to_NORMAL", 306);
-  run_test(test_large_hysteresis_UNDER_to_NORMAL, "test_large_hysteresis_UNDER_to_NORMAL", 322);
-  run_test(test_negative_temperatures, "test_negative_temperatures", 340);
+  run_test(test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_just_below_UnderThreshold, "test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_just_below_UnderThreshold", 16);
+  run_test(test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_UnderThreshold, "test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_UnderThreshold", 28);
+  run_test(test_TempMon_Run_stays_in_NORMAL_when_temp_just_above_UnderThreshold_below_OverThreshold, "test_TempMon_Run_stays_in_NORMAL_when_temp_just_above_UnderThreshold_below_OverThreshold", 40);
+  run_test(test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_just_above_OverThreshold, "test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_just_above_OverThreshold", 52);
+  run_test(test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_OverThreshold, "test_TempMon_Run_stays_in_NORMAL_when_temp_exactly_at_OverThreshold", 64);
+  run_test(test_TempMon_Run_stays_in_NORMAL_when_temp_just_below_OverThreshold_above_UnderThreshold, "test_TempMon_Run_stays_in_NORMAL_when_temp_just_below_OverThreshold_above_UnderThreshold", 76);
+  run_test(test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_just_above_UnderThreshold_plus_Hyst, "test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_just_above_UnderThreshold_plus_Hyst", 88);
+  run_test(test_TempMon_Run_stays_in_UNDER_when_temp_exactly_at_UnderThreshold_plus_Hyst, "test_TempMon_Run_stays_in_UNDER_when_temp_exactly_at_UnderThreshold_plus_Hyst", 100);
+  run_test(test_TempMon_Run_stays_in_UNDER_when_temp_just_below_UnderThreshold_plus_Hyst, "test_TempMon_Run_stays_in_UNDER_when_temp_just_below_UnderThreshold_plus_Hyst", 112);
+  run_test(test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_just_below_OverThreshold_minus_Hyst, "test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_just_below_OverThreshold_minus_Hyst", 124);
+  run_test(test_TempMon_Run_stays_in_OVER_when_temp_exactly_at_OverThreshold_minus_Hyst, "test_TempMon_Run_stays_in_OVER_when_temp_exactly_at_OverThreshold_minus_Hyst", 136);
+  run_test(test_TempMon_Run_stays_in_OVER_when_temp_just_above_OverThreshold_minus_Hyst, "test_TempMon_Run_stays_in_OVER_when_temp_just_above_OverThreshold_minus_Hyst", 148);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();
