@@ -250,8 +250,7 @@ void test_TempMon_Run_HysteresisPreventOscillationAtOverThreshold(void) {
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
 
   /* Even closer to over-threshold */
-  TempMon_Run(
-      84999); /* 84.999°C is still above hysteresis threshold of 83.0°C */
+  TempMon_Run(84999); /* 84.999°C is still above hysteresis threshold of 83.0°C */
   TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, Sts_e);
 }
 
