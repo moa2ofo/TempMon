@@ -61,7 +61,8 @@ typedef enum
 {
     TEMPMON_STS_NORMAL = 0,
     TEMPMON_STS_UNDER,
-    TEMPMON_STS_OVER
+    TEMPMON_STS_OVER,
+    TEMPMON_ERROR
 } TempMon_sts_e;
 
 /* ===== Public configuration (extern) =====
@@ -165,19 +166,6 @@ void TempMon_Init(int32_t temp_mC);
  *
  * Update the internal state machine based on the latest temperature sample.
  *
- * The processing logic:
- * - If current state is TEMPMON_STS_NORMAL:
- *   - Enter TEMPMON_STS_UNDER if `temp_mC < g_UnderThreshold_mC_s32`.
- *   - Else enter TEMPMON_STS_OVER if `temp_mC > g_OverThreshold_mC_s32`.
- *   - Else remain TEMPMON_STS_NORMAL.
- * - If current state is TEMPMON_STS_UNDER:
- *   - Return to TEMPMON_STS_NORMAL if `temp_mC > (g_UnderThreshold_mC_s32 +
- *     g_Hyst_mC_s32)`.
- *   - Else remain TEMPMON_STS_UNDER.
- * - If current state is TEMPMON_STS_OVER:
- *   - Return to TEMPMON_STS_NORMAL if `temp_mC < (g_OverThreshold_mC_s32 -
- *     g_Hyst_mC_s32)`.
- *   - Else remain TEMPMON_STS_OVER.
  *
  * @par Interface summary
  *
@@ -187,7 +175,7 @@ void TempMon_Init(int32_t temp_mC);
  * | g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
  * | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
  * | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0                                       | [mdegC]  |
- * | Sts_e                    | X  |  X  | TempMon_sts_e (static)   |   -   |           - |           - |         - | [TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / _STS_OVER] | [-]      |
+ * | Sts_e                    | X  |  X  | TempMon_sts_e (static)   |   -   |           - |           - |         - | [TEMPMON_STS_NORMAL,..,TEMPMON_ERROR] | [-]      |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -209,12 +197,15 @@ void TempMon_Init(int32_t temp_mC);
  *   else (no)
  *     :stay TEMPMON_STS_UNDER;
  *   endif
- * else (TEMPMON_STS_OVER)
+ * elseif(TEMPMON_STS_OVER)
  *   if (temp_mC < g_OverThreshold_mC_s32 - g_Hyst_mC_s32) then (yes)
  *     :Sts_e = TEMPMON_STS_NORMAL;
  *   else (no)
  *     :stay TEMPMON_STS_OVER;
  *   endif
+ * else (TEMPMON_ERROR)
+ *     :Sts_e = TEMPMON_STS_NORMAL;
+ *     :temp_mC = 0:
  * endif
  * stop
  * @enduml
