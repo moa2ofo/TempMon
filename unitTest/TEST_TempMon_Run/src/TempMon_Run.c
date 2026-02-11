@@ -10,7 +10,7 @@ int32_t g_Hyst_mC_s32 = 0;
 /* FUNCTION TO TEST */
 
 
-void TempMon_Run(const int32_t temp_mC) {
+void TempMon_Run(int32_t temp_mC) {
   /** 
      * @brief Static status variable holding the current temperature monitor state.
      * Initialized to TEMPMON_STS_NORMAL.
@@ -21,12 +21,10 @@ void TempMon_Run(const int32_t temp_mC) {
   if(Sts_e == TEMPMON_STS_NORMAL) {
     if(temp_mC < g_UnderThreshold_mC_s32) {
       Sts_e = TEMPMON_STS_UNDER;
+    } else if(temp_mC > g_OverThreshold_mC_s32) {
+      Sts_e = TEMPMON_STS_OVER;
     } else {
-      if(temp_mC > g_OverThreshold_mC_s32) {
-        Sts_e = TEMPMON_STS_OVER;
-      } else {
-        /* Stay in TEMPMON_STS_NORMAL state */
-      }
+      /* Stay in TEMPMON_STS_NORMAL state */
     }
   } else if(Sts_e == TEMPMON_STS_UNDER) {
     if(temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) {
