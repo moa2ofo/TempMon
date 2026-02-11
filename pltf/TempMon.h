@@ -163,13 +163,14 @@ void TempMon_Init(int32_t temp_mC);
  *
  * @par Interface summary
  *
- * | Interface                 | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range                                          | Data unit |
- * |--------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------------------------------------|----------|
- * | temp_mC                  | X  |  X  | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
- * | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0                                       | [mdegC]  |
- * | Sts_e                    | X  |  X  | TempMon_sts_e (static)   |   -   |           - |           - |         - | [TEMPMON_STS_NORMAL,..,TEMPMON_ERROR] | [-]      |
+ * | Interface                | In | Out | Data type / Signature    | Data factor | Data offset | Data size | Data range                             | Data unit |
+ * |--------------------------|:--:|:---:|--------------------------|------------:|------------:|----------:|----------------------------------------|----------|
+ * | temp_mC                  | X  |     | int32_t                  |           1 |           0 |         1 | implementation-defined                 | [mdegC]  |
+ * | g_UnderThreshold_mC_s32  | X  |     | int32_t                  |           1 |           0 |         1 | implementation-defined                 | [mdegC]  |
+ * | g_OverThreshold_mC_s32   | X  |     | int32_t                  |           1 |           0 |         1 | implementation-defined                 | [mdegC]  |
+ * | g_Hyst_mC_s32            | X  |     | int32_t                  |           1 |           0 |         1 | typically >= 0                         | [mdegC]  |
+ * | Sts_e                    | X  |  X  | TempMon_sts_e            |           - |           - |         - | [TEMPMON_STS_NORMAL,..,TEMPMON_ERROR]  | [-]      |
+ * | returned Val             |    |  X  | int32_t                  |           1 |           0 |         1 | implementation-defined                 | [mdegC]  |
  *
  * @par Activity diagram (PlantUML)
  *
@@ -201,6 +202,7 @@ void TempMon_Init(int32_t temp_mC);
  *     :Sts_e = TEMPMON_STS_NORMAL;
  *     :temp_mC = 0:
  * endif
+ * return temp_mC
  * stop
  * @enduml
  *
@@ -209,7 +211,7 @@ void TempMon_Init(int32_t temp_mC);
  *
  * @return void
  */
-void TempMon_Run(int32_t temp_mC);
+int32_t TempMon_Run(int32_t temp_mC);
 
 /**
  * @brief Get the current status of the temperature monitor.
