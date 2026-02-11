@@ -11,7 +11,7 @@ int32_t g_Hyst_mC_s32 = 0;
 
 
 void TempMon_Run(int32_t temp_mC) {
-  /** 
+  /**
      * @brief Static status variable holding the current temperature monitor state.
      * Initialized to TEMPMON_STS_NORMAL.
      */
