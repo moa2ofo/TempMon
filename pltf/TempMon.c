@@ -14,8 +14,6 @@ void TempMon_Init(int32_t temp_mC) {
   TempMon_Run(temp_mC);
 }
 
-
-
 TempMon_sts_e TempMon_GetSts(void) { return Sts_e; }
 
 bool TempMon_IsUnderAlv_b(void) { return (Sts_e == TEMPMON_STS_UNDER); }

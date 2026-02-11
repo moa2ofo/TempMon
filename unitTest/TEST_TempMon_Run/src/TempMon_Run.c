@@ -9,14 +9,13 @@ TempMon_sts_e Sts_e = TEMPMON_STS_NORMAL;
 
 /* FUNCTION TO TEST */
 
-
 void TempMon_Run(int32_t temp_mC) {
-  switch (Sts_e) {
+  switch(Sts_e) {
   case TEMPMON_STS_NORMAL:
   default: {
-    if ((temp_mC < g_UnderThreshold_mC_s32) == true) {
+    if((temp_mC < g_UnderThreshold_mC_s32) == true) {
       Sts_e = TEMPMON_STS_UNDER;
-    } else if ((temp_mC > g_OverThreshold_mC_s32) == true) {
+    } else if((temp_mC > g_OverThreshold_mC_s32) == true) {
       Sts_e = TEMPMON_STS_OVER;
     } else {
       /* stay NORMAL */
@@ -25,7 +24,7 @@ void TempMon_Run(int32_t temp_mC) {
   }
 
   case TEMPMON_STS_UNDER: {
-    if ((temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) == true) {
+    if((temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)) == true) {
       Sts_e = TEMPMON_STS_NORMAL;
     } else {
       /* stay UNDER */
@@ -34,7 +33,7 @@ void TempMon_Run(int32_t temp_mC) {
   }
 
   case TEMPMON_STS_OVER: {
-    if ((temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) == true) {
+    if((temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)) == true) {
       Sts_e = TEMPMON_STS_NORMAL;
     } else {
       /* stay OVER */
