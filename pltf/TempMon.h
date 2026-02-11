@@ -165,7 +165,7 @@ void TempMon_Init(int32_t temp_mC);
  *
  * | Interface                 | In | Out | Data type / Signature    | Param | Data factor | Data offset | Data size | Data range                                          | Data unit |
  * |--------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------------------------------------|----------|
- * | temp_mC                  | X  |     | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
+ * | temp_mC                  | X  |  X  | int32_t                  |   X   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
  * | g_UnderThreshold_mC_s32  | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
  * | g_OverThreshold_mC_s32   | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | implementation-defined                               | [mdegC]  |
  * | g_Hyst_mC_s32            | X  |     | int32_t (extern)         |   -   |           1 |           0 |         1 | typically >= 0                                       | [mdegC]  |
