@@ -1,5 +1,5 @@
-#include <ParserCore_Init.h>
 #include "unity.h"
+#include <ParserCore_Init.h>
 
 #include "mock_ParserApp.h"
 #include "mock_ParserCore.h"
@@ -10,7 +10,4 @@
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_ParserCore_Init(void)
-{
-    TEST_IGNORE_MESSAGE("Auto-generated stub test");
-}
+void test_ParserCore_Init(void) { TEST_IGNORE_MESSAGE("Auto-generated stub test"); }

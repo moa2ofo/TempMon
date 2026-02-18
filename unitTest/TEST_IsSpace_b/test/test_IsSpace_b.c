@@ -1,5 +1,5 @@
-#include <IsSpace_b.h>
 #include "unity.h"
+#include <IsSpace_b.h>
 
 #include "mock_ParserApp.h"
 #include "mock_ParserCore.h"
@@ -10,7 +10,4 @@
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_IsSpace_b(void)
-{
-    TEST_IGNORE_MESSAGE("Auto-generated stub test");
-}
+void test_IsSpace_b(void) { TEST_IGNORE_MESSAGE("Auto-generated stub test"); }

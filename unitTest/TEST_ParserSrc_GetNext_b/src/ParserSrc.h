@@ -6,8 +6,8 @@
 #ifndef PARSERSRC_H
 #define PARSERSRC_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /**
  * \brief Initialize the source with a built-in test string.
@@ -24,6 +24,6 @@ void ParserSrc_Init(void);
 /**
  * \brief Return the full source string (for debugging).
  */
-const char* ParserSrc_GetText_pc(void);
+const char *ParserSrc_GetText_pc(void);
 
 #endif /* PARSERSRC_H */

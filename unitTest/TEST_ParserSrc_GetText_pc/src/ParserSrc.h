@@ -6,8 +6,8 @@
 #ifndef PARSERSRC_H
 #define PARSERSRC_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /**
  * \brief Initialize the source with a built-in test string.
@@ -20,7 +20,7 @@ void ParserSrc_Init(void);
  * \param ch_pu8 Output character pointer
  * \return true if a byte is available, false if end-of-source.
  */
-bool ParserSrc_GetNext_b(uint8_t* ch_pu8);
+bool ParserSrc_GetNext_b(uint8_t *ch_pu8);
 
 /**
  * \brief Return the full source string (for debugging).

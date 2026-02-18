@@ -7,6 +7,6 @@
 #include "TempMon.h"
 #include "TempMon_priv.h"
 
-void PrintToken(const ParserCore_token_t * token_pt);
+void PrintToken(const ParserCore_token_t *token_pt);
 
 #endif /* TEST_PRINTTOKEN_H */

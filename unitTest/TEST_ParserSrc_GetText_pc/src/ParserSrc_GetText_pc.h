@@ -7,8 +7,8 @@
 #include "TempMon.h"
 #include "TempMon_priv.h"
 
-const char * ParserSrc_GetText_pc(void);
-const char * get_SrcText_pc(void);
-void set_SrcText_pc(const char * val);
+const char *ParserSrc_GetText_pc(void);
+const char *get_SrcText_pc(void);
+void set_SrcText_pc(const char *val);
 
 #endif /* TEST_PARSERSRC_GETTEXT_PC_H */

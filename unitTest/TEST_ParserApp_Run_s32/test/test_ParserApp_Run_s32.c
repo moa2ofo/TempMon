@@ -1,5 +1,5 @@
-#include <ParserApp_Run_s32.h>
 #include "unity.h"
+#include <ParserApp_Run_s32.h>
 
 #include "mock_ParserApp.h"
 #include "mock_ParserCore.h"
@@ -10,7 +10,4 @@
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_ParserApp_Run_s32(void)
-{
-    TEST_IGNORE_MESSAGE("Auto-generated stub test");
-}
+void test_ParserApp_Run_s32(void) { TEST_IGNORE_MESSAGE("Auto-generated stub test"); }

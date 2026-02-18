@@ -6,24 +6,17 @@
 #ifndef PARSERCORE_H
 #define PARSERCORE_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /* ======================== Public Types ======================== */
 
-typedef enum
-{
-    ParserCore_tokenTypeWord_e = 0,
-    ParserCore_tokenTypeNumber_e,
-    ParserCore_tokenTypeSymbol_e,
-    ParserCore_tokenTypeQuoted_e
-} ParserCore_tokenType_e;
+typedef enum { ParserCore_tokenTypeWord_e = 0, ParserCore_tokenTypeNumber_e, ParserCore_tokenTypeSymbol_e, ParserCore_tokenTypeQuoted_e } ParserCore_tokenType_e;
 
-typedef struct
-{
-    ParserCore_tokenType_e type_e;
-    uint16_t               start_u16;
-    uint16_t               length_u16;
+typedef struct {
+  ParserCore_tokenType_e type_e;
+  uint16_t start_u16;
+  uint16_t length_u16;
 } ParserCore_token_t;
 
 /* ======================== Public API ======================== */
@@ -61,14 +54,14 @@ uint16_t ParserCore_GetTokenCnt_u16(void);
  *
  * \return true if token exists, false otherwise.
  */
-bool ParserCore_GetToken_u16(uint16_t idx_u16, ParserCore_token_t* token_pt);
+bool ParserCore_GetToken_u16(uint16_t idx_u16, ParserCore_token_t *token_pt);
 
 /**
  * \brief Get a pointer to the internal input buffer.
  *
  * The buffer contains all fed characters (up to capacity).
  */
-const char* ParserCore_GetInputBuf_pc(void);
+const char *ParserCore_GetInputBuf_pc(void);
 
 /* ======================== Shared Global ======================== */
 /* Used by other translation units to test parser/extern resolution. */
