@@ -69,10 +69,52 @@ include CMakeFiles/new.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/new.dir/flags.make
 
+CMakeFiles/new.dir/cfg/ParserApp.c.o: CMakeFiles/new.dir/flags.make
+CMakeFiles/new.dir/cfg/ParserApp.c.o: /workspace/cfg/ParserApp.c
+CMakeFiles/new.dir/cfg/ParserApp.c.o: CMakeFiles/new.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/cfg/ParserApp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/cfg/ParserApp.c.o -MF CMakeFiles/new.dir/cfg/ParserApp.c.o.d -o CMakeFiles/new.dir/cfg/ParserApp.c.o -c /workspace/cfg/ParserApp.c
+
+CMakeFiles/new.dir/cfg/ParserApp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/cfg/ParserApp.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/cfg/ParserApp.c > CMakeFiles/new.dir/cfg/ParserApp.c.i
+
+CMakeFiles/new.dir/cfg/ParserApp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/cfg/ParserApp.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/cfg/ParserApp.c -o CMakeFiles/new.dir/cfg/ParserApp.c.s
+
+CMakeFiles/new.dir/cfg/ParserCore.c.o: CMakeFiles/new.dir/flags.make
+CMakeFiles/new.dir/cfg/ParserCore.c.o: /workspace/cfg/ParserCore.c
+CMakeFiles/new.dir/cfg/ParserCore.c.o: CMakeFiles/new.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/new.dir/cfg/ParserCore.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/cfg/ParserCore.c.o -MF CMakeFiles/new.dir/cfg/ParserCore.c.o.d -o CMakeFiles/new.dir/cfg/ParserCore.c.o -c /workspace/cfg/ParserCore.c
+
+CMakeFiles/new.dir/cfg/ParserCore.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/cfg/ParserCore.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/cfg/ParserCore.c > CMakeFiles/new.dir/cfg/ParserCore.c.i
+
+CMakeFiles/new.dir/cfg/ParserCore.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/cfg/ParserCore.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/cfg/ParserCore.c -o CMakeFiles/new.dir/cfg/ParserCore.c.s
+
+CMakeFiles/new.dir/cfg/ParserSrc.c.o: CMakeFiles/new.dir/flags.make
+CMakeFiles/new.dir/cfg/ParserSrc.c.o: /workspace/cfg/ParserSrc.c
+CMakeFiles/new.dir/cfg/ParserSrc.c.o: CMakeFiles/new.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/new.dir/cfg/ParserSrc.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/cfg/ParserSrc.c.o -MF CMakeFiles/new.dir/cfg/ParserSrc.c.o.d -o CMakeFiles/new.dir/cfg/ParserSrc.c.o -c /workspace/cfg/ParserSrc.c
+
+CMakeFiles/new.dir/cfg/ParserSrc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/new.dir/cfg/ParserSrc.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/cfg/ParserSrc.c > CMakeFiles/new.dir/cfg/ParserSrc.c.i
+
+CMakeFiles/new.dir/cfg/ParserSrc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/new.dir/cfg/ParserSrc.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/cfg/ParserSrc.c -o CMakeFiles/new.dir/cfg/ParserSrc.c.s
+
 CMakeFiles/new.dir/pltf/TempMon.c.o: CMakeFiles/new.dir/flags.make
 CMakeFiles/new.dir/pltf/TempMon.c.o: /workspace/pltf/TempMon.c
 CMakeFiles/new.dir/pltf/TempMon.c.o: CMakeFiles/new.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/new.dir/pltf/TempMon.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/new.dir/pltf/TempMon.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/new.dir/pltf/TempMon.c.o -MF CMakeFiles/new.dir/pltf/TempMon.c.o.d -o CMakeFiles/new.dir/pltf/TempMon.c.o -c /workspace/pltf/TempMon.c
 
 CMakeFiles/new.dir/pltf/TempMon.c.i: cmake_force
@@ -85,15 +127,21 @@ CMakeFiles/new.dir/pltf/TempMon.c.s: cmake_force
 
 # Object files for target new
 new_OBJECTS = \
+"CMakeFiles/new.dir/cfg/ParserApp.c.o" \
+"CMakeFiles/new.dir/cfg/ParserCore.c.o" \
+"CMakeFiles/new.dir/cfg/ParserSrc.c.o" \
 "CMakeFiles/new.dir/pltf/TempMon.c.o"
 
 # External object files for target new
 new_EXTERNAL_OBJECTS =
 
+libnew.a: CMakeFiles/new.dir/cfg/ParserApp.c.o
+libnew.a: CMakeFiles/new.dir/cfg/ParserCore.c.o
+libnew.a: CMakeFiles/new.dir/cfg/ParserSrc.c.o
 libnew.a: CMakeFiles/new.dir/pltf/TempMon.c.o
 libnew.a: CMakeFiles/new.dir/build.make
 libnew.a: CMakeFiles/new.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libnew.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libnew.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/new.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/new.dir/link.txt --verbose=$(VERBOSE)
 

@@ -8,6 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/workspace/cfg/ParserApp.c" "CMakeFiles/new.dir/cfg/ParserApp.c.o" "gcc" "CMakeFiles/new.dir/cfg/ParserApp.c.o.d"
+  "/workspace/cfg/ParserCore.c" "CMakeFiles/new.dir/cfg/ParserCore.c.o" "gcc" "CMakeFiles/new.dir/cfg/ParserCore.c.o.d"
+  "/workspace/cfg/ParserSrc.c" "CMakeFiles/new.dir/cfg/ParserSrc.c.o" "gcc" "CMakeFiles/new.dir/cfg/ParserSrc.c.o.d"
   "/workspace/pltf/TempMon.c" "CMakeFiles/new.dir/pltf/TempMon.c.o" "gcc" "CMakeFiles/new.dir/pltf/TempMon.c.o.d"
   )
 

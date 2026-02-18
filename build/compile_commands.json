@@ -1,6 +1,24 @@
 [
 {
   "directory": "/workspace/build",
+  "command": "/usr/bin/cc  -I/workspace/pltf -I/workspace/cfg -O3 -DNDEBUG -Wall -Wextra -Wpedantic -o CMakeFiles/new.dir/cfg/ParserApp.c.o -c /workspace/cfg/ParserApp.c",
+  "file": "/workspace/cfg/ParserApp.c",
+  "output": "CMakeFiles/new.dir/cfg/ParserApp.c.o"
+},
+{
+  "directory": "/workspace/build",
+  "command": "/usr/bin/cc  -I/workspace/pltf -I/workspace/cfg -O3 -DNDEBUG -Wall -Wextra -Wpedantic -o CMakeFiles/new.dir/cfg/ParserCore.c.o -c /workspace/cfg/ParserCore.c",
+  "file": "/workspace/cfg/ParserCore.c",
+  "output": "CMakeFiles/new.dir/cfg/ParserCore.c.o"
+},
+{
+  "directory": "/workspace/build",
+  "command": "/usr/bin/cc  -I/workspace/pltf -I/workspace/cfg -O3 -DNDEBUG -Wall -Wextra -Wpedantic -o CMakeFiles/new.dir/cfg/ParserSrc.c.o -c /workspace/cfg/ParserSrc.c",
+  "file": "/workspace/cfg/ParserSrc.c",
+  "output": "CMakeFiles/new.dir/cfg/ParserSrc.c.o"
+},
+{
+  "directory": "/workspace/build",
   "command": "/usr/bin/cc  -I/workspace/pltf -I/workspace/cfg -O3 -DNDEBUG -Wall -Wextra -Wpedantic -o CMakeFiles/new.dir/pltf/TempMon.c.o -c /workspace/pltf/TempMon.c",
   "file": "/workspace/pltf/TempMon.c",
   "output": "CMakeFiles/new.dir/pltf/TempMon.c.o"

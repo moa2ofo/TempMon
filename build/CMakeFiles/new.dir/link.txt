@@ -1,2 +1,2 @@
-/usr/bin/ar qc libnew.a CMakeFiles/new.dir/pltf/TempMon.c.o
+/usr/bin/ar qc libnew.a CMakeFiles/new.dir/cfg/ParserApp.c.o CMakeFiles/new.dir/cfg/ParserCore.c.o CMakeFiles/new.dir/cfg/ParserSrc.c.o CMakeFiles/new.dir/pltf/TempMon.c.o
 /usr/bin/ranlib libnew.a
