@@ -52,7 +52,7 @@ jobs:
       - name: Build Docker image + Generate test units
         run: |
           cd unitTestLauncher
-          python run_docker.py build --tag llvm-c-parser:latest --file DockerFolderTestGenCfg
+          python run_docker.py build --tag llvm-c-parser:latest --file Dockerfile
 
           MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" \
           python run_docker.py cmd --host-dir "${{ github.workspace }}" -- \
