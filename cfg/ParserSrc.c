@@ -37,4 +37,6 @@ bool ParserSrc_GetNext_b(uint8_t *ch_pu8) {
   return l_ok_b;
 }
 
-const char *ParserSrc_GetText_pc(void) { return SrcText_pc; }
+const char *ParserSrc_GetText_pc(void) {
+  return SrcText_pc;
+}

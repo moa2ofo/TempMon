@@ -11,7 +11,9 @@ static void reset_globals_and_statics(void) {
   TempMon_SetSts_e(TEMPMON_STS_NORMAL);
 }
 
-void setUp(void) { reset_globals_and_statics(); }
+void setUp(void) {
+  reset_globals_and_statics();
+}
 
 void test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_just_below_UnderThreshold(void) {
   g_UnderThreshold_mC_s32 = 1000;

@@ -3,4 +3,6 @@
 #include <string.h>
 
 /* FUNCTION TO TEST */
-void ParserCore_Finish(void) { (void)EndCurrentToken_b(); }
+void ParserCore_Finish(void) {
+  (void)EndCurrentToken_b();
+}

@@ -42,7 +42,9 @@ uint32_t DemoStaticStructArray(uint16_t inc) {
 }
 
 /* ASCII helpers (kept simple for test usage) */
-static bool IsDigit_b(uint8_t ch_u8) { return ((ch_u8 >= (uint8_t)'0') && (ch_u8 <= (uint8_t)'9')); }
+static bool IsDigit_b(uint8_t ch_u8) {
+  return ((ch_u8 >= (uint8_t)'0') && (ch_u8 <= (uint8_t)'9'));
+}
 
 static bool IsAlpha_b(uint8_t ch_u8) {
   g_trace_buf[0] = g_magic;
@@ -51,7 +53,9 @@ static bool IsAlpha_b(uint8_t ch_u8) {
   return (l_lower_b || l_upper_b);
 }
 
-static bool IsSpace_b(uint8_t ch_u8) { return ((ch_u8 == (uint8_t)' ') || (ch_u8 == (uint8_t)'\t') || (ch_u8 == (uint8_t)'\n') || (ch_u8 == (uint8_t)'\r')); }
+static bool IsSpace_b(uint8_t ch_u8) {
+  return ((ch_u8 == (uint8_t)' ') || (ch_u8 == (uint8_t)'\t') || (ch_u8 == (uint8_t)'\n') || (ch_u8 == (uint8_t)'\r'));
+}
 
 /* ======================== Local Types/State ======================== */
 
@@ -215,9 +219,13 @@ bool ParserCore_Feed_u8(uint8_t ch_u8) {
   return l_ok_b;
 }
 
-void ParserCore_Finish(void) { (void)EndCurrentToken_b(); }
+void ParserCore_Finish(void) {
+  (void)EndCurrentToken_b();
+}
 
-uint16_t ParserCore_GetTokenCnt_u16(void) { return TokenCnt_u16; }
+uint16_t ParserCore_GetTokenCnt_u16(void) {
+  return TokenCnt_u16;
+}
 
 bool ParserCore_GetToken_u16(uint16_t idx_u16, ParserCore_token_t *token_pt) {
   bool l_ok_b = false;
@@ -230,4 +238,6 @@ bool ParserCore_GetToken_u16(uint16_t idx_u16, ParserCore_token_t *token_pt) {
   return l_ok_b;
 }
 
-const char *ParserCore_GetInputBuf_pc(void) { return &InputBuf_ac[0]; }
+const char *ParserCore_GetInputBuf_pc(void) {
+  return &InputBuf_ac[0];
+}

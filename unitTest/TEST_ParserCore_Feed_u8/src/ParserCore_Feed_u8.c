@@ -4,21 +4,37 @@
 
 /* static globals (copied) */
 static char InputBuf_ac[PARSERCORE_INPUT_CAP_U16];
-char *get_InputBuf_ac_ptr(void) { return InputBuf_ac; }
-size_t get_InputBuf_ac_size(void) { return (size_t)256; }
+char *get_InputBuf_ac_ptr(void) {
+  return InputBuf_ac;
+}
+size_t get_InputBuf_ac_size(void) {
+  return (size_t)256;
+}
 void set_InputBuf_ac(const char *src, size_t n) {
   size_t m = (n < (size_t)256) ? n : (size_t)256;
   memcpy(InputBuf_ac, src, m * sizeof(char));
 }
 static uint16_t InputLen_u16;
-uint16_t get_InputLen_u16(void) { return InputLen_u16; }
-void set_InputLen_u16(uint16_t val) { InputLen_u16 = val; }
+uint16_t get_InputLen_u16(void) {
+  return InputLen_u16;
+}
+void set_InputLen_u16(uint16_t val) {
+  InputLen_u16 = val;
+}
 static Tokenize_state_e State_e;
-Tokenize_state_e get_State_e(void) { return State_e; }
-void set_State_e(Tokenize_state_e val) { State_e = val; }
+Tokenize_state_e get_State_e(void) {
+  return State_e;
+}
+void set_State_e(Tokenize_state_e val) {
+  State_e = val;
+}
 static uint16_t TokStart_u16;
-uint16_t get_TokStart_u16(void) { return TokStart_u16; }
-void set_TokStart_u16(uint16_t val) { TokStart_u16 = val; }
+uint16_t get_TokStart_u16(void) {
+  return TokStart_u16;
+}
+void set_TokStart_u16(uint16_t val) {
+  TokStart_u16 = val;
+}
 
 /* FUNCTION TO TEST */
 bool ParserCore_Feed_u8(uint8_t ch_u8) {

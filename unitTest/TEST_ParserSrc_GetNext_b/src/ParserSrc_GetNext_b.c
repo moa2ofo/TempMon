@@ -4,11 +4,19 @@
 
 /* static globals (copied) */
 static uint16_t SrcIdx_u16;
-uint16_t get_SrcIdx_u16(void) { return SrcIdx_u16; }
-void set_SrcIdx_u16(uint16_t val) { SrcIdx_u16 = val; }
+uint16_t get_SrcIdx_u16(void) {
+  return SrcIdx_u16;
+}
+void set_SrcIdx_u16(uint16_t val) {
+  SrcIdx_u16 = val;
+}
 static const char *SrcText_pc = "alpha 123 _id \"quoted value\" + - * / end";
-const char *get_SrcText_pc(void) { return SrcText_pc; }
-void set_SrcText_pc(const char *val) { SrcText_pc = val; }
+const char *get_SrcText_pc(void) {
+  return SrcText_pc;
+}
+void set_SrcText_pc(const char *val) {
+  SrcText_pc = val;
+}
 
 /* FUNCTION TO TEST */
 bool ParserSrc_GetNext_b(uint8_t *ch_pu8) {

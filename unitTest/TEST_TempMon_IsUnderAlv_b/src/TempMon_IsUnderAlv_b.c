@@ -4,8 +4,14 @@
 
 /* static globals (copied) */
 static TempMon_sts_e Sts_e;
-TempMon_sts_e get_Sts_e(void) { return Sts_e; }
-void set_Sts_e(TempMon_sts_e val) { Sts_e = val; }
+TempMon_sts_e get_Sts_e(void) {
+  return Sts_e;
+}
+void set_Sts_e(TempMon_sts_e val) {
+  Sts_e = val;
+}
 
 /* FUNCTION TO TEST */
-bool TempMon_IsUnderAlv_b(void) { return (Sts_e == TEMPMON_STS_UNDER); }
+bool TempMon_IsUnderAlv_b(void) {
+  return (Sts_e == TEMPMON_STS_UNDER);
+}

@@ -7,7 +7,11 @@
 #include "mock_TempMon.h"
 #include "mock_TempMon_priv.h"
 
-void setUp(void) {}
-void tearDown(void) {}
+void setUp(void) {
+}
+void tearDown(void) {
+}
 
-void test_ParserApp_Run_s32(void) { TEST_IGNORE_MESSAGE("Auto-generated stub test"); }
+void test_ParserApp_Run_s32(void) {
+  TEST_IGNORE_MESSAGE("Auto-generated stub test");
+}

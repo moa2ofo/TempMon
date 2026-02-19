@@ -7,8 +7,12 @@ extern uint32_t g_ParserCore_TokenCnt_u32;
 
 /* static globals (copied) */
 static uint16_t SrcIdx_u16;
-uint16_t get_SrcIdx_u16(void) { return SrcIdx_u16; }
-void set_SrcIdx_u16(uint16_t val) { SrcIdx_u16 = val; }
+uint16_t get_SrcIdx_u16(void) {
+  return SrcIdx_u16;
+}
+void set_SrcIdx_u16(uint16_t val) {
+  SrcIdx_u16 = val;
+}
 
 /* FUNCTION TO TEST */
 void ParserSrc_Init(void) {

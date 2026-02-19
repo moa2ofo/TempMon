@@ -4,14 +4,26 @@
 
 /* static globals (copied) */
 static uint16_t InputLen_u16;
-uint16_t get_InputLen_u16(void) { return InputLen_u16; }
-void set_InputLen_u16(uint16_t val) { InputLen_u16 = val; }
+uint16_t get_InputLen_u16(void) {
+  return InputLen_u16;
+}
+void set_InputLen_u16(uint16_t val) {
+  InputLen_u16 = val;
+}
 static Tokenize_state_e State_e;
-Tokenize_state_e get_State_e(void) { return State_e; }
-void set_State_e(Tokenize_state_e val) { State_e = val; }
+Tokenize_state_e get_State_e(void) {
+  return State_e;
+}
+void set_State_e(Tokenize_state_e val) {
+  State_e = val;
+}
 static uint16_t TokStart_u16;
-uint16_t get_TokStart_u16(void) { return TokStart_u16; }
-void set_TokStart_u16(uint16_t val) { TokStart_u16 = val; }
+uint16_t get_TokStart_u16(void) {
+  return TokStart_u16;
+}
+void set_TokStart_u16(uint16_t val) {
+  TokStart_u16 = val;
+}
 
 /* FUNCTION TO TEST */
 static bool EndCurrentToken_b(void) {
