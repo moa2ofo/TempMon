@@ -1,6 +1,6 @@
 GIT ACTION FAILED
-Run: https://github.com/moa2ofo/TempMon/actions/runs/22175226160
+Run: https://github.com/moa2ofo/TempMon/actions/runs/22181731872
 docker info: performed
 swCmpBuildCheck: performed
 unit tests: failed
-Timestamp (UTC): 2026-02-19T09:08:44Z
+Timestamp (UTC): 2026-02-19T12:28:52Z
