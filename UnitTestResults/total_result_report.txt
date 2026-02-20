@@ -1,11 +1,11 @@
 | function_name        | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  | Tester |
 |----------------------|--------|--------|--------|---------|-----------|--------------|----------------|--------|
-| TempMon_IsUnderAlv_b | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:28 | root   |
-| TempMon_Init         | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:28 | root   |
-| IsOverEnter_b        | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:28 | root   |
-| IsUnderEnter_b       | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:28 | root   |
-| TempMon_IsOverAlv_b  | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:28 | root   |
-| IsOverExit_b         | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:28 | root   |
-| IsUnderExit_b        | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:28 | root   |
-| TempMon_Run          | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:28 | root   |
-| TempMon_GetSts       | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:28 | root   |
+| TempMon_IsUnderAlv_b | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:31 | root   |
+| TempMon_Init         | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:31 | root   |
+| IsOverEnter_b        | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:31 | root   |
+| IsUnderEnter_b       | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:31 | root   |
+| TempMon_IsOverAlv_b  | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:31 | root   |
+| IsOverExit_b         | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:31 | root   |
+| IsUnderExit_b        | 1      | 0      | 0      | 1       | 0.0%      | -%           | 20/02/26 12:31 | root   |
+| TempMon_Run          | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:31 | root   |
+| TempMon_GetSts       | FAILED | FAILED | FAILED | FAILED  | FAILED    | FAILED       | 20/02/26 12:31 | root   |
