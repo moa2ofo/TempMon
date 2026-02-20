@@ -1,10 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/new.dir/cfg/ParserApp.c.o"
-  "CMakeFiles/new.dir/cfg/ParserApp.c.o.d"
-  "CMakeFiles/new.dir/cfg/ParserCore.c.o"
-  "CMakeFiles/new.dir/cfg/ParserCore.c.o.d"
-  "CMakeFiles/new.dir/cfg/ParserSrc.c.o"
-  "CMakeFiles/new.dir/cfg/ParserSrc.c.o.d"
   "CMakeFiles/new.dir/pltf/TempMon.c.o"
   "CMakeFiles/new.dir/pltf/TempMon.c.o.d"
   "libnew.a"

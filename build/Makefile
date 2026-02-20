@@ -129,78 +129,6 @@ new/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/build
 .PHONY : new/fast
 
-cfg/ParserApp.o: cfg/ParserApp.c.o
-.PHONY : cfg/ParserApp.o
-
-# target to build an object file
-cfg/ParserApp.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserApp.c.o
-.PHONY : cfg/ParserApp.c.o
-
-cfg/ParserApp.i: cfg/ParserApp.c.i
-.PHONY : cfg/ParserApp.i
-
-# target to preprocess a source file
-cfg/ParserApp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserApp.c.i
-.PHONY : cfg/ParserApp.c.i
-
-cfg/ParserApp.s: cfg/ParserApp.c.s
-.PHONY : cfg/ParserApp.s
-
-# target to generate assembly for a file
-cfg/ParserApp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserApp.c.s
-.PHONY : cfg/ParserApp.c.s
-
-cfg/ParserCore.o: cfg/ParserCore.c.o
-.PHONY : cfg/ParserCore.o
-
-# target to build an object file
-cfg/ParserCore.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserCore.c.o
-.PHONY : cfg/ParserCore.c.o
-
-cfg/ParserCore.i: cfg/ParserCore.c.i
-.PHONY : cfg/ParserCore.i
-
-# target to preprocess a source file
-cfg/ParserCore.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserCore.c.i
-.PHONY : cfg/ParserCore.c.i
-
-cfg/ParserCore.s: cfg/ParserCore.c.s
-.PHONY : cfg/ParserCore.s
-
-# target to generate assembly for a file
-cfg/ParserCore.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserCore.c.s
-.PHONY : cfg/ParserCore.c.s
-
-cfg/ParserSrc.o: cfg/ParserSrc.c.o
-.PHONY : cfg/ParserSrc.o
-
-# target to build an object file
-cfg/ParserSrc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserSrc.c.o
-.PHONY : cfg/ParserSrc.c.o
-
-cfg/ParserSrc.i: cfg/ParserSrc.c.i
-.PHONY : cfg/ParserSrc.i
-
-# target to preprocess a source file
-cfg/ParserSrc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserSrc.c.i
-.PHONY : cfg/ParserSrc.c.i
-
-cfg/ParserSrc.s: cfg/ParserSrc.c.s
-.PHONY : cfg/ParserSrc.s
-
-# target to generate assembly for a file
-cfg/ParserSrc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/new.dir/build.make CMakeFiles/new.dir/cfg/ParserSrc.c.s
-.PHONY : cfg/ParserSrc.c.s
-
 pltf/TempMon.o: pltf/TempMon.c.o
 .PHONY : pltf/TempMon.o
 
@@ -234,15 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... new"
-	@echo "... cfg/ParserApp.o"
-	@echo "... cfg/ParserApp.i"
-	@echo "... cfg/ParserApp.s"
-	@echo "... cfg/ParserCore.o"
-	@echo "... cfg/ParserCore.i"
-	@echo "... cfg/ParserCore.s"
-	@echo "... cfg/ParserSrc.o"
-	@echo "... cfg/ParserSrc.i"
-	@echo "... cfg/ParserSrc.s"
 	@echo "... pltf/TempMon.o"
 	@echo "... pltf/TempMon.i"
 	@echo "... pltf/TempMon.s"
