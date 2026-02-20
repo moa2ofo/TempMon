@@ -81,7 +81,7 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_IsUnderEnter_b.c");
-  run_test(test_IsUnderEnter_b, "test_IsUnderEnter_b", 9);
+  run_test(test_IsUnderEnter_b, "test_IsUnderEnter_b", 11);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();

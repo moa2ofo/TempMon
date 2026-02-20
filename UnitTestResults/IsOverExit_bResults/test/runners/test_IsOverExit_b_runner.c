@@ -81,7 +81,7 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_IsOverExit_b.c");
-  run_test(test_IsOverExit_b, "test_IsOverExit_b", 9);
+  run_test(test_IsOverExit_b, "test_IsOverExit_b", 11);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();

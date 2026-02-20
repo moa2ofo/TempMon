@@ -4,11 +4,13 @@
 #include "mock_TempMon.h"
 
 void setUp(void)
-{}
+{
+}
 void tearDown(void)
-{}
+{
+}
 
 void test_IsUnderExit_b(void)
 {
-    UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(11));
+  UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(12));
 }

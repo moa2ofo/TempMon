@@ -824,81 +824,46 @@
 
 # 0 "<command-line>" 2
 # 1 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b.c"
-# 1 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 1
-
-#define TEST_ISOVERENTER_B_H 
-
-# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
-
-/* TempMon.h */
-
-
-#define TEMPMON_H 
-
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
-/* Copyright (C) 1998-2022 Free Software Foundation, Inc.
-
-This file is part of GCC.
-
-GCC is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3, or (at your option)
-any later version.
-
-GCC is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-Under Section 7 of GPL version 3, you are granted additional
-permissions described in the GCC Runtime Library Exception, version
-3.1, as published by the Free Software Foundation.
-
-You should have received a copy of the GNU General Public License and
-a copy of the GCC Runtime Library Exception along with this program;
-see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
-<http://www.gnu.org/licenses/>.  */
-
-/*
- * ISO C Standard:  7.16  Boolean type and values  <stdbool.h>
- */
+# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h" 1
+/* =========================================================================
+    Unity - A Test Framework for C
+    ThrowTheSwitch.org
+    Copyright (c) 2007-25 Mike Karlesky, Mark VanderVoord, & Greg Williams
+    SPDX-License-Identifier: MIT
+========================================================================= */
 
 
-#define _STDBOOL_H 
+#define UNITY_FRAMEWORK_H 
+#define UNITY 
 
-
-
-#define bool _Bool
-
-
-
-
-#define true 1
-#define false 0
+#define UNITY_VERSION_MAJOR 2
+#define UNITY_VERSION_MINOR 6
+#define UNITY_VERSION_BUILD 1
+#define UNITY_VERSION ((UNITY_VERSION_MAJOR << 16) | (UNITY_VERSION_MINOR << 8) | UNITY_VERSION_BUILD)
 
 
 
 
 
 
+# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 1
+/* =========================================================================
+    Unity - A Test Framework for C
+    ThrowTheSwitch.org
+    Copyright (c) 2007-25 Mike Karlesky, Mark VanderVoord, & Greg Williams
+    SPDX-License-Identifier: MIT
+========================================================================= */
+
+
+#define UNITY_INTERNALS_H 
 
 
 
-/* Signal that all the definitions are present.  */
-#define __bool_true_false_are_defined 1
-
-# 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 1 3 4
 
 
 
-
-
-
-
-
-# 1 "/usr/include/stdint.h" 1 3 4
-/* Copyright (C) 1997-2022 Free Software Foundation, Inc.
+# 1 "/usr/include/setjmp.h" 1 3 4
+/* Copyright (C) 1991-2022 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -916,45 +881,11 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
    <https://www.gnu.org/licenses/>.  */
 
 /*
- *	ISO C99: 7.18 Integer types <stdint.h>
+ *	ISO C99 Standard: 7.13 Nonlocal jumps	<setjmp.h>
  */
 
 
-#define _STDINT_H 1
-
-#define __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION 
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-/* Handle feature test macros at the start of a header.
-   Copyright (C) 2016-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/* This header is internal to glibc and should not be included outside
-   of glibc headers.  Headers including it must define
-   __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-   cannot have multiple include guards because ISO C feature test
-   macros depend on the definition of the macro when an affected
-   header is included, not when the first system header is
-   included.  */
-
-
-
-
-
-#undef __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION
+#define _SETJMP_H 1
 
 # 1 "/usr/include/features.h" 1 3 4
 /* Copyright (C) 1991-2022 Free Software Foundation, Inc.
@@ -2069,7 +2000,241 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 # 514 "/usr/include/features.h" 2 3 4
 
 
-# 34 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 2 3 4
+# 26 "/usr/include/setjmp.h" 2 3 4
+
+__BEGIN_DECLS
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 1 3 4
+/* Copyright (C) 2001-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/* Define the machine-dependent type `jmp_buf'.  x86-64 version.  */
+
+#define _BITS_SETJMP_H 1
+
+
+
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
+/* Determine the wordsize from the preprocessor defines.  */
+
+
+#define __WORDSIZE 64
+
+
+
+
+
+
+#define __WORDSIZE_TIME64_COMPAT32 1
+
+
+/* Both x86-64 and x32 use the 64-bit system call interface.  */
+#define __SYSCALL_WORDSIZE 64
+# 27 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 2 3 4
+
+
+
+
+typedef long int __jmp_buf[8];
+
+
+
+
+
+
+
+
+# 30 "/usr/include/setjmp.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 1 3 4
+/* Define struct __jmp_buf_tag.
+   Copyright (C) 1991-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+
+#define __jmp_buf_tag_defined 1
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h" 1 3 4
+
+#define ____sigset_t_defined 
+
+#define _SIGSET_NWORDS (1024 / (8 * sizeof (unsigned long int)))
+typedef struct
+{
+  unsigned long int __val[_SIGSET_NWORDS];
+} __sigset_t;
+
+# 24 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 2 3 4
+
+/* Calling environment, plus possibly a saved signal mask.  */
+struct __jmp_buf_tag
+  {
+    /* NOTE: The machine-dependent definitions of `__sigsetjmp'
+       assume that a `jmp_buf' begins with a `__jmp_buf' and that
+       `__mask_was_saved' follows it.  Do not move these members
+       or add others before it.  */
+    __jmp_buf __jmpbuf;		/* Calling environment.  */
+    int __mask_was_saved;	/* Saved the signal mask?  */
+    __sigset_t __saved_mask;	/* Saved signal mask.  */
+  };
+
+# 31 "/usr/include/setjmp.h" 2 3 4
+
+typedef struct __jmp_buf_tag jmp_buf[1];
+
+/* Store the calling environment in ENV, also saving the signal mask.
+   Return 0.  */
+extern int setjmp (jmp_buf __env) __THROWNL;
+
+/* Store the calling environment in ENV, also saving the
+   signal mask if SAVEMASK is nonzero.  Return 0.
+   This is the internal name for `sigsetjmp'.  */
+extern int __sigsetjmp (struct __jmp_buf_tag __env[1], int __savemask) __THROWNL;
+
+/* Store the calling environment in ENV, not saving the signal mask.
+   Return 0.  */
+extern int _setjmp (struct __jmp_buf_tag __env[1]) __THROWNL;
+
+/* Do not save the signal mask.  This is equivalent to the `_setjmp'
+   BSD function.  */
+#define setjmp(env) _setjmp (env)
+
+
+/* Jump to the environment saved in ENV, making the
+   `setjmp' call there return VAL, or 1 if VAL is 0.  */
+extern void longjmp (struct __jmp_buf_tag __env[1], int __val)
+     __THROWNL __attribute__ ((__noreturn__));
+
+
+/* Same.  Usually `_longjmp' is used with `_setjmp', which does not save
+   the signal mask.  But it is how ENV was saved that determines whether
+   `longjmp' restores the mask; `_longjmp' is just an alias.  */
+extern void _longjmp (struct __jmp_buf_tag __env[1], int __val)
+     __THROWNL __attribute__ ((__noreturn__));
+
+
+
+
+/* Use the same type for `jmp_buf' and `sigjmp_buf'.
+   The `__mask_was_saved' flag determines whether
+   or not `longjmp' will restore the signal mask.  */
+typedef struct __jmp_buf_tag sigjmp_buf[1];
+
+/* Store the calling environment in ENV, also saving the
+   signal mask if SAVEMASK is nonzero.  Return 0.  */
+#define sigsetjmp(env,savemask) __sigsetjmp (env, savemask)
+
+/* Jump to the environment saved in ENV, making the
+   sigsetjmp call there return VAL, or 1 if VAL is 0.
+   Restore the signal mask if that sigsetjmp call saved it.
+   This is just an alias `longjmp'.  */
+extern void siglongjmp (sigjmp_buf __env, int __val)
+     __THROWNL __attribute__ ((__noreturn__));
+
+
+
+/* Define helper functions to catch unsafe code.  */
+
+
+
+
+__END_DECLS
+
+# 17 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
+
+
+
+# 1 "/usr/include/math.h" 1 3 4
+/* Declarations for math functions.
+   Copyright (C) 1991-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/*
+ *	ISO C99 Standard: 7.12 Mathematics	<math.h>
+ */
+
+
+#define _MATH_H 1
+
+#define __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION 
+# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
+/* Handle feature test macros at the start of a header.
+   Copyright (C) 2016-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/* This header is internal to glibc and should not be included outside
+   of glibc headers.  Headers including it must define
+   __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
+   cannot have multiple include guards because ISO C feature test
+   macros depend on the definition of the macro when an affected
+   header is included, not when the first system header is
+   included.  */
+
+
+
+
+
+#undef __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION
+
+
 
 /* ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
    macro.  */
@@ -2146,7 +2311,16 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 
 
 #define __GLIBC_USE_IEC_60559_TYPES_EXT 0
-# 27 "/usr/include/stdint.h" 2 3 4
+# 28 "/usr/include/math.h" 2 3 4
+
+
+
+
+
+
+__BEGIN_DECLS
+
+/* Get definitions of __intmax_t and __uintmax_t.  */
 # 1 "/usr/include/x86_64-linux-gnu/bits/types.h" 1 3 4
 /* bits/types.h -- definitions of __*_t types underlying *_t types.
    Copyright (C) 2002-2022 Free Software Foundation, Inc.
@@ -2564,1082 +2738,7 @@ typedef int __sig_atomic_t;
 
 #undef __STD_TYPE
 
-# 28 "/usr/include/stdint.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wchar.h" 1 3 4
-/* wchar_t type related definitions.
-   Copyright (C) 2000-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-
-#define _BITS_WCHAR_H 1
-
-/* The fallback definitions, for when __WCHAR_MAX__ or __WCHAR_MIN__
-   are not defined, give the right value and type as long as both int
-   and wchar_t are 32-bit types.  Adding L'\0' to a constant value
-   ensures that the type is correct; it is necessary to use (L'\0' +
-   0) rather than just L'\0' so that the type in C++ is the promoted
-   version of wchar_t rather than the distinct wchar_t type itself.
-   Because wchar_t in preprocessor #if expressions is treated as
-   intmax_t or uintmax_t, the expression (L'\0' - 1) would have the
-   wrong value for WCHAR_MAX in such expressions and so cannot be used
-   to define __WCHAR_MAX in the unsigned case.  */
-
-
-#define __WCHAR_MAX __WCHAR_MAX__
-
-
-
-
-
-
-
-#define __WCHAR_MIN __WCHAR_MIN__
-
-
-
-
-
-
-# 29 "/usr/include/stdint.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
-/* Determine the wordsize from the preprocessor defines.  */
-
-
-#define __WORDSIZE 64
-
-
-
-
-
-
-#define __WORDSIZE_TIME64_COMPAT32 1
-
-
-/* Both x86-64 and x32 use the 64-bit system call interface.  */
-#define __SYSCALL_WORDSIZE 64
-# 30 "/usr/include/stdint.h" 2 3 4
-
-/* Exact integral types.  */
-
-/* Signed.  */
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
-/* Define intN_t types.
-   Copyright (C) 2017-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-
-#define _BITS_STDINT_INTN_H 1
-
-
-
-typedef __int8_t int8_t;
-typedef __int16_t int16_t;
-typedef __int32_t int32_t;
-typedef __int64_t int64_t;
-
-# 35 "/usr/include/stdint.h" 2 3 4
-
-/* Unsigned.  */
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 1 3 4
-/* Define uintN_t types.
-   Copyright (C) 2017-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-
-#define _BITS_STDINT_UINTN_H 1
-
-
-
-typedef __uint8_t uint8_t;
-typedef __uint16_t uint16_t;
-typedef __uint32_t uint32_t;
-typedef __uint64_t uint64_t;
-
-# 38 "/usr/include/stdint.h" 2 3 4
-
-
-/* Small types.  */
-
-/* Signed.  */
-typedef __int_least8_t int_least8_t;
-typedef __int_least16_t int_least16_t;
-typedef __int_least32_t int_least32_t;
-typedef __int_least64_t int_least64_t;
-
-/* Unsigned.  */
-typedef __uint_least8_t uint_least8_t;
-typedef __uint_least16_t uint_least16_t;
-typedef __uint_least32_t uint_least32_t;
-typedef __uint_least64_t uint_least64_t;
-
-
-/* Fast types.  */
-
-/* Signed.  */
-typedef signed char		int_fast8_t;
-
-typedef long int		int_fast16_t;
-typedef long int		int_fast32_t;
-typedef long int		int_fast64_t;
-
-
-
-
-
-
-
-/* Unsigned.  */
-typedef unsigned char		uint_fast8_t;
-
-typedef unsigned long int	uint_fast16_t;
-typedef unsigned long int	uint_fast32_t;
-typedef unsigned long int	uint_fast64_t;
-
-
-
-
-
-
-
-
-/* Types for `void *' pointers.  */
-
-
-typedef long int		intptr_t;
-#define __intptr_t_defined 
-
-typedef unsigned long int	uintptr_t;
-
-
-
-
-
-
-
-
-
-/* Largest integral types.  */
-typedef __intmax_t		intmax_t;
-typedef __uintmax_t		uintmax_t;
-
-
-
-#define __INT64_C(c) c ## L
-#define __UINT64_C(c) c ## UL
-
-
-
-
-
-/* Limits of integral types.  */
-
-/* Minimum of signed integral types.  */
-#define INT8_MIN (-128)
-#define INT16_MIN (-32767-1)
-#define INT32_MIN (-2147483647-1)
-#define INT64_MIN (-__INT64_C(9223372036854775807)-1)
-/* Maximum of signed integral types.  */
-#define INT8_MAX (127)
-#define INT16_MAX (32767)
-#define INT32_MAX (2147483647)
-#define INT64_MAX (__INT64_C(9223372036854775807))
-
-/* Maximum of unsigned integral types.  */
-#define UINT8_MAX (255)
-#define UINT16_MAX (65535)
-#define UINT32_MAX (4294967295U)
-#define UINT64_MAX (__UINT64_C(18446744073709551615))
-
-
-/* Minimum of signed integral types having a minimum size.  */
-#define INT_LEAST8_MIN (-128)
-#define INT_LEAST16_MIN (-32767-1)
-#define INT_LEAST32_MIN (-2147483647-1)
-#define INT_LEAST64_MIN (-__INT64_C(9223372036854775807)-1)
-/* Maximum of signed integral types having a minimum size.  */
-#define INT_LEAST8_MAX (127)
-#define INT_LEAST16_MAX (32767)
-#define INT_LEAST32_MAX (2147483647)
-#define INT_LEAST64_MAX (__INT64_C(9223372036854775807))
-
-/* Maximum of unsigned integral types having a minimum size.  */
-#define UINT_LEAST8_MAX (255)
-#define UINT_LEAST16_MAX (65535)
-#define UINT_LEAST32_MAX (4294967295U)
-#define UINT_LEAST64_MAX (__UINT64_C(18446744073709551615))
-
-
-/* Minimum of fast signed integral types having a minimum size.  */
-#define INT_FAST8_MIN (-128)
-
-#define INT_FAST16_MIN (-9223372036854775807L-1)
-#define INT_FAST32_MIN (-9223372036854775807L-1)
-
-
-
-
-#define INT_FAST64_MIN (-__INT64_C(9223372036854775807)-1)
-/* Maximum of fast signed integral types having a minimum size.  */
-#define INT_FAST8_MAX (127)
-
-#define INT_FAST16_MAX (9223372036854775807L)
-#define INT_FAST32_MAX (9223372036854775807L)
-
-
-
-
-#define INT_FAST64_MAX (__INT64_C(9223372036854775807))
-
-/* Maximum of fast unsigned integral types having a minimum size.  */
-#define UINT_FAST8_MAX (255)
-
-#define UINT_FAST16_MAX (18446744073709551615UL)
-#define UINT_FAST32_MAX (18446744073709551615UL)
-
-
-
-
-#define UINT_FAST64_MAX (__UINT64_C(18446744073709551615))
-
-
-/* Values to test for integral types holding `void *' pointer.  */
-
-#define INTPTR_MIN (-9223372036854775807L-1)
-#define INTPTR_MAX (9223372036854775807L)
-#define UINTPTR_MAX (18446744073709551615UL)
-
-
-
-
-
-
-
-/* Minimum for largest signed integral type.  */
-#define INTMAX_MIN (-__INT64_C(9223372036854775807)-1)
-/* Maximum for largest signed integral type.  */
-#define INTMAX_MAX (__INT64_C(9223372036854775807))
-
-/* Maximum for largest unsigned integral type.  */
-#define UINTMAX_MAX (__UINT64_C(18446744073709551615))
-
-
-/* Limits of other integer types.  */
-
-/* Limits of `ptrdiff_t' type.  */
-
-#define PTRDIFF_MIN (-9223372036854775807L-1)
-#define PTRDIFF_MAX (9223372036854775807L)
-# 220 "/usr/include/stdint.h" 3 4
-
-/* Limits of `sig_atomic_t'.  */
-#define SIG_ATOMIC_MIN (-2147483647-1)
-#define SIG_ATOMIC_MAX (2147483647)
-
-/* Limit of `size_t' type.  */
-
-#define SIZE_MAX (18446744073709551615UL)
-
-
-
-
-
-
-
-
-/* Limits of `wchar_t'.  */
-
-/* These constants might also be defined in <wchar.h>.  */
-#define WCHAR_MIN __WCHAR_MIN
-#define WCHAR_MAX __WCHAR_MAX
-
-
-/* Limits of `wint_t'.  */
-#define WINT_MIN (0u)
-#define WINT_MAX (4294967295u)
-
-/* Signed.  */
-#define INT8_C(c) c
-#define INT16_C(c) c
-#define INT32_C(c) c
-
-#define INT64_C(c) c ## L
-
-
-
-
-/* Unsigned.  */
-#define UINT8_C(c) c
-#define UINT16_C(c) c
-#define UINT32_C(c) c ## U
-
-#define UINT64_C(c) c ## UL
-
-
-
-
-/* Maximal type.  */
-
-#define INTMAX_C(c) c ## L
-#define UINTMAX_C(c) c ## UL
-
-
-
-
-
-# 318 "/usr/include/stdint.h" 3 4
-
-# 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
-
-
-
-#define _GCC_WRAP_STDINT_H 
-# 9 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
-
-/**
- * @file TempMon.h
- * @brief Temperature monitoring module (TEMPMON_STS_UNDER/TEMPMON_STS_OVER
- * detection with hysteresis).
- *
- * @details
- * **Goal of the module**
- *
- * Provide a small state machine to classify an input temperature into:
- * - **TEMPMON_STS_NORMAL**
- * - **TEMPMON_STS_UNDER** (below configured TEMPMON_STS_UNDER-threshold)
- * - **TEMPMON_STS_OVER**  (above configured TEMPMON_STS_OVER-threshold)
- *
- * The module applies **hysteresis** to avoid rapid toggling near thresholds:
- * - Enter **TEMPMON_STS_UNDER** when `temp_mC < g_UnderThreshold_mC_s32`
- * - Exit  **TEMPMON_STS_UNDER** when `temp_mC > (g_UnderThreshold_mC_s32 +
- *   g_Hyst_mC_s32)`
- * - Enter **TEMPMON_STS_OVER**  when `temp_mC > g_OverThreshold_mC_s32`
- * - Exit  **TEMPMON_STS_OVER**  when `temp_mC < (g_OverThreshold_mC_s32 -
- *   g_Hyst_mC_s32)`
- *
- * @par Units
- * All temperatures are expressed in **milli-degC (mdegC)**:
- * - Example: `85000` = `85.000 °C`
- *
- * @par Typical usage
- * - Set the public configuration variables (thresholds, hysteresis).
- * - Call TempMon_Init() once at startup with the current temperature.
- * - Call TempMon_Run() periodically with the current temperature.
- * - Read the state with TempMon_GetSts() or the convenience functions.
- *
- * @par Notes and limitations
- * - The module does not validate configuration ranges; ensure coherent values
- *   (e.g., positive hysteresis, TEMPMON_STS_UNDER < TEMPMON_STS_OVER).
- * - The module does not implement timing filters (activation/deactivation
- *   delays).
- */
-
-/* ===== Public types ===== */
-
-/**
- * @brief Temperature monitor state.
- *
- * @details
- * The temperature monitor state machine can be in one of the following states:
- * - #TEMPMON_STS_NORMAL: temperature is within thresholds (considering
- *   hysteresis exits)
- * - #TEMPMON_STS_UNDER: TEMPMON_STS_UNDER-temperature condition is active
- * - #TEMPMON_STS_OVER:  TEMPMON_STS_OVER-temperature condition is active
- */
-typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
-
-/* ===== Public configuration (extern) =====
- * Units: milli-degrees Celsius (mdegC)
- * Note: suffix `_mC` means milli-degC (0.001 °C)
- * Example: 85000 = 85.000 °C
- */
-
-/**
- * @brief TEMPMON_STS_UNDER-temperature threshold in mdegC.
- *
- * @details
- * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_UNDER
- * when:
- * - `temp_mC < g_UnderThreshold_mC_s32`
- *
- * If the module is in TEMPMON_STS_UNDER state, it returns to TEMPMON_STS_NORMAL
- * when:
- * - `temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)`
- */
-extern int32_t g_UnderThreshold_mC_s32;
-
-/**
- * @brief TEMPMON_STS_OVER-temperature threshold in mdegC.
- *
- * @details
- * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_OVER
- * when:
- * - `temp_mC > g_OverThreshold_mC_s32`
- *
- * If the module is in TEMPMON_STS_OVER state, it returns to TEMPMON_STS_NORMAL
- * when:
- * - `temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)`
- */
-extern int32_t g_OverThreshold_mC_s32;
-
-/**
- * @brief Hysteresis in m°C applied to both TEMPMON_STS_UNDER and
- * TEMPMON_STS_OVER transitions.
- *
- * @details
- * Hysteresis is used to avoid state chatter around thresholds:
- * - TEMPMON_STS_UNDER exit uses `UnderThreshold + Hyst`
- * - TEMPMON_STS_OVER  exit uses `OverThreshold - Hyst`
- *
- * @note
- * Use a non-negative value. A negative hysteresis inverts the intended
- * behavior.
- */
-extern int32_t g_Hyst_mC_s32;
-
-/* ===== Public API ===== */
-
-/**
- * @brief Initialize the temperature monitor internal state.
- *
- * @details
- * **Goal of the function**
- *
- * Initialize the internal state machine so that the module starts in a state
- * consistent with the current temperature.
- *
- * The processing logic:
- * - Sets the internal state to #TEMPMON_STS_NORMAL.
- * - Executes the same decision logic used by TempMon_Run() once using @p
- *   temp_mC.
- *
- * This guarantees that the initial state respects the configured thresholds
- * and hysteresis rules (no special “startup” behavior is applied).
- *
- * @par Interface summary
- *
- * | Interface               | In | Out | Data type / Signature    | Param |
- * Data factor | Data offset | Data size | Data range             | Data unit |
- * |-------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------|----------|
- * | temp_mC                 | X  |     | int32_t                  |   X   | 1 |
- * 0 |         1 | implementation-defined | [mdegC]  | | g_UnderThreshold_mC_s32
- * | X  |     | int32_t (extern)         |   -   |           1 |           0 |
- * 1 | implementation-defined | [mdegC]  | | g_OverThreshold_mC_s32  | X  | |
- * int32_t (extern)         |   -   |           1 |           0 |         1 |
- * implementation-defined | [mdegC]  | | g_Hyst_mC_s32           | X  |     |
- * int32_t (extern)         |   -   |           1 |           0 |         1 |
- * typically >= 0         | [mdegC]  |
- *
- * @par Activity diagram (PlantUML)
- *
- * @startuml
- * start
- * :Sts_e = TEMPMON_STS_NORMAL;
- * :TempMon_Run(temp_mC);
- * stop
- * @enduml
- *
- * @param temp_mC
- * Current temperature in milli-degC (mdegC) used to set the initial state.
- *
- * @return void
- */
-void TempMon_Init(int32_t temp_mC);
-
-/**
- * @brief Run one update step of the temperature monitor.
- *
- * @details
- * **Goal of the function**
- *
- *
- * @par Interface summary
- *
- * | Interface               | In | Out | Data type / Signature     | Param | Data factor | Data offset | Data size | Data range                                           | Unit   |
- * |------------------------|:--:|:---:|----------------------------|:-----:|------------:|------------:|----------:|------------------------------------------------------|--------|
- * | temp_mC                | X  |     | int32_t                    | X     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
- * | g_UnderThreshold_mC_s32| X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
- * | g_OverThreshold_mC_s32 | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
- * | g_Hyst_mC_s32          | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | typically >= 0                                        | mdegC  |
- * | Sts_e                  | X  |  X  | TempMon_sts_e (static)     | -     | -           | -           | -         | TEMPMON_STS_NORMAL / _UNDER / _OVER                   | -      |
- *
- * @par Activity diagram (PlantUML)
- *
- * @startuml
- * start
- * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
- *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
- *     :Sts_e = TEMPMON_STS_UNDER;
- *   else (no)
- *     if (temp_mC > g_OverThreshold_mC_s32) then (yes)
- *       :Sts_e = TEMPMON_STS_OVER;
- *     else (no)
- *       :stay TEMPMON_STS_NORMAL;
- *     endif
- *   endif
- * elseif (Sts_e == TEMPMON_STS_UNDER) then (yes)
- *   if (temp_mC >  g_UnderThreshold_mC_s32 + g_Hyst_mC_s32) then (yes)
- *     :Sts_e = TEMPMON_STS_NORMAL;
- *   else (no)
- *     :stay TEMPMON_STS_UNDER;
- *   endif
- * else (TEMPMON_STS_OVER)
- *   if (temp_mC < g_OverThreshold_mC_s32 - g_Hyst_mC_s32) then (yes)
- *     :Sts_e = TEMPMON_STS_NORMAL;
- *   else (no)
- *     :stay TEMPMON_STS_OVER;
- *   endif
- * endif
- * stop
- * @enduml
- *
- * @param temp_mC
- * Current temperature in milli-degC (mdegC).
- *
- * @return void
- */
-void TempMon_Run(int32_t temp_mC);
-
-/**
- * @brief Get the current status of the temperature monitor.
- *
- * @details
- * **Goal of the function**
- *
- * Provide read access to the internal state machine status updated by
- * TempMon_Init() and TempMon_Run().
- *
- * The processing logic:
- * - Returns the current internal state value.
- *
- * @par Interface summary
- *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range | Data unit |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------------------------|----------|
- * | Sts_e | X  |  X  | TempMon_sts_e          |   -   |           - | - | - |
- * TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / OVER | [-]      |
- *
- * @par Activity diagram (PlantUML)
- *
- * @startuml
- * start
- * :return Sts_e;
- * stop
- * @enduml
- *
- * @return
- * Current temperature monitor status (#TempMon_sts_e).
- */
-TempMon_sts_e TempMon_GetSts(void);
-
-/**
- * @brief Convenience check: returns true if status is TEMPMON_STS_UNDER.
- *
- * @details
- * **Goal of the function**
- *
- * Provide a boolean helper to quickly check whether the
- * TEMPMON_STS_UNDER-temperature condition is currently active.
- *
- * The processing logic:
- * - Compares internal state to #TEMPMON_STS_UNDER.
- * - Returns true if equal, otherwise false.
- *
- * @par Interface summary
- *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range      | Data unit |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|-----------------|----------|
- * | Sts_e                   | X  |  X  | bool                   |   -   | - |
- * - |         - | {false, true}   | [-]      |
- *
- * @par Activity diagram (PlantUML)
- *
- * @startuml
- * start
- * if (Sts_e == TEMPMON_STS_UNDER) then (yes)
- *   :return true;
- * else (no)
- *   :return false;
- * endif
- * stop
- * @enduml
- *
- * @return
- * true if TEMPMON_STS_UNDER-temperature is active, false otherwise.
- */
-bool TempMon_IsUnderAlv_b(void);
-
-/**
- * @brief Convenience check: returns true if status is TEMPMON_STS_OVER.
- *
- * @details
- * **Goal of the function**
- *
- * Provide a boolean helper to quickly check whether the
- * TEMPMON_STS_OVER-temperature condition is currently active.
- *
- * The processing logic:
- * - Compares internal state to #TEMPMON_STS_OVER.
- * - Returns true if equal, otherwise false.
- *
- * @par Interface summary
- *
- * | Interface                | In | Out | Data type / Signature | Param | Data
- * factor | Data offset | Data size | Data range    | Data unit |
- * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|---------------|----------|
- * | Sts_e                   | X  |  X  | bool                   |   -   | - |
- * - |         - | {false, true} | [-]      |
- *
- * @par Activity diagram (PlantUML)
- *
- * @startuml
- * start
- * if (Sts_e == TEMPMON_STS_OVER) then (yes)
- *   :return true;
- * else (no)
- *   :return false;
- * endif
- * stop
- * @enduml
- *
- * @return
- * true if TEMPMON_STS_OVER-temperature is active, false otherwise.
- */
-bool TempMon_IsOverAlv_b(void);
-
-# 5 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 2
-
-_Bool IsOverEnter_b(int32_t temp_mC);
-
-# 2 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b.c" 2
-# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h" 1
-/* =========================================================================
-    Unity - A Test Framework for C
-    ThrowTheSwitch.org
-    Copyright (c) 2007-25 Mike Karlesky, Mark VanderVoord, & Greg Williams
-    SPDX-License-Identifier: MIT
-========================================================================= */
-
-
-#define UNITY_FRAMEWORK_H 
-#define UNITY 
-
-#define UNITY_VERSION_MAJOR 2
-#define UNITY_VERSION_MINOR 6
-#define UNITY_VERSION_BUILD 1
-#define UNITY_VERSION ((UNITY_VERSION_MAJOR << 16) | (UNITY_VERSION_MINOR << 8) | UNITY_VERSION_BUILD)
-
-
-
-
-
-
-# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 1
-/* =========================================================================
-    Unity - A Test Framework for C
-    ThrowTheSwitch.org
-    Copyright (c) 2007-25 Mike Karlesky, Mark VanderVoord, & Greg Williams
-    SPDX-License-Identifier: MIT
-========================================================================= */
-
-
-#define UNITY_INTERNALS_H 
-
-
-
-
-
-
-# 1 "/usr/include/setjmp.h" 1 3 4
-/* Copyright (C) 1991-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/*
- *	ISO C99 Standard: 7.13 Nonlocal jumps	<setjmp.h>
- */
-
-
-#define _SETJMP_H 1
-
-
-
-__BEGIN_DECLS
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 1 3 4
-/* Copyright (C) 2001-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/* Define the machine-dependent type `jmp_buf'.  x86-64 version.  */
-
-#define _BITS_SETJMP_H 1
-
-
-
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
-/* Determine the wordsize from the preprocessor defines.  */
-
-
-#define __WORDSIZE 64
-
-
-
-
-
-
-#define __WORDSIZE_TIME64_COMPAT32 1
-
-
-/* Both x86-64 and x32 use the 64-bit system call interface.  */
-#define __SYSCALL_WORDSIZE 64
-# 27 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 2 3 4
-
-
-
-
-typedef long int __jmp_buf[8];
-
-
-
-
-
-
-
-
-# 30 "/usr/include/setjmp.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 1 3 4
-/* Define struct __jmp_buf_tag.
-   Copyright (C) 1991-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-
-#define __jmp_buf_tag_defined 1
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h" 1 3 4
-
-#define ____sigset_t_defined 
-
-#define _SIGSET_NWORDS (1024 / (8 * sizeof (unsigned long int)))
-typedef struct
-{
-  unsigned long int __val[_SIGSET_NWORDS];
-} __sigset_t;
-
-# 24 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 2 3 4
-
-/* Calling environment, plus possibly a saved signal mask.  */
-struct __jmp_buf_tag
-  {
-    /* NOTE: The machine-dependent definitions of `__sigsetjmp'
-       assume that a `jmp_buf' begins with a `__jmp_buf' and that
-       `__mask_was_saved' follows it.  Do not move these members
-       or add others before it.  */
-    __jmp_buf __jmpbuf;		/* Calling environment.  */
-    int __mask_was_saved;	/* Saved the signal mask?  */
-    __sigset_t __saved_mask;	/* Saved signal mask.  */
-  };
-
-# 31 "/usr/include/setjmp.h" 2 3 4
-
-typedef struct __jmp_buf_tag jmp_buf[1];
-
-/* Store the calling environment in ENV, also saving the signal mask.
-   Return 0.  */
-extern int setjmp (jmp_buf __env) __THROWNL;
-
-/* Store the calling environment in ENV, also saving the
-   signal mask if SAVEMASK is nonzero.  Return 0.
-   This is the internal name for `sigsetjmp'.  */
-extern int __sigsetjmp (struct __jmp_buf_tag __env[1], int __savemask) __THROWNL;
-
-/* Store the calling environment in ENV, not saving the signal mask.
-   Return 0.  */
-extern int _setjmp (struct __jmp_buf_tag __env[1]) __THROWNL;
-
-/* Do not save the signal mask.  This is equivalent to the `_setjmp'
-   BSD function.  */
-#define setjmp(env) _setjmp (env)
-
-
-/* Jump to the environment saved in ENV, making the
-   `setjmp' call there return VAL, or 1 if VAL is 0.  */
-extern void longjmp (struct __jmp_buf_tag __env[1], int __val)
-     __THROWNL __attribute__ ((__noreturn__));
-
-
-/* Same.  Usually `_longjmp' is used with `_setjmp', which does not save
-   the signal mask.  But it is how ENV was saved that determines whether
-   `longjmp' restores the mask; `_longjmp' is just an alias.  */
-extern void _longjmp (struct __jmp_buf_tag __env[1], int __val)
-     __THROWNL __attribute__ ((__noreturn__));
-
-
-
-
-/* Use the same type for `jmp_buf' and `sigjmp_buf'.
-   The `__mask_was_saved' flag determines whether
-   or not `longjmp' will restore the signal mask.  */
-typedef struct __jmp_buf_tag sigjmp_buf[1];
-
-/* Store the calling environment in ENV, also saving the
-   signal mask if SAVEMASK is nonzero.  Return 0.  */
-#define sigsetjmp(env,savemask) __sigsetjmp (env, savemask)
-
-/* Jump to the environment saved in ENV, making the
-   sigsetjmp call there return VAL, or 1 if VAL is 0.
-   Restore the signal mask if that sigsetjmp call saved it.
-   This is just an alias `longjmp'.  */
-extern void siglongjmp (sigjmp_buf __env, int __val)
-     __THROWNL __attribute__ ((__noreturn__));
-
-
-
-/* Define helper functions to catch unsafe code.  */
-
-
-
-
-__END_DECLS
-
-# 17 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
-
-
-
-# 1 "/usr/include/math.h" 1 3 4
-/* Declarations for math functions.
-   Copyright (C) 1991-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/*
- *	ISO C99 Standard: 7.12 Mathematics	<math.h>
- */
-
-
-#define _MATH_H 1
-
-#define __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION 
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-/* Handle feature test macros at the start of a header.
-   Copyright (C) 2016-2022 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
-
-   The GNU C Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public
-   License as published by the Free Software Foundation; either
-   version 2.1 of the License, or (at your option) any later version.
-
-   The GNU C Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, see
-   <https://www.gnu.org/licenses/>.  */
-
-/* This header is internal to glibc and should not be included outside
-   of glibc headers.  Headers including it must define
-   __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
-   cannot have multiple include guards because ISO C feature test
-   macros depend on the definition of the macro when an affected
-   header is included, not when the first system header is
-   included.  */
-
-
-
-
-
-#undef __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION
-
-
-
-/* ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
-   macro.  */
-#undef __GLIBC_USE_LIB_EXT2
-
-
-
-
-#define __GLIBC_USE_LIB_EXT2 0
-
-
-/* ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
-   macro.  Most but not all symbols enabled by that macro in TS
-   18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
-   Annex F still require a new feature test macro
-   __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
-   __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
-   18661-1 are not included in C2X (and thus should depend on
-   __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
-   enabled).
-
-   __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
-   18661-1 not included in C2X.
-
-   __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
-   18661-1 that are also included in C2X (with no feature test macro
-   required in C2X).
-
-   __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
-   that are included in C2X but conditional on
-   __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
-   conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
-   18661-1.)  */
-#undef __GLIBC_USE_IEC_60559_BFP_EXT
-
-
-
-#define __GLIBC_USE_IEC_60559_BFP_EXT 0
-
-#undef __GLIBC_USE_IEC_60559_BFP_EXT_C2X
-
-
-
-#define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
-
-#undef __GLIBC_USE_IEC_60559_EXT
-
-
-
-#define __GLIBC_USE_IEC_60559_EXT 0
-
-
-/* ISO/IEC TS 18661-4:2015 defines the
-   __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
-   functions, the symbols from this TS are enabled unconditionally in
-   C2X.  */
-#undef __GLIBC_USE_IEC_60559_FUNCS_EXT
-
-
-
-#define __GLIBC_USE_IEC_60559_FUNCS_EXT 0
-
-#undef __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X
-
-
-
-#define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
-
-
-/* ISO/IEC TS 18661-3:2015 defines the
-   __STDC_WANT_IEC_60559_TYPES_EXT__ macro.  */
-#undef __GLIBC_USE_IEC_60559_TYPES_EXT
-
-
-
-#define __GLIBC_USE_IEC_60559_TYPES_EXT 0
-# 28 "/usr/include/math.h" 2 3 4
-
-
-
-
-
-
-__BEGIN_DECLS
-
-/* Get definitions of __intmax_t and __uintmax_t.  */
-
+# 38 "/usr/include/math.h" 2 3 4
 
 /* Get machine-dependent vector math functions declarations.  */
 # 1 "/usr/include/x86_64-linux-gnu/bits/math-vector.h" 1 3 4
@@ -6720,7 +5819,524 @@ typedef struct {
  * The user may override any of these derived constants:
  * UNITY_INT_WIDTH, UNITY_LONG_WIDTH, UNITY_POINTER_WIDTH */
 
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 1 3 4
 
+
+
+
+
+
+
+
+# 1 "/usr/include/stdint.h" 1 3 4
+/* Copyright (C) 1997-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/*
+ *	ISO C99: 7.18 Integer types <stdint.h>
+ */
+
+
+#define _STDINT_H 1
+
+#define __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION 
+# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
+/* Handle feature test macros at the start of a header.
+   Copyright (C) 2016-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+/* This header is internal to glibc and should not be included outside
+   of glibc headers.  Headers including it must define
+   __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION first.  This header
+   cannot have multiple include guards because ISO C feature test
+   macros depend on the definition of the macro when an affected
+   header is included, not when the first system header is
+   included.  */
+
+
+
+
+
+#undef __GLIBC_INTERNAL_STARTING_HEADER_IMPLEMENTATION
+
+
+
+/* ISO/IEC TR 24731-2:2010 defines the __STDC_WANT_LIB_EXT2__
+   macro.  */
+#undef __GLIBC_USE_LIB_EXT2
+
+
+
+
+#define __GLIBC_USE_LIB_EXT2 0
+
+
+/* ISO/IEC TS 18661-1:2014 defines the __STDC_WANT_IEC_60559_BFP_EXT__
+   macro.  Most but not all symbols enabled by that macro in TS
+   18661-1 are enabled unconditionally in C2X.  In C2X, the symbols in
+   Annex F still require a new feature test macro
+   __STDC_WANT_IEC_60559_EXT__ instead (C2X does not define
+   __STDC_WANT_IEC_60559_BFP_EXT__), while a few features from TS
+   18661-1 are not included in C2X (and thus should depend on
+   __STDC_WANT_IEC_60559_BFP_EXT__ even when C2X features are
+   enabled).
+
+   __GLIBC_USE (IEC_60559_BFP_EXT) controls those features from TS
+   18661-1 not included in C2X.
+
+   __GLIBC_USE (IEC_60559_BFP_EXT_C2X) controls those features from TS
+   18661-1 that are also included in C2X (with no feature test macro
+   required in C2X).
+
+   __GLIBC_USE (IEC_60559_EXT) controls those features from TS 18661-1
+   that are included in C2X but conditional on
+   __STDC_WANT_IEC_60559_EXT__.  (There are currently no features
+   conditional on __STDC_WANT_IEC_60559_EXT__ that are not in TS
+   18661-1.)  */
+#undef __GLIBC_USE_IEC_60559_BFP_EXT
+
+
+
+#define __GLIBC_USE_IEC_60559_BFP_EXT 0
+
+#undef __GLIBC_USE_IEC_60559_BFP_EXT_C2X
+
+
+
+#define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
+
+#undef __GLIBC_USE_IEC_60559_EXT
+
+
+
+#define __GLIBC_USE_IEC_60559_EXT 0
+
+
+/* ISO/IEC TS 18661-4:2015 defines the
+   __STDC_WANT_IEC_60559_FUNCS_EXT__ macro.  Other than the reduction
+   functions, the symbols from this TS are enabled unconditionally in
+   C2X.  */
+#undef __GLIBC_USE_IEC_60559_FUNCS_EXT
+
+
+
+#define __GLIBC_USE_IEC_60559_FUNCS_EXT 0
+
+#undef __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X
+
+
+
+#define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
+
+
+/* ISO/IEC TS 18661-3:2015 defines the
+   __STDC_WANT_IEC_60559_TYPES_EXT__ macro.  */
+#undef __GLIBC_USE_IEC_60559_TYPES_EXT
+
+
+
+#define __GLIBC_USE_IEC_60559_TYPES_EXT 0
+# 27 "/usr/include/stdint.h" 2 3 4
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/wchar.h" 1 3 4
+/* wchar_t type related definitions.
+   Copyright (C) 2000-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+
+#define _BITS_WCHAR_H 1
+
+/* The fallback definitions, for when __WCHAR_MAX__ or __WCHAR_MIN__
+   are not defined, give the right value and type as long as both int
+   and wchar_t are 32-bit types.  Adding L'\0' to a constant value
+   ensures that the type is correct; it is necessary to use (L'\0' +
+   0) rather than just L'\0' so that the type in C++ is the promoted
+   version of wchar_t rather than the distinct wchar_t type itself.
+   Because wchar_t in preprocessor #if expressions is treated as
+   intmax_t or uintmax_t, the expression (L'\0' - 1) would have the
+   wrong value for WCHAR_MAX in such expressions and so cannot be used
+   to define __WCHAR_MAX in the unsigned case.  */
+
+
+#define __WCHAR_MAX __WCHAR_MAX__
+
+
+
+
+
+
+
+#define __WCHAR_MIN __WCHAR_MIN__
+
+
+
+
+
+
+# 29 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
+/* Determine the wordsize from the preprocessor defines.  */
+
+
+#define __WORDSIZE 64
+
+
+
+
+
+
+#define __WORDSIZE_TIME64_COMPAT32 1
+
+
+/* Both x86-64 and x32 use the 64-bit system call interface.  */
+#define __SYSCALL_WORDSIZE 64
+# 30 "/usr/include/stdint.h" 2 3 4
+
+/* Exact integral types.  */
+
+/* Signed.  */
+# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
+/* Define intN_t types.
+   Copyright (C) 2017-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+
+#define _BITS_STDINT_INTN_H 1
+
+
+
+typedef __int8_t int8_t;
+typedef __int16_t int16_t;
+typedef __int32_t int32_t;
+typedef __int64_t int64_t;
+
+# 35 "/usr/include/stdint.h" 2 3 4
+
+/* Unsigned.  */
+# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 1 3 4
+/* Define uintN_t types.
+   Copyright (C) 2017-2022 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+
+
+#define _BITS_STDINT_UINTN_H 1
+
+
+
+typedef __uint8_t uint8_t;
+typedef __uint16_t uint16_t;
+typedef __uint32_t uint32_t;
+typedef __uint64_t uint64_t;
+
+# 38 "/usr/include/stdint.h" 2 3 4
+
+
+/* Small types.  */
+
+/* Signed.  */
+typedef __int_least8_t int_least8_t;
+typedef __int_least16_t int_least16_t;
+typedef __int_least32_t int_least32_t;
+typedef __int_least64_t int_least64_t;
+
+/* Unsigned.  */
+typedef __uint_least8_t uint_least8_t;
+typedef __uint_least16_t uint_least16_t;
+typedef __uint_least32_t uint_least32_t;
+typedef __uint_least64_t uint_least64_t;
+
+
+/* Fast types.  */
+
+/* Signed.  */
+typedef signed char		int_fast8_t;
+
+typedef long int		int_fast16_t;
+typedef long int		int_fast32_t;
+typedef long int		int_fast64_t;
+
+
+
+
+
+
+
+/* Unsigned.  */
+typedef unsigned char		uint_fast8_t;
+
+typedef unsigned long int	uint_fast16_t;
+typedef unsigned long int	uint_fast32_t;
+typedef unsigned long int	uint_fast64_t;
+
+
+
+
+
+
+
+
+/* Types for `void *' pointers.  */
+
+
+typedef long int		intptr_t;
+#define __intptr_t_defined 
+
+typedef unsigned long int	uintptr_t;
+
+
+
+
+
+
+
+
+
+/* Largest integral types.  */
+typedef __intmax_t		intmax_t;
+typedef __uintmax_t		uintmax_t;
+
+
+
+#define __INT64_C(c) c ## L
+#define __UINT64_C(c) c ## UL
+
+
+
+
+
+/* Limits of integral types.  */
+
+/* Minimum of signed integral types.  */
+#define INT8_MIN (-128)
+#define INT16_MIN (-32767-1)
+#define INT32_MIN (-2147483647-1)
+#define INT64_MIN (-__INT64_C(9223372036854775807)-1)
+/* Maximum of signed integral types.  */
+#define INT8_MAX (127)
+#define INT16_MAX (32767)
+#define INT32_MAX (2147483647)
+#define INT64_MAX (__INT64_C(9223372036854775807))
+
+/* Maximum of unsigned integral types.  */
+#define UINT8_MAX (255)
+#define UINT16_MAX (65535)
+#define UINT32_MAX (4294967295U)
+#define UINT64_MAX (__UINT64_C(18446744073709551615))
+
+
+/* Minimum of signed integral types having a minimum size.  */
+#define INT_LEAST8_MIN (-128)
+#define INT_LEAST16_MIN (-32767-1)
+#define INT_LEAST32_MIN (-2147483647-1)
+#define INT_LEAST64_MIN (-__INT64_C(9223372036854775807)-1)
+/* Maximum of signed integral types having a minimum size.  */
+#define INT_LEAST8_MAX (127)
+#define INT_LEAST16_MAX (32767)
+#define INT_LEAST32_MAX (2147483647)
+#define INT_LEAST64_MAX (__INT64_C(9223372036854775807))
+
+/* Maximum of unsigned integral types having a minimum size.  */
+#define UINT_LEAST8_MAX (255)
+#define UINT_LEAST16_MAX (65535)
+#define UINT_LEAST32_MAX (4294967295U)
+#define UINT_LEAST64_MAX (__UINT64_C(18446744073709551615))
+
+
+/* Minimum of fast signed integral types having a minimum size.  */
+#define INT_FAST8_MIN (-128)
+
+#define INT_FAST16_MIN (-9223372036854775807L-1)
+#define INT_FAST32_MIN (-9223372036854775807L-1)
+
+
+
+
+#define INT_FAST64_MIN (-__INT64_C(9223372036854775807)-1)
+/* Maximum of fast signed integral types having a minimum size.  */
+#define INT_FAST8_MAX (127)
+
+#define INT_FAST16_MAX (9223372036854775807L)
+#define INT_FAST32_MAX (9223372036854775807L)
+
+
+
+
+#define INT_FAST64_MAX (__INT64_C(9223372036854775807))
+
+/* Maximum of fast unsigned integral types having a minimum size.  */
+#define UINT_FAST8_MAX (255)
+
+#define UINT_FAST16_MAX (18446744073709551615UL)
+#define UINT_FAST32_MAX (18446744073709551615UL)
+
+
+
+
+#define UINT_FAST64_MAX (__UINT64_C(18446744073709551615))
+
+
+/* Values to test for integral types holding `void *' pointer.  */
+
+#define INTPTR_MIN (-9223372036854775807L-1)
+#define INTPTR_MAX (9223372036854775807L)
+#define UINTPTR_MAX (18446744073709551615UL)
+
+
+
+
+
+
+
+/* Minimum for largest signed integral type.  */
+#define INTMAX_MIN (-__INT64_C(9223372036854775807)-1)
+/* Maximum for largest signed integral type.  */
+#define INTMAX_MAX (__INT64_C(9223372036854775807))
+
+/* Maximum for largest unsigned integral type.  */
+#define UINTMAX_MAX (__UINT64_C(18446744073709551615))
+
+
+/* Limits of other integer types.  */
+
+/* Limits of `ptrdiff_t' type.  */
+
+#define PTRDIFF_MIN (-9223372036854775807L-1)
+#define PTRDIFF_MAX (9223372036854775807L)
+# 220 "/usr/include/stdint.h" 3 4
+
+/* Limits of `sig_atomic_t'.  */
+#define SIG_ATOMIC_MIN (-2147483647-1)
+#define SIG_ATOMIC_MAX (2147483647)
+
+/* Limit of `size_t' type.  */
+
+#define SIZE_MAX (18446744073709551615UL)
+
+
+
+
+
+
+
+
+/* Limits of `wchar_t'.  */
+
+/* These constants might also be defined in <wchar.h>.  */
+#define WCHAR_MIN __WCHAR_MIN
+#define WCHAR_MAX __WCHAR_MAX
+
+
+/* Limits of `wint_t'.  */
+#define WINT_MIN (0u)
+#define WINT_MAX (4294967295u)
+
+/* Signed.  */
+#define INT8_C(c) c
+#define INT16_C(c) c
+#define INT32_C(c) c
+
+#define INT64_C(c) c ## L
+
+
+
+
+/* Unsigned.  */
+#define UINT8_C(c) c
+#define UINT16_C(c) c
+#define UINT32_C(c) c ## U
+
+#define UINT64_C(c) c ## UL
+
+
+
+
+/* Maximal type.  */
+
+#define INTMAX_C(c) c ## L
+#define UINTMAX_C(c) c ## UL
+
+
+
+
+
+# 318 "/usr/include/stdint.h" 3 4
+
+# 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
+
+
+
+#define _GCC_WRAP_STDINT_H 
+# 38 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
 
 
 
@@ -10508,6 +10124,390 @@ void verifyTest(void);
 
 
 
+# 2 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b.c" 2
+# 1 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 1
+
+#define TEST_ISOVERENTER_B_H 
+
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
+
+/* TempMon.h */
+
+
+#define TEMPMON_H 
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
+/* Copyright (C) 1998-2022 Free Software Foundation, Inc.
+
+This file is part of GCC.
+
+GCC is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+GCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Under Section 7 of GPL version 3, you are granted additional
+permissions described in the GCC Runtime Library Exception, version
+3.1, as published by the Free Software Foundation.
+
+You should have received a copy of the GNU General Public License and
+a copy of the GCC Runtime Library Exception along with this program;
+see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+<http://www.gnu.org/licenses/>.  */
+
+/*
+ * ISO C Standard:  7.16  Boolean type and values  <stdbool.h>
+ */
+
+
+#define _STDBOOL_H 
+
+
+
+#define bool _Bool
+
+
+
+
+#define true 1
+#define false 0
+
+
+
+
+
+
+
+
+
+/* Signal that all the definitions are present.  */
+#define __bool_true_false_are_defined 1
+
+# 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
+
+
+/**
+ * @file TempMon.h
+ * @brief Temperature monitoring module (TEMPMON_STS_UNDER/TEMPMON_STS_OVER
+ * detection with hysteresis).
+ *
+ * @details
+ * **Goal of the module**
+ *
+ * Provide a small state machine to classify an input temperature into:
+ * - **TEMPMON_STS_NORMAL**
+ * - **TEMPMON_STS_UNDER** (below configured TEMPMON_STS_UNDER-threshold)
+ * - **TEMPMON_STS_OVER**  (above configured TEMPMON_STS_OVER-threshold)
+ *
+ * The module applies **hysteresis** to avoid rapid toggling near thresholds:
+ * - Enter **TEMPMON_STS_UNDER** when `temp_mC < g_UnderThreshold_mC_s32`
+ * - Exit  **TEMPMON_STS_UNDER** when `temp_mC > (g_UnderThreshold_mC_s32 +
+ *   g_Hyst_mC_s32)`
+ * - Enter **TEMPMON_STS_OVER**  when `temp_mC > g_OverThreshold_mC_s32`
+ * - Exit  **TEMPMON_STS_OVER**  when `temp_mC < (g_OverThreshold_mC_s32 -
+ *   g_Hyst_mC_s32)`
+ *
+ * @par Units
+ * All temperatures are expressed in **milli-degC (mdegC)**:
+ * - Example: `85000` = `85.000 °C`
+ *
+ * @par Typical usage
+ * - Set the public configuration variables (thresholds, hysteresis).
+ * - Call TempMon_Init() once at startup with the current temperature.
+ * - Call TempMon_Run() periodically with the current temperature.
+ * - Read the state with TempMon_GetSts() or the convenience functions.
+ *
+ * @par Notes and limitations
+ * - The module does not validate configuration ranges; ensure coherent values
+ *   (e.g., positive hysteresis, TEMPMON_STS_UNDER < TEMPMON_STS_OVER).
+ * - The module does not implement timing filters (activation/deactivation
+ *   delays).
+ */
+
+/* ===== Public types ===== */
+
+/**
+ * @brief Temperature monitor state.
+ *
+ * @details
+ * The temperature monitor state machine can be in one of the following states:
+ * - #TEMPMON_STS_NORMAL: temperature is within thresholds (considering
+ *   hysteresis exits)
+ * - #TEMPMON_STS_UNDER: TEMPMON_STS_UNDER-temperature condition is active
+ * - #TEMPMON_STS_OVER:  TEMPMON_STS_OVER-temperature condition is active
+ */
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
+
+/* ===== Public configuration (extern) =====
+ * Units: milli-degrees Celsius (mdegC)
+ * Note: suffix `_mC` means milli-degC (0.001 °C)
+ * Example: 85000 = 85.000 °C
+ */
+
+/**
+ * @brief TEMPMON_STS_UNDER-temperature threshold in mdegC.
+ *
+ * @details
+ * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_UNDER
+ * when:
+ * - `temp_mC < g_UnderThreshold_mC_s32`
+ *
+ * If the module is in TEMPMON_STS_UNDER state, it returns to TEMPMON_STS_NORMAL
+ * when:
+ * - `temp_mC > (g_UnderThreshold_mC_s32 + g_Hyst_mC_s32)`
+ */
+extern int32_t g_UnderThreshold_mC_s32;
+
+/**
+ * @brief TEMPMON_STS_OVER-temperature threshold in mdegC.
+ *
+ * @details
+ * If the module is in TEMPMON_STS_NORMAL state, it enters TEMPMON_STS_OVER
+ * when:
+ * - `temp_mC > g_OverThreshold_mC_s32`
+ *
+ * If the module is in TEMPMON_STS_OVER state, it returns to TEMPMON_STS_NORMAL
+ * when:
+ * - `temp_mC < (g_OverThreshold_mC_s32 - g_Hyst_mC_s32)`
+ */
+extern int32_t g_OverThreshold_mC_s32;
+
+/**
+ * @brief Hysteresis in m°C applied to both TEMPMON_STS_UNDER and
+ * TEMPMON_STS_OVER transitions.
+ *
+ * @details
+ * Hysteresis is used to avoid state chatter around thresholds:
+ * - TEMPMON_STS_UNDER exit uses `UnderThreshold + Hyst`
+ * - TEMPMON_STS_OVER  exit uses `OverThreshold - Hyst`
+ *
+ * @note
+ * Use a non-negative value. A negative hysteresis inverts the intended
+ * behavior.
+ */
+extern int32_t g_Hyst_mC_s32;
+
+/* ===== Public API ===== */
+
+/**
+ * @brief Initialize the temperature monitor internal state.
+ *
+ * @details
+ * **Goal of the function**
+ *
+ * Initialize the internal state machine so that the module starts in a state
+ * consistent with the current temperature.
+ *
+ * The processing logic:
+ * - Sets the internal state to #TEMPMON_STS_NORMAL.
+ * - Executes the same decision logic used by TempMon_Run() once using @p
+ *   temp_mC.
+ *
+ * This guarantees that the initial state respects the configured thresholds
+ * and hysteresis rules (no special “startup” behavior is applied).
+ *
+ * @par Interface summary
+ *
+ * | Interface               | In | Out | Data type / Signature    | Param |
+ * Data factor | Data offset | Data size | Data range             | Data unit |
+ * |-------------------------|:--:|:---:|--------------------------|:-----:|------------:|------------:|----------:|------------------------|----------|
+ * | temp_mC                 | X  |     | int32_t                  |   X   | 1 |
+ * 0 |         1 | implementation-defined | [mdegC]  | | g_UnderThreshold_mC_s32
+ * | X  |     | int32_t (extern)         |   -   |           1 |           0 |
+ * 1 | implementation-defined | [mdegC]  | | g_OverThreshold_mC_s32  | X  | |
+ * int32_t (extern)         |   -   |           1 |           0 |         1 |
+ * implementation-defined | [mdegC]  | | g_Hyst_mC_s32           | X  |     |
+ * int32_t (extern)         |   -   |           1 |           0 |         1 |
+ * typically >= 0         | [mdegC]  |
+ *
+ * @par Activity diagram (PlantUML)
+ *
+ * @startuml
+ * start
+ * :Sts_e = TEMPMON_STS_NORMAL;
+ * :TempMon_Run(temp_mC);
+ * stop
+ * @enduml
+ *
+ * @param temp_mC
+ * Current temperature in milli-degC (mdegC) used to set the initial state.
+ *
+ * @return void
+ */
+void TempMon_Init(int32_t temp_mC);
+
+/**
+ * @brief Run one update step of the temperature monitor.
+ *
+ * @details
+ * **Goal of the function**
+ *
+ *
+ * @par Interface summary
+ *
+ * | Interface               | In | Out | Data type / Signature     | Param | Data factor | Data offset | Data size | Data range                                           | Unit   |
+ * |------------------------|:--:|:---:|----------------------------|:-----:|------------:|------------:|----------:|------------------------------------------------------|--------|
+ * | temp_mC                | X  |     | int32_t                    | X     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
+ * | g_UnderThreshold_mC_s32| X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
+ * | g_OverThreshold_mC_s32 | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
+ * | g_Hyst_mC_s32          | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | typically >= 0                                        | mdegC  |
+ * | Sts_e                  | X  |  X  | TempMon_sts_e (static)     | -     | -           | -           | -         | TEMPMON_STS_NORMAL / _UNDER / _OVER                   | -      |
+ *
+ * @par Activity diagram (PlantUML)
+ *
+ * @startuml
+ * start
+ * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
+ *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_UNDER;
+ *   else (no)
+ *     if (temp_mC > g_OverThreshold_mC_s32) then (yes)
+ *       :Sts_e = TEMPMON_STS_OVER;
+ *     else (no)
+ *       :stay TEMPMON_STS_NORMAL;
+ *     endif
+ *   endif
+ * elseif (Sts_e == TEMPMON_STS_UNDER) then (yes)
+ *   if (temp_mC >  g_UnderThreshold_mC_s32 + g_Hyst_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_NORMAL;
+ *   else (no)
+ *     :stay TEMPMON_STS_UNDER;
+ *   endif
+ * else (TEMPMON_STS_OVER)
+ *   if (temp_mC < g_OverThreshold_mC_s32 - g_Hyst_mC_s32) then (yes)
+ *     :Sts_e = TEMPMON_STS_NORMAL;
+ *   else (no)
+ *     :stay TEMPMON_STS_OVER;
+ *   endif
+ * endif
+ * stop
+ * @enduml
+ *
+ * @param temp_mC
+ * Current temperature in milli-degC (mdegC).
+ *
+ * @return void
+ */
+void TempMon_Run(int32_t temp_mC);
+
+/**
+ * @brief Get the current status of the temperature monitor.
+ *
+ * @details
+ * **Goal of the function**
+ *
+ * Provide read access to the internal state machine status updated by
+ * TempMon_Init() and TempMon_Run().
+ *
+ * The processing logic:
+ * - Returns the current internal state value.
+ *
+ * @par Interface summary
+ *
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|----------------------------------------------|----------|
+ * | Sts_e | X  |  X  | TempMon_sts_e          |   -   |           - | - | - |
+ * TEMPMON_STS_NORMAL / TEMPMON_STS_UNDER / OVER | [-]      |
+ *
+ * @par Activity diagram (PlantUML)
+ *
+ * @startuml
+ * start
+ * :return Sts_e;
+ * stop
+ * @enduml
+ *
+ * @return
+ * Current temperature monitor status (#TempMon_sts_e).
+ */
+TempMon_sts_e TempMon_GetSts(void);
+
+/**
+ * @brief Convenience check: returns true if status is TEMPMON_STS_UNDER.
+ *
+ * @details
+ * **Goal of the function**
+ *
+ * Provide a boolean helper to quickly check whether the
+ * TEMPMON_STS_UNDER-temperature condition is currently active.
+ *
+ * The processing logic:
+ * - Compares internal state to #TEMPMON_STS_UNDER.
+ * - Returns true if equal, otherwise false.
+ *
+ * @par Interface summary
+ *
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range      | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|-----------------|----------|
+ * | Sts_e                   | X  |  X  | bool                   |   -   | - |
+ * - |         - | {false, true}   | [-]      |
+ *
+ * @par Activity diagram (PlantUML)
+ *
+ * @startuml
+ * start
+ * if (Sts_e == TEMPMON_STS_UNDER) then (yes)
+ *   :return true;
+ * else (no)
+ *   :return false;
+ * endif
+ * stop
+ * @enduml
+ *
+ * @return
+ * true if TEMPMON_STS_UNDER-temperature is active, false otherwise.
+ */
+bool TempMon_IsUnderAlv_b(void);
+
+/**
+ * @brief Convenience check: returns true if status is TEMPMON_STS_OVER.
+ *
+ * @details
+ * **Goal of the function**
+ *
+ * Provide a boolean helper to quickly check whether the
+ * TEMPMON_STS_OVER-temperature condition is currently active.
+ *
+ * The processing logic:
+ * - Compares internal state to #TEMPMON_STS_OVER.
+ * - Returns true if equal, otherwise false.
+ *
+ * @par Interface summary
+ *
+ * | Interface                | In | Out | Data type / Signature | Param | Data
+ * factor | Data offset | Data size | Data range    | Data unit |
+ * |-------------------------|:--:|:---:|------------------------|:-----:|------------:|------------:|----------:|---------------|----------|
+ * | Sts_e                   | X  |  X  | bool                   |   -   | - |
+ * - |         - | {false, true} | [-]      |
+ *
+ * @par Activity diagram (PlantUML)
+ *
+ * @startuml
+ * start
+ * if (Sts_e == TEMPMON_STS_OVER) then (yes)
+ *   :return true;
+ * else (no)
+ *   :return false;
+ * endif
+ * stop
+ * @enduml
+ *
+ * @return
+ * true if TEMPMON_STS_OVER-temperature is active, false otherwise.
+ */
+bool TempMon_IsOverAlv_b(void);
+
+# 5 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 2
+
+_Bool IsOverEnter_b(int32_t temp_mC);
+
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b.c" 2
 
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsOverEnter_b/mock_TempMon.h" 1
@@ -10628,10 +10628,11 @@ void TempMon_IsOverAlv_b_Stub(CMOCK_TempMon_IsOverAlv_b_CALLBACK Callback);
 
 # 5 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b.c" 2
 
-void setUp(void) {}
-void tearDown(void) {}
+void setUp(void) {
+}
+void tearDown(void) {
+}
 
-void test_IsOverEnter_b(void)
-{
-    TEST_IGNORE_MESSAGE("Auto-generated stub test");
+void test_IsOverEnter_b(void) {
+  TEST_IGNORE_MESSAGE("Auto-generated stub test");
 }
