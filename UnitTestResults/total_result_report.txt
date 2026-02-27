@@ -1,6 +1,0 @@
-| function_name  | test_name        | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  |
-|----------------|------------------|--------|--------|--------|---------|-----------|--------------|----------------|
-| IsOverExit_b   | IsOverExit_b_1   | PASSED | PASSED | -      | -       | 0.0%      | -%           | 26/02/26 14:59 |
-| IsUnderExit_b  | IsUnderExit_b_1  | PASSED | PASSED | -      | -       | 0.0%      | -%           | 26/02/26 14:59 |
-| IsOverEnter_b  | IsOverEnter_b_1  | PASSED | PASSED | -      | -       | 0.0%      | -%           | 26/02/26 14:59 |
-| IsUnderEnter_b | IsUnderEnter_b_1 | PASSED | PASSED | -      | -       | 0.0%      | -%           | 26/02/26 14:59 |
