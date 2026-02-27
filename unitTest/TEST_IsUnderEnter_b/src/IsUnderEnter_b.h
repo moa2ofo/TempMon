@@ -6,5 +6,4 @@
 
 _Bool IsUnderEnter_b(int32_t temp_mC);
 
-
 #endif /* TEST_ISUNDERENTER_B_H */
