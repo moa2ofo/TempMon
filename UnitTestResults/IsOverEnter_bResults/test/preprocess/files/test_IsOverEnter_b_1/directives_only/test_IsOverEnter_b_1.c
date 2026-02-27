@@ -10129,7 +10129,6 @@ void verifyTest(void);
 
 #define TEST_ISOVERENTER_B_H 
 
-_Bool IsOverEnter_b(int32_t temp_mC);
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
 
 /* TempMon.h */
@@ -10505,9 +10504,10 @@ bool TempMon_IsUnderAlv_b(void);
  */
 bool TempMon_IsOverAlv_b(void);
 
-# 6 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 2
+# 5 "utExecutionAndResults/utUnderTest/src/IsOverEnter_b.h" 2
 
 _Bool IsOverEnter_b(int32_t temp_mC);
+
 
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsOverEnter_b_1.c" 2
 

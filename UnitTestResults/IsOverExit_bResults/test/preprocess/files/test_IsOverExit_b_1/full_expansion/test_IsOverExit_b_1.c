@@ -2159,7 +2159,6 @@ void verifyTest(void);
 
 
 
-_Bool IsOverExit_b(int32_t temp_mC);
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
 
 
@@ -2195,7 +2194,7 @@ _Bool
 _Bool 
 # 321 "utExecutionAndResults/utUnderTest/src/TempMon.h"
     TempMon_IsOverAlv_b(void);
-# 6 "utExecutionAndResults/utUnderTest/src/IsOverExit_b.h" 2
+# 5 "utExecutionAndResults/utUnderTest/src/IsOverExit_b.h" 2
 
 _Bool IsOverExit_b(int32_t temp_mC);
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsOverExit_b_1.c" 2
