@@ -57,5 +57,4 @@
  */
 void TempMon_Run(int32_t temp_mC);
 
-
 #endif /* TEST_TEMPMON_RUN_H */

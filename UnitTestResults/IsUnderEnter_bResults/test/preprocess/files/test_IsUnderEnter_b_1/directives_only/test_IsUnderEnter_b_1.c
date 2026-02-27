@@ -10508,7 +10508,6 @@ bool TempMon_IsOverAlv_b(void);
 
 _Bool IsUnderEnter_b(int32_t temp_mC);
 
-
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
 
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsUnderEnter_b_1/mock_TempMon.h" 1
