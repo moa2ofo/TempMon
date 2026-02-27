@@ -172,12 +172,12 @@ void TempMon_Init(int32_t temp_mC);
  * | g_UnderThreshold_mC_s32| X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
  * | g_OverThreshold_mC_s32 | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | implementation-defined                                | mdegC  |
  * | g_Hyst_mC_s32          | X  |     | int32_t (extern)           | -     | 1           | 0           | 1         | typically >= 0                                        | mdegC  |
- * | Sts_e                  | X  |  X  | TempMon_sts_e (static)     | -     | -           | -           | -         | TEMPMON_STS_NORMAL / _UNDER / _OVER                   | -      |
  *
  * @par Activity diagram (PlantUML)
  *
  * @startuml
  * start
+ * static TempMon_sts_e Sts_e
  * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
  *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
  *     :Sts_e = TEMPMON_STS_UNDER;
