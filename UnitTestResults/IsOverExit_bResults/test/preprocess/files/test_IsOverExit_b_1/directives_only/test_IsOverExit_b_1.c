@@ -10725,7 +10725,6 @@ static bool IsOverEnter_b(int32_t temp_mC);
 
 _Bool IsOverExit_b(int32_t temp_mC);
 
-
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsOverExit_b_1.c" 2
 
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsOverExit_b_1/mock_TempMon.h" 1
