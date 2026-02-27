@@ -6,5 +6,4 @@
 
 _Bool IsOverEnter_b(int32_t temp_mC);
 
-
 #endif /* TEST_ISOVERENTER_B_H */
