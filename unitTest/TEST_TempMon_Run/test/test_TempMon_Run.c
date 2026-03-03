@@ -7,156 +7,120 @@
 
 
 
-static TempMon_sts_e TempMon_GetSts_stub;
-static void TempMon_SetSts(TempMon_sts_e sts);
-static TempMon_sts_e TempMon_GetSts_Accessor(void);
+static TempMon_sts_e Sts_e_static;
 
-void setUp(void)
-{
+static void SetSts_e(TempMon_sts_e sts) {
+    Sts_e_static = sts;
+}
+
+static TempMon_sts_e GetSts_e(void) {
+    return Sts_e_static;
+}
+
+void setUp(void) {
     g_UnderThreshold_mC_s32 = 0;
     g_OverThreshold_mC_s32 = 0;
     g_Hyst_mC_s32 = 0;
-    TempMon_SetSts(TEMPMON_STS_NORMAL);
+    SetSts_e(TEMPMON_STS_NORMAL);
 }
 
-static void TempMon_SetSts(TempMon_sts_e sts)
-{
-    TempMon_GetSts_stub = sts;
-}
+void TempMon_Run(int32_t temp_mC);
 
-static TempMon_sts_e TempMon_GetSts_Accessor(void)
-{
-    return TempMon_GetSts_stub;
-}
-
-void test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_just_below_UnderThreshold(void)
-{
+void test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_below_UnderThreshold(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_NORMAL);
+    SetSts_e(TEMPMON_STS_NORMAL);
 
     TempMon_Run(999);
 
-    UnityAssertEqualInt(TEMPMON_STS_UNDER, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, GetSts_e());
 }
 
-void test_TempMon_Run_remains_NORMAL_when_temp_equals_UnderThreshold(void)
-{
+void test_TempMon_Run_stays_in_NORMAL_when_temp_at_UnderThreshold(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_NORMAL);
+    SetSts_e(TEMPMON_STS_NORMAL);
 
     TempMon_Run(1000);
 
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, GetSts_e());
 }
 
-void test_TempMon_Run_remains_NORMAL_when_temp_between_Under_and_OverThreshold(void)
-{
+void test_TempMon_Run_stays_in_NORMAL_when_temp_just_above_UnderThreshold_and_below_OverThreshold(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_NORMAL);
+    SetSts_e(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(1500);
+    TempMon_Run(1001);
 
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, GetSts_e());
 }
 
-void test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_just_above_OverThreshold(void)
-{
+void test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_above_OverThreshold(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_NORMAL);
+    SetSts_e(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(2001);
+    TempMon_Run(3001);
 
-    UnityAssertEqualInt(TEMPMON_STS_OVER, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, GetSts_e());
 }
 
-void test_TempMon_Run_remains_OVER_when_temp_equals_OverThreshold(void)
-{
+void test_TempMon_Run_stays_in_NORMAL_when_temp_at_OverThreshold(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_OVER);
+    SetSts_e(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(2000);
+    TempMon_Run(3000);
 
-    UnityAssertEqualInt(TEMPMON_STS_OVER, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, GetSts_e());
 }
 
-void test_TempMon_Run_remains_UNDER_when_temp_below_UnderThreshold_plus_Hyst(void)
-{
+void test_TempMon_Run_stays_in_UNDER_when_temp_below_UnderThreshold_plus_Hyst(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_UNDER);
+    SetSts_e(TEMPMON_STS_UNDER);
 
-    TempMon_Run(1049);
+    TempMon_Run(1000 + 50 - 1);
 
-    UnityAssertEqualInt(TEMPMON_STS_UNDER, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, GetSts_e());
 }
 
-void test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_just_above_UnderThreshold_plus_Hyst(void)
-{
+void test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_above_UnderThreshold_plus_Hyst(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_UNDER);
+    SetSts_e(TEMPMON_STS_UNDER);
 
-    TempMon_Run(1051);
+    TempMon_Run(1000 + 50 + 1);
 
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, GetSts_e());
 }
 
-void test_TempMon_Run_remains_NORMAL_when_temp_equals_UnderThreshold_plus_Hyst(void)
-{
+void test_TempMon_Run_stays_in_OVER_when_temp_above_OverThreshold_minus_Hyst(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_UNDER);
+    SetSts_e(TEMPMON_STS_OVER);
 
-    TempMon_Run(1050);
+    TempMon_Run(3000 - 50 + 1);
 
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, GetSts_e());
 }
 
-void test_TempMon_Run_remains_OVER_when_temp_above_OverThreshold_minus_Hyst(void)
-{
+void test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_below_OverThreshold_minus_Hyst(void) {
     g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
+    g_OverThreshold_mC_s32 = 3000;
     g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_OVER);
+    SetSts_e(TEMPMON_STS_OVER);
 
-    TempMon_Run(1951);
+    TempMon_Run(3000 - 50 - 1);
 
-    UnityAssertEqualInt(TEMPMON_STS_OVER, TempMon_GetSts_Accessor(), NULL, 0);
-}
-
-void test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_just_below_OverThreshold_minus_Hyst(void)
-{
-    g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
-    g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_OVER);
-
-    TempMon_Run(1949);
-
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
-}
-
-void test_TempMon_Run_remains_NORMAL_when_temp_equals_OverThreshold_minus_Hyst(void)
-{
-    g_UnderThreshold_mC_s32 = 1000;
-    g_OverThreshold_mC_s32 = 2000;
-    g_Hyst_mC_s32 = 50;
-    TempMon_SetSts(TEMPMON_STS_OVER);
-
-    TempMon_Run(1950);
-
-    UnityAssertEqualInt(TEMPMON_STS_NORMAL, TempMon_GetSts_Accessor(), NULL, 0);
+    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, GetSts_e());
 }
