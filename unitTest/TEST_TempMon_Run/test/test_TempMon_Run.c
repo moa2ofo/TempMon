@@ -7,133 +7,170 @@
 
 
 
-static TempMon_sts_e Sts_e;
+static TempMon_sts_e TempMon_sts_e_Setter;
+static TempMon_sts_e TempMon_sts_e_Getter;
+static int32_t g_UnderThreshold_mC_s32_Setter;
+static int32_t g_OverThreshold_mC_s32_Setter;
+static int32_t g_Hyst_mC_s32_Setter;
 
-static void set_Sts_e(TempMon_sts_e sts) { Sts_e = sts; }
-static TempMon_sts_e get_Sts_e(void) { return Sts_e; }
+static void TempMon_sts_e_Set(TempMon_sts_e sts)
+{
+    TempMon_sts_e_Setter = sts;
+}
+
+static TempMon_sts_e TempMon_sts_e_Get(void)
+{
+    return TempMon_sts_e_Setter;
+}
 
 void setUp(void)
 {
     g_UnderThreshold_mC_s32 = 0;
     g_OverThreshold_mC_s32 = 0;
     g_Hyst_mC_s32 = 0;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    TempMon_sts_e_Set(0);
 }
 
-void test_TempMon_Run_transitions_from_NORMAL_to_UNDER_when_temp_below_underThreshold(void)
+void test_TempMon_Run_TransitionsFromNormalToUnderWhenTempJustBelowUnderThreshold(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 200;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(9999);
+    TempMon_Run(999);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_UNDER, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_stays_NORMAL_when_temp_equals_underThreshold(void)
+void test_TempMon_Run_TransitionsFromNormalToUnderWhenTempExactlyAtUnderThresholdMinusOne(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 0;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(10000);
+    TempMon_Run(999);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_UNDER, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_stays_NORMAL_when_temp_just_above_underThreshold_but_below_overThreshold(void)
+void test_TempMon_Run_StaysNormalWhenTempExactlyAtUnderThreshold(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 200;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(10001);
+    TempMon_Run(1000);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_NORMAL, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_transitions_from_NORMAL_to_OVER_when_temp_above_overThreshold(void)
+void test_TempMon_Run_TransitionsFromNormalToOverWhenTempJustAboveOverThreshold(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 200;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(30001);
+    TempMon_Run(3001);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_OVER, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_stays_NORMAL_when_temp_equals_overThreshold(void)
+void test_TempMon_Run_StaysNormalWhenTempExactlyAtOverThreshold(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_NORMAL);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 200;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(30000);
+    TempMon_Run(3000);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_NORMAL, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_stays_UNDER_when_temp_below_or_equal_underThreshold_plus_hyst(void)
+void test_TempMon_Run_StaysNormalWhenTempBetweenThresholds(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_UNDER);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 200;
+    TempMon_sts_e_Set(TEMPMON_STS_NORMAL);
 
-    TempMon_Run(12000); // equals 10000 + 2000
+    TempMon_Run(2000);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
-
-    set_Sts_e(TEMPMON_STS_UNDER);
-    TempMon_Run(11999); // just below 12000
-
-    TEST_ASSERT_EQUAL(TEMPMON_STS_UNDER, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_NORMAL, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_transitions_from_UNDER_to_NORMAL_when_temp_above_underThreshold_plus_hyst(void)
+void test_TempMon_Run_TransitionsFromUnderToNormalWhenTempJustAboveUnderThresholdPlusHyst(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_UNDER);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_UNDER);
 
-    TempMon_Run(12001);
+    TempMon_Run(1101);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_NORMAL, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_stays_OVER_when_temp_above_or_equal_overThreshold_minus_hyst(void)
+void test_TempMon_Run_StaysUnderWhenTempExactlyAtUnderThresholdPlusHyst(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_OVER);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_UNDER);
 
-    TempMon_Run(28000); // 30000 - 2000
+    TempMon_Run(1100);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
-
-    set_Sts_e(TEMPMON_STS_OVER);
-    TempMon_Run(28001); // just above 28000
-
-    TEST_ASSERT_EQUAL(TEMPMON_STS_OVER, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_UNDER, TempMon_sts_e_Get());
 }
 
-void test_TempMon_Run_transitions_from_OVER_to_NORMAL_when_temp_below_overThreshold_minus_hyst(void)
+void test_TempMon_Run_StaysUnderWhenTempJustBelowUnderThresholdPlusHyst(void)
 {
-    g_UnderThreshold_mC_s32 = 10000;
-    g_OverThreshold_mC_s32 = 30000;
-    g_Hyst_mC_s32 = 2000;
-    set_Sts_e(TEMPMON_STS_OVER);
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_UNDER);
 
-    TempMon_Run(27999);
+    TempMon_Run(1099);
 
-    TEST_ASSERT_EQUAL(TEMPMON_STS_NORMAL, get_Sts_e());
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_UNDER, TempMon_sts_e_Get());
+}
+
+void test_TempMon_Run_TransitionsFromOverToNormalWhenTempJustBelowOverThresholdMinusHyst(void)
+{
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_OVER);
+
+    TempMon_Run(2899);
+
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_NORMAL, TempMon_sts_e_Get());
+}
+
+void test_TempMon_Run_StaysOverWhenTempExactlyAtOverThresholdMinusHyst(void)
+{
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_OVER);
+
+    TempMon_Run(2900);
+
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_OVER, TempMon_sts_e_Get());
+}
+
+void test_TempMon_Run_StaysOverWhenTempJustAboveOverThresholdMinusHyst(void)
+{
+    g_UnderThreshold_mC_s32 = 1000;
+    g_OverThreshold_mC_s32 = 3000;
+    g_Hyst_mC_s32 = 100;
+    TempMon_sts_e_Set(TEMPMON_STS_OVER);
+
+    TempMon_Run(2901);
+
+    TEST_ASSERT_EQUAL_INT(TEMPMON_STS_OVER, TempMon_sts_e_Get());
 }
