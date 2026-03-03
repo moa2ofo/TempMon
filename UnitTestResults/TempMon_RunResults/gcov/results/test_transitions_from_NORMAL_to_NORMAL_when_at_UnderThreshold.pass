@@ -1,0 +1,19 @@
+---
+:source:
+  :file: utExecutionAndResults/utUnderTest/test/test_transitions_from_NORMAL_to_NORMAL_when_at_UnderThreshold.c
+  :dirname: utExecutionAndResults/utUnderTest/test
+  :basename: test_transitions_from_NORMAL_to_NORMAL_when_at_UnderThreshold.c
+:successes:
+- :test: test_TempMon_Run_transitions_from_NORMAL_to_NORMAL_when_at_UnderThreshold
+  :line: 22
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.003800096000020403
