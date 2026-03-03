@@ -1,0 +1,19 @@
+---
+:source:
+  :file: utExecutionAndResults/utUnderTest/test/test_stays_UNDER_when_temp_just_below_threshold_plus_hyst.c
+  :dirname: utExecutionAndResults/utUnderTest/test
+  :basename: test_stays_UNDER_when_temp_just_below_threshold_plus_hyst.c
+:successes:
+- :test: test_TempMon_Run_stays_UNDER_when_temp_just_below_threshold_plus_hyst
+  :line: 22
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.0037529220000180885

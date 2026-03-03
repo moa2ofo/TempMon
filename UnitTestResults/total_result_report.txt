@@ -1,6 +1,18 @@
-| function_name  | test_name        | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  |
-|----------------|------------------|--------|--------|--------|---------|-----------|--------------|----------------|
-| IsOverExit_b   | IsOverExit_b_1   | PASSED | PASSED | -      | -       | 0.0%      | -%           | 27/02/26 11:55 |
-| IsUnderExit_b  | IsUnderExit_b_1  | PASSED | PASSED | -      | -       | 0.0%      | -%           | 27/02/26 11:56 |
-| IsOverEnter_b  | IsOverEnter_b_1  | PASSED | PASSED | -      | -       | 0.0%      | -%           | 27/02/26 11:56 |
-| IsUnderEnter_b | IsUnderEnter_b_1 | PASSED | PASSED | -      | -       | 0.0%      | -%           | 27/02/26 11:56 |
+| function_name  | test_name                                                                 | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  |
+|----------------|---------------------------------------------------------------------------|--------|--------|--------|---------|-----------|--------------|----------------|
+| IsOverExit_b   | IsOverExit_b_1                                                            | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:31 |
+| IsUnderExit_b  | IsUnderExit_b_1                                                           | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:31 |
+| IsOverEnter_b  | IsOverEnter_b_1                                                           | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:31 |
+| IsUnderEnter_b | IsUnderEnter_b_1                                                          | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:31 |
+| TempMon_Run    | stays_NORMAL_when_temp_just_above_under_threshold                         | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_UNDER_when_temp_exactly_at_threshold_plus_hyst                      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_NORMAL_when_temp_exactly_at_over_threshold                          | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_UNDER_when_temp_just_below_threshold_plus_hyst                      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_NORMAL_when_temp_just_below_over_threshold                          | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_NORMAL_when_temp_exactly_at_under_threshold                         | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_OVER_when_temp_just_above_threshold_minus_hyst                      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | stays_OVER_when_temp_exactly_at_threshold_minus_hyst                      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | transitions_from_NORMAL_to_UNDER_when_temp_just_below_under_threshold     | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | transitions_from_NORMAL_to_OVER_when_temp_just_above_over_threshold       | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | transitions_from_UNDER_to_NORMAL_when_temp_just_above_threshold_plus_hyst | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
+| TempMon_Run    | transitions_from_OVER_to_NORMAL_when_temp_just_below_threshold_minus_hyst | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:31 |
