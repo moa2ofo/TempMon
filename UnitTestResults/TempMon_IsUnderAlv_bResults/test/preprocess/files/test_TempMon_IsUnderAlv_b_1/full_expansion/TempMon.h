@@ -259,7 +259,7 @@ extern int32_t g_Hyst_mC_s32;
 # 158 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 void TempMon_Init(int32_t temp_mC);
 # 212 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-static void TempMon_Run(int32_t temp_mC);
+ void TempMon_Run(int32_t temp_mC);
 # 245 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 TempMon_sts_e TempMon_GetSts(void);
 # 320 "utExecutionAndResults/utUnderTest/src/TempMon.h"

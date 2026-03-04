@@ -8,7 +8,7 @@ extern int32_t g_UnderThreshold_mC_s32;
 extern int32_t g_OverThreshold_mC_s32;
 extern int32_t g_Hyst_mC_s32;
 void TempMon_Init(int32_t temp_mC);
-static void TempMon_Run(int32_t temp_mC);
+ void TempMon_Run(int32_t temp_mC);
 
 _Bool
     TempMon_IsUnderAlv_b(void);

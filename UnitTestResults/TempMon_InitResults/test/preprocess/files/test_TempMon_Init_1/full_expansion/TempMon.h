@@ -257,7 +257,7 @@ extern int32_t g_OverThreshold_mC_s32;
 # 109 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 extern int32_t g_Hyst_mC_s32;
 # 211 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-static void TempMon_Run(int32_t temp_mC);
+ void TempMon_Run(int32_t temp_mC);
 # 244 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 TempMon_sts_e TempMon_GetSts(void);
 # 282 "utExecutionAndResults/utUnderTest/src/TempMon.h"

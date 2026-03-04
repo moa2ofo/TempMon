@@ -3107,7 +3107,7 @@ void TempMon_Init(int32_t temp_mC);
  *
  * @startuml
  * start
- * static TempMon_sts_e Sts_e
+ *  TempMon_sts_e Sts_e
  * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
  *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
  *     :Sts_e = TEMPMON_STS_UNDER;
@@ -3261,7 +3261,7 @@ bool TempMon_IsOverAlv_b(void);
 
 /**
  * @file TempMon_Priv.h
- * @brief Private interface for TempMon module (cfile-static state and helpers).
+ * @brief Private interface for TempMon module (cfile- state and helpers).
  *
  * @details
  * **Goal of this header**
@@ -3278,7 +3278,7 @@ bool TempMon_IsOverAlv_b(void);
  *   - Enter/Exit **OVER**
  *
  * @par Design notes
- * - All entities declared here are intended to be **file-static** (internal
+ * - All entities declared here are intended to be **file-** (internal
  * linkage).
  * - The state machine is maintained in `TempMon.c`; this header only
  * centralizes private declarations to keep the `.c` file readable.
@@ -3291,9 +3291,9 @@ bool TempMon_IsOverAlv_b(void);
  *   thresholds may lead to unexpected behavior.
  */
 
-/* ===== Private (file-static) state ===== */
+/* ===== Private (file-) state ===== */
 
-/* ===== Private (cfile-static) functions ===== */
+/* ===== Private (cfile-) functions ===== */
 
 /**
  * @brief Check the entry condition for UNDER state.
@@ -3335,7 +3335,7 @@ bool TempMon_IsOverAlv_b(void);
  * @return
  * true if the UNDER entry condition is met, false otherwise.
  */
-static bool IsUnderEnter_b(int32_t temp_mC);
+ bool IsUnderEnter_b(int32_t temp_mC);
 
 /**
  * @brief Check the exit condition for UNDER state (hysteresis release).
@@ -3379,7 +3379,7 @@ static bool IsUnderEnter_b(int32_t temp_mC);
  * @return
  * true if the UNDER exit condition is met, false otherwise.
  */
-static bool IsUnderExit_b(int32_t temp_mC);
+ bool IsUnderExit_b(int32_t temp_mC);
 
 /**
  * @brief Check the entry condition for OVER state.
@@ -3421,7 +3421,7 @@ static bool IsUnderExit_b(int32_t temp_mC);
  * @return
  * true if the OVER entry condition is met, false otherwise.
  */
-static bool IsOverEnter_b(int32_t temp_mC);
+ bool IsOverEnter_b(int32_t temp_mC);
 
 /**
  * @brief Check the exit condition for OVER state (hysteresis release).
@@ -3465,7 +3465,7 @@ static bool IsOverEnter_b(int32_t temp_mC);
  * @return
  * true if the OVER exit condition is met, false otherwise.
  */
-static bool IsOverExit_b(int32_t temp_mC);
+ bool IsOverExit_b(int32_t temp_mC);
 
 # 6 "utExecutionAndResults/utUnderTest/src/TempMon_Run.h" 2
 
@@ -3489,6 +3489,7 @@ static bool IsOverExit_b(int32_t temp_mC);
  *
  * @startuml
  * start
+ *  TempMon_sts_e Sts_e
  * if (Sts_e == TEMPMON_STS_NORMAL) then (yes)
  *   if (temp_mC <  g_UnderThreshold_mC_s32) then (yes)
  *     :Sts_e = TEMPMON_STS_UNDER;

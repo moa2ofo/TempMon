@@ -246,22 +246,18 @@ typedef __uintmax_t uintmax_t;
 # 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
 # 8 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 2
 # 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-
+ _Bool 
 # 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
-# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
-# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsUnderExit_b(int32_t temp_mC);
+     IsUnderExit_b(int32_t temp_mC);
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
+ 
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
+_Bool 
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverEnter_b(int32_t temp_mC);
+     IsOverEnter_b(int32_t temp_mC);
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
+ 
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
+_Bool 
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverExit_b(int32_t temp_mC);
+     IsOverExit_b(int32_t temp_mC);

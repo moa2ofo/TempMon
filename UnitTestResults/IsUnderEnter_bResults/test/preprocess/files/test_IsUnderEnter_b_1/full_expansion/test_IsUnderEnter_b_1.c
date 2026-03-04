@@ -264,7 +264,7 @@ extern int32_t g_Hyst_mC_s32;
 # 158 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 void TempMon_Init(int32_t temp_mC);
 # 212 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-static void TempMon_Run(int32_t temp_mC);
+ void TempMon_Run(int32_t temp_mC);
 # 245 "utExecutionAndResults/utUnderTest/src/TempMon.h"
 TempMon_sts_e TempMon_GetSts(void);
 # 283 "utExecutionAndResults/utUnderTest/src/TempMon.h"
@@ -282,23 +282,23 @@ _Bool
 # 5 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
 # 1 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 1
 # 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
+ 
 # 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
+_Bool 
 # 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsUnderExit_b(int32_t temp_mC);
+     IsUnderExit_b(int32_t temp_mC);
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
+ 
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
+_Bool 
 # 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverEnter_b(int32_t temp_mC);
+     IsOverEnter_b(int32_t temp_mC);
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
+ 
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
+_Bool 
 # 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverExit_b(int32_t temp_mC);
+     IsOverExit_b(int32_t temp_mC);
 # 6 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
 
 _Bool IsUnderEnter_b(int32_t temp_mC);
