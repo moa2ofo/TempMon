@@ -42,7 +42,7 @@ void TempMon_Init(int32_t temp_mC) {
 extern int32_t g_UnderThreshold_mC_s32;
 extern int32_t g_OverThreshold_mC_s32;
 extern int32_t g_Hyst_mC_s32;
-void TempMon_Run(int32_t temp_mC) {
+static void TempMon_Run(int32_t temp_mC) {
   /**
    * @brief Static status variable holding the current temperature monitor state.
    * Initialized to TEMPMON_STS_NORMAL.

@@ -209,7 +209,7 @@ void TempMon_Init(int32_t temp_mC);
  *
  * @return void
  */
-void TempMon_Run(int32_t temp_mC);
+static void TempMon_Run(int32_t temp_mC);
 
 /**
  * @brief Get the current status of the temperature monitor.
