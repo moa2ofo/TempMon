@@ -4,12 +4,25 @@
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
 # 1 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c"
-# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h" 1
-# 22 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
-# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 1
-# 16 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h"
-# 1 "/usr/include/setjmp.h" 1 3 4
-# 25 "/usr/include/setjmp.h" 3 4
+# 1 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 1
+
+
+
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
+
+
+
+
+
+
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
+# 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
+# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 1 3 4
+# 9 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 3 4
+# 1 "/usr/include/stdint.h" 1 3 4
+# 26 "/usr/include/stdint.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 33 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 3 4
 # 1 "/usr/include/features.h" 1 3 4
 # 392 "/usr/include/features.h" 3 4
 # 1 "/usr/include/features-time64.h" 1 3 4
@@ -36,102 +49,8 @@
 # 1 "/usr/include/x86_64-linux-gnu/gnu/stubs-64.h" 1 3 4
 # 11 "/usr/include/x86_64-linux-gnu/gnu/stubs.h" 2 3 4
 # 514 "/usr/include/features.h" 2 3 4
-# 26 "/usr/include/setjmp.h" 2 3 4
-
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 1 3 4
-# 26 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
-# 27 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 2 3 4
-
-
-
-
-
-# 31 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 3 4
-typedef long int __jmp_buf[8];
-# 30 "/usr/include/setjmp.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 1 3 4
-# 23 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h" 1 3 4
-
-
-
-
-typedef struct
-{
-  unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
-} __sigset_t;
-# 24 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 2 3 4
-
-
-struct __jmp_buf_tag
-  {
-
-
-
-
-    __jmp_buf __jmpbuf;
-    int __mask_was_saved;
-    __sigset_t __saved_mask;
-  };
-# 31 "/usr/include/setjmp.h" 2 3 4
-
-typedef struct __jmp_buf_tag jmp_buf[1];
-
-
-
-extern int setjmp (jmp_buf __env) __attribute__ ((__nothrow__));
-
-
-
-
-extern int __sigsetjmp (struct __jmp_buf_tag __env[1], int __savemask) __attribute__ ((__nothrow__));
-
-
-
-extern int _setjmp (struct __jmp_buf_tag __env[1]) __attribute__ ((__nothrow__));
-# 54 "/usr/include/setjmp.h" 3 4
-extern void longjmp (struct __jmp_buf_tag __env[1], int __val)
-     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
-
-
-
-
-
-extern void _longjmp (struct __jmp_buf_tag __env[1], int __val)
-     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
-
-
-
-
-
-
-
-typedef struct __jmp_buf_tag sigjmp_buf[1];
-# 80 "/usr/include/setjmp.h" 3 4
-extern void siglongjmp (sigjmp_buf __env, int __val)
-     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
-# 90 "/usr/include/setjmp.h" 3 4
-
-# 17 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
-
-
-
-# 1 "/usr/include/math.h" 1 3 4
-# 27 "/usr/include/math.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-# 28 "/usr/include/math.h" 2 3 4
-
-
-
-
-
-
-
-
-
+# 34 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 2 3 4
+# 27 "/usr/include/stdint.h" 2 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/types.h" 1 3 4
 # 27 "/usr/include/x86_64-linux-gnu/bits/types.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
@@ -143,6 +62,8 @@ extern void siglongjmp (sigjmp_buf __env, int __val)
 # 29 "/usr/include/x86_64-linux-gnu/bits/types.h" 2 3 4
 
 
+
+# 31 "/usr/include/x86_64-linux-gnu/bits/types.h" 3 4
 typedef unsigned char __u_char;
 typedef unsigned short int __u_short;
 typedef unsigned int __u_int;
@@ -264,7 +185,225 @@ typedef unsigned int __socklen_t;
 
 
 typedef int __sig_atomic_t;
-# 38 "/usr/include/math.h" 2 3 4
+# 28 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/wchar.h" 1 3 4
+# 29 "/usr/include/stdint.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
+# 30 "/usr/include/stdint.h" 2 3 4
+
+
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
+# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 3 4
+typedef __int8_t int8_t;
+typedef __int16_t int16_t;
+typedef __int32_t int32_t;
+typedef __int64_t int64_t;
+# 35 "/usr/include/stdint.h" 2 3 4
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 1 3 4
+# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3 4
+typedef __uint8_t uint8_t;
+typedef __uint16_t uint16_t;
+typedef __uint32_t uint32_t;
+typedef __uint64_t uint64_t;
+# 38 "/usr/include/stdint.h" 2 3 4
+
+
+
+
+
+typedef __int_least8_t int_least8_t;
+typedef __int_least16_t int_least16_t;
+typedef __int_least32_t int_least32_t;
+typedef __int_least64_t int_least64_t;
+
+
+typedef __uint_least8_t uint_least8_t;
+typedef __uint_least16_t uint_least16_t;
+typedef __uint_least32_t uint_least32_t;
+typedef __uint_least64_t uint_least64_t;
+
+
+
+
+
+typedef signed char int_fast8_t;
+
+typedef long int int_fast16_t;
+typedef long int int_fast32_t;
+typedef long int int_fast64_t;
+# 71 "/usr/include/stdint.h" 3 4
+typedef unsigned char uint_fast8_t;
+
+typedef unsigned long int uint_fast16_t;
+typedef unsigned long int uint_fast32_t;
+typedef unsigned long int uint_fast64_t;
+# 87 "/usr/include/stdint.h" 3 4
+typedef long int intptr_t;
+
+
+typedef unsigned long int uintptr_t;
+# 101 "/usr/include/stdint.h" 3 4
+typedef __intmax_t intmax_t;
+typedef __uintmax_t uintmax_t;
+# 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
+# 9 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
+# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
+# 80 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+extern int32_t g_UnderThreshold_mC_s32;
+# 94 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+extern int32_t g_OverThreshold_mC_s32;
+# 109 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+extern int32_t g_Hyst_mC_s32;
+# 158 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+void TempMon_Init(int32_t temp_mC);
+# 212 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+static void TempMon_Run(int32_t temp_mC);
+# 245 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+TempMon_sts_e TempMon_GetSts(void);
+# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+_Bool 
+# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+    TempMon_IsUnderAlv_b(void);
+# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+
+# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
+_Bool 
+# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h"
+    TempMon_IsOverAlv_b(void);
+# 5 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 1
+# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+static 
+# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
+      _Bool 
+# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+           IsUnderExit_b(int32_t temp_mC);
+# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+static 
+# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
+      _Bool 
+# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+           IsOverEnter_b(int32_t temp_mC);
+# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+static 
+# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
+      _Bool 
+# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
+           IsOverExit_b(int32_t temp_mC);
+# 6 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
+
+_Bool IsUnderEnter_b(int32_t temp_mC);
+# 2 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
+# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h" 1
+# 22 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
+# 1 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 1
+# 16 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h"
+# 1 "/usr/include/setjmp.h" 1 3 4
+# 27 "/usr/include/setjmp.h" 3 4
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 1 3 4
+# 26 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
+# 27 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 2 3 4
+
+
+
+
+
+# 31 "/usr/include/x86_64-linux-gnu/bits/setjmp.h" 3 4
+typedef long int __jmp_buf[8];
+# 30 "/usr/include/setjmp.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 1 3 4
+# 23 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h" 1 3 4
+
+
+
+
+typedef struct
+{
+  unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
+} __sigset_t;
+# 24 "/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h" 2 3 4
+
+
+struct __jmp_buf_tag
+  {
+
+
+
+
+    __jmp_buf __jmpbuf;
+    int __mask_was_saved;
+    __sigset_t __saved_mask;
+  };
+# 31 "/usr/include/setjmp.h" 2 3 4
+
+typedef struct __jmp_buf_tag jmp_buf[1];
+
+
+
+extern int setjmp (jmp_buf __env) __attribute__ ((__nothrow__));
+
+
+
+
+extern int __sigsetjmp (struct __jmp_buf_tag __env[1], int __savemask) __attribute__ ((__nothrow__));
+
+
+
+extern int _setjmp (struct __jmp_buf_tag __env[1]) __attribute__ ((__nothrow__));
+# 54 "/usr/include/setjmp.h" 3 4
+extern void longjmp (struct __jmp_buf_tag __env[1], int __val)
+     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+
+
+
+
+
+extern void _longjmp (struct __jmp_buf_tag __env[1], int __val)
+     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+
+
+
+
+
+
+
+typedef struct __jmp_buf_tag sigjmp_buf[1];
+# 80 "/usr/include/setjmp.h" 3 4
+extern void siglongjmp (sigjmp_buf __env, int __val)
+     __attribute__ ((__nothrow__)) __attribute__ ((__noreturn__));
+# 90 "/usr/include/setjmp.h" 3 4
+
+# 17 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
+
+
+
+# 1 "/usr/include/math.h" 1 3 4
+# 27 "/usr/include/math.h" 3 4
+# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
+# 28 "/usr/include/math.h" 2 3 4
+
+
+
+
+
+
+
+
+
+
 
 
 # 1 "/usr/include/x86_64-linux-gnu/bits/math-vector.h" 1 3 4
@@ -1193,82 +1332,7 @@ typedef struct {
 # 435 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h" 3 4
 } max_align_t;
 # 25 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
-# 37 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h"
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 1 3 4
-# 9 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 3 4
-# 1 "/usr/include/stdint.h" 1 3 4
-# 26 "/usr/include/stdint.h" 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
-# 27 "/usr/include/stdint.h" 2 3 4
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/wchar.h" 1 3 4
-# 29 "/usr/include/stdint.h" 2 3 4
-# 1 "/usr/include/x86_64-linux-gnu/bits/wordsize.h" 1 3 4
-# 30 "/usr/include/stdint.h" 2 3 4
-
-
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 1 3 4
-# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h" 3 4
-typedef __int8_t int8_t;
-typedef __int16_t int16_t;
-typedef __int32_t int32_t;
-typedef __int64_t int64_t;
-# 35 "/usr/include/stdint.h" 2 3 4
-
-
-# 1 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 1 3 4
-# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3 4
-typedef __uint8_t uint8_t;
-typedef __uint16_t uint16_t;
-typedef __uint32_t uint32_t;
-typedef __uint64_t uint64_t;
-# 38 "/usr/include/stdint.h" 2 3 4
-
-
-
-
-
-typedef __int_least8_t int_least8_t;
-typedef __int_least16_t int_least16_t;
-typedef __int_least32_t int_least32_t;
-typedef __int_least64_t int_least64_t;
-
-
-typedef __uint_least8_t uint_least8_t;
-typedef __uint_least16_t uint_least16_t;
-typedef __uint_least32_t uint_least32_t;
-typedef __uint_least64_t uint_least64_t;
-
-
-
-
-
-typedef signed char int_fast8_t;
-
-typedef long int int_fast16_t;
-typedef long int int_fast32_t;
-typedef long int int_fast64_t;
-# 71 "/usr/include/stdint.h" 3 4
-typedef unsigned char uint_fast8_t;
-
-typedef unsigned long int uint_fast16_t;
-typedef unsigned long int uint_fast32_t;
-typedef unsigned long int uint_fast64_t;
-# 87 "/usr/include/stdint.h" 3 4
-typedef long int intptr_t;
-
-
-typedef unsigned long int uintptr_t;
-# 101 "/usr/include/stdint.h" 3 4
-typedef __intmax_t intmax_t;
-typedef __uintmax_t uintmax_t;
-# 10 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h" 2 3 4
-# 38 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h" 2
-
-
-
+# 41 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity_internals.h"
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/limits.h" 1 3 4
 # 34 "/usr/lib/gcc/x86_64-linux-gnu/12/include/limits.h" 3 4
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/syslimits.h" 1 3 4
@@ -2154,69 +2218,6 @@ int suiteTearDown(int num_failures);
 # 53 "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
 void resetTest(void);
 void verifyTest(void);
-# 2 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
-# 1 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 1
-
-
-
-# 1 "utExecutionAndResults/utUnderTest/src/TempMon.h" 1
-
-
-
-
-
-
-# 1 "/usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h" 1 3 4
-# 8 "utExecutionAndResults/utUnderTest/src/TempMon.h" 2
-# 60 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-typedef enum { TEMPMON_STS_NORMAL = 0, TEMPMON_STS_UNDER, TEMPMON_STS_OVER } TempMon_sts_e;
-# 80 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-extern int32_t g_UnderThreshold_mC_s32;
-# 94 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-extern int32_t g_OverThreshold_mC_s32;
-# 109 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-extern int32_t g_Hyst_mC_s32;
-# 158 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-void TempMon_Init(int32_t temp_mC);
-# 212 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-void TempMon_Run(int32_t temp_mC);
-# 245 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-TempMon_sts_e TempMon_GetSts(void);
-# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-
-# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
-_Bool 
-# 283 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-    TempMon_IsUnderAlv_b(void);
-# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-
-# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h" 3 4
-_Bool 
-# 321 "utExecutionAndResults/utUnderTest/src/TempMon.h"
-    TempMon_IsOverAlv_b(void);
-# 5 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
-# 1 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 1
-# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
-# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
-# 128 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsUnderExit_b(int32_t temp_mC);
-# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
-# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
-# 170 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverEnter_b(int32_t temp_mC);
-# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-static 
-# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 3 4
-      _Bool 
-# 214 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h"
-           IsOverExit_b(int32_t temp_mC);
-# 6 "utExecutionAndResults/utUnderTest/src/IsUnderEnter_b.h" 2
-
-_Bool IsUnderEnter_b(int32_t temp_mC);
 # 3 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
 
 # 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsUnderEnter_b_1/mock_TempMon.h" 1
@@ -2323,13 +2324,104 @@ void TempMon_IsOverAlv_b_Stub(CMOCK_TempMon_IsOverAlv_b_CALLBACK Callback);
 # 108 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsUnderEnter_b_1/mock_TempMon.h"
 #pragma GCC diagnostic pop
 # 5 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
+# 1 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsUnderEnter_b_1/mock_TempMon_priv.h" 1
 
-void setUp(void) {
-}
 
-void tearDown(void) {
-}
 
-void test_IsUnderEnter_b(void) {
-  UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(13));
+
+
+# 1 "utExecutionAndResults/utUnderTest/src/TempMon_priv.h" 1
+# 7 "utExecutionAndResults/utUnderTest/build/test/mocks/test_IsUnderEnter_b_1/mock_TempMon_priv.h" 2
+
+
+
+
+#pragma GCC diagnostic push
+
+
+#pragma GCC diagnostic ignored "-Wpragmas"
+
+#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+#pragma GCC diagnostic ignored "-Wduplicate-decl-specifier"
+
+
+
+
+
+
+void mock_TempMon_priv_Init(void);
+void mock_TempMon_priv_Destroy(void);
+void mock_TempMon_priv_Verify(void);
+
+
+
+
+
+
+void IsUnderExit_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+void IsUnderExit_b_CMockStopIgnore(void);
+
+
+void IsUnderExit_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+
+void IsUnderExit_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
+typedef _Bool (* CMOCK_IsUnderExit_b_CALLBACK)(int32_t temp_mC, int cmock_num_calls);
+void IsUnderExit_b_AddCallback(CMOCK_IsUnderExit_b_CALLBACK Callback);
+void IsUnderExit_b_Stub(CMOCK_IsUnderExit_b_CALLBACK Callback);
+
+
+void IsUnderExit_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
+
+void IsOverEnter_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+void IsOverEnter_b_CMockStopIgnore(void);
+
+
+void IsOverEnter_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+
+void IsOverEnter_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
+typedef _Bool (* CMOCK_IsOverEnter_b_CALLBACK)(int32_t temp_mC, int cmock_num_calls);
+void IsOverEnter_b_AddCallback(CMOCK_IsOverEnter_b_CALLBACK Callback);
+void IsOverEnter_b_Stub(CMOCK_IsOverEnter_b_CALLBACK Callback);
+
+
+void IsOverEnter_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
+
+void IsOverExit_b_CMockIgnoreAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+void IsOverExit_b_CMockStopIgnore(void);
+
+
+void IsOverExit_b_CMockExpectAnyArgsAndReturn(UNITY_UINT cmock_line, _Bool cmock_to_return);
+
+
+void IsOverExit_b_CMockExpectAndReturn(UNITY_UINT cmock_line, int32_t temp_mC, _Bool cmock_to_return);
+typedef _Bool (* CMOCK_IsOverExit_b_CALLBACK)(int32_t temp_mC, int cmock_num_calls);
+void IsOverExit_b_AddCallback(CMOCK_IsOverExit_b_CALLBACK Callback);
+void IsOverExit_b_Stub(CMOCK_IsOverExit_b_CALLBACK Callback);
+
+
+void IsOverExit_b_CMockIgnoreArg_temp_mC(UNITY_UINT cmock_line);
+
+
+
+
+
+
+
+#pragma GCC diagnostic pop
+# 6 "utExecutionAndResults/utUnderTest/test/test_IsUnderEnter_b_1.c" 2
+
+void setUp(void) {}
+
+void tearDown(void) {}
+
+void test_IsUnderEnter_b(void)
+{
+    UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(13));
 }

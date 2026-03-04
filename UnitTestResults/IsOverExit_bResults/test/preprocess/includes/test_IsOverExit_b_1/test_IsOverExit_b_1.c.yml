@@ -1,3 +1,4 @@
 ---
 - utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h
 - mock_TempMon.h
+- mock_TempMon_priv.h

@@ -5,6 +5,7 @@
 #include "cmock.h"
 #include "unity.h"
 #include "mock_TempMon.h"
+#include "mock_TempMon_priv.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -23,14 +24,17 @@ static void CMock_Init(void)
   GlobalVerifyOrder = 0;
   GlobalOrderError = NULL;
   mock_TempMon_Init();
+  mock_TempMon_priv_Init();
 }
 static void CMock_Verify(void)
 {
   mock_TempMon_Verify();
+  mock_TempMon_priv_Verify();
 }
 static void CMock_Destroy(void)
 {
   mock_TempMon_Destroy();
+  mock_TempMon_priv_Destroy();
 }
 
 /*=======Test Reset Options=====*/
@@ -81,7 +85,7 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_IsOverExit_b_1.c");
-  run_test(test_IsOverExit_b, "test_IsOverExit_b", 12);
+  run_test(test_IsOverExit_b, "test_IsOverExit_b", 11);
 
   CMock_Guts_MemFreeFinal();
   return UNITY_END();

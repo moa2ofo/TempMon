@@ -2,16 +2,15 @@
 
 #include "utExecutionAndResults/utUnderTest/build/vendor/unity/src/unity.h"
 #include "mock_TempMon.h"
+#include "mock_TempMon_priv.h"
 
 void setUp(void)
-{
-}
+{}
 
 void tearDown(void)
-{
-}
+{}
 
 void test_IsOverEnter_b(void)
 {
-  UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(13));
+    UnityIgnore( (("Auto-generated stub test")), (UNITY_UINT)(13));
 }

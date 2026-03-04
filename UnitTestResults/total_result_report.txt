@@ -1,19 +1,11 @@
-| function_name  | test_name                                                            | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  |
-|----------------|----------------------------------------------------------------------|--------|--------|--------|---------|-----------|--------------|----------------|
-| IsOverExit_b   | IsOverExit_b_1                                                       | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:48 |
-| IsUnderExit_b  | IsUnderExit_b_1                                                      | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:48 |
-| IsOverEnter_b  | IsOverEnter_b_1                                                      | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:48 |
-| IsUnderEnter_b | IsUnderEnter_b_1                                                     | PASSED | PASSED | -      | -       | 0.0%      | -%           | 03/03/26 08:48 |
-| TempMon_Run    | stays_in_NORMAL_when_between_thresholds                              | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_NORMAL_when_at_UnderThreshold             | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_NORMAL_when_exactly_at_OverThreshold      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | stays_in_OVER_when_above_OverThreshold_minus_Hyst                    | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_NORMAL_when_just_above_UnderThreshold     | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_NORMAL_when_just_below_OverThreshold      | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | stays_in_UNDER_when_below_UnderThreshold_plus_Hyst                   | PASSED | PASSED | -      | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | stays_in_OVER_when_exactly_at_OverThreshold_minus_Hyst               | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | stays_in_UNDER_when_exactly_at_UnderThreshold_plus_Hyst              | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_FROM_OVER_TO_NORMAL_when_below_OverThreshold_minus_Hyst  | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_FROM_UNDER_TO_NORMAL_when_above_UnderThreshold_plus_Hyst | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_OVER_when_above_OverThreshold             | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
-| TempMon_Run    | transitions_from_NORMAL_to_UNDER_when_below_UnderThreshold           | FAILED | FAILED | FAILED | -       | 53.8%     | 35.7%        | 03/03/26 08:48 |
+| function_name        | test_name              | total  | passed | failed | ignored | linesCvrg | branchesCvrg | Date and time  |
+|----------------------|------------------------|--------|--------|--------|---------|-----------|--------------|----------------|
+| IsOverExit_b         | IsOverExit_b_1         | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| TempMon_IsUnderAlv_b | TempMon_IsUnderAlv_b_1 | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| TempMon_Init         | TempMon_Init_1         | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| TempMon_GetSts       | TempMon_GetSts_1       | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| TempMon_IsOverAlv_b  | TempMon_IsOverAlv_b_1  | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| IsUnderExit_b        | IsUnderExit_b_1        | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| IsOverEnter_b        | IsOverEnter_b_1        | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| IsUnderEnter_b       | IsUnderEnter_b_1       | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
+| TempMon_Run          | TempMon_Run_1          | PASSED | PASSED | -      | -       | 0.0%      | -%           | 04/03/26 15:32 |
